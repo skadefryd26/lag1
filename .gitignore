@@ -1,0 +1,12 @@
+# Local AI collaboration preference. Each participant creates their own copy.
+.ai/user-profile.md
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# JavaScript dependencies and build output
+node_modules/
+dist/
+coverage/
