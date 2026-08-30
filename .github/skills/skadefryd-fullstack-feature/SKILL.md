@@ -22,6 +22,7 @@ description: 'Use when creating, extending, debugging, or testing a Skadefryd 20
 
 ## Validation
 
-1. Run the narrowest existing test, typecheck, lint, or build command for the changed application.
-2. For a UI change, verify the normal, loading, empty, and error states where applicable.
-3. State exactly what ran and any validation that could not run.
+1. Test locally: run the narrowest existing test, typecheck, lint, or build command, then start the relevant local frontend or backend where behavior needs hands-on verification.
+2. For a UI change, verify the normal, loading, empty, and error states where applicable in the local application.
+3. Do not add deployment configuration or rely on a hosted environment during the hackathon unless explicitly requested.
+4. State exactly what ran locally and any validation that could not run.

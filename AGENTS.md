@@ -14,5 +14,6 @@ This repository supports a collaborative Gjensidige Claims hackathon. Build usef
 - Treat the profile as the participant's standing preference for this repository.
 - Prefer one new file per feature. Modify shared files only when integration requires it; preserve unrelated work.
 - Use React + TypeScript + Vite, TanStack Router, TanStack Query, and Mantine on the frontend. Use Node.js + TypeScript + Express on the backend.
-- Validate changed behavior with the narrowest available check.
+- Test locally during the hackathon. Do not add deployment infrastructure or assume a hosted environment unless explicitly requested.
+- Validate changed behavior with the narrowest available local check.
 - Never commit secrets, personal data, access tokens, or production data.
