@@ -62,15 +62,11 @@ Rules for any command a participant has to run themselves:
 - **Say what to do next** — normally: come back and say it is done.
 - **Then wait**, and take the work back the moment they confirm.
 
-If `az` is not installed, the message is `command not found: az`. That is one more command, given
-the same way, in the same terminal window:
-
-```
-brew install azure-cli
-```
-
-Tell them it takes a couple of minutes and prints a lot of text, that this is normal, and that
-they should say when it stops. Then send the `az login` steps again.
+If `az` is not installed, the message is `command not found: az` on a Mac or
+`az is not recognized` on Windows. **That is your job, not theirs** — go to
+`skadefryd-machine-setup` and install it yourself, then come back and send the `az login` steps.
+Do not hand a non-developer an install command, and on Windows do not send them anywhere near an
+installer that asks for administrator rights.
 
 ## Never do this
 
@@ -86,8 +82,13 @@ they should say when it stops. Then send the `az login` steps again.
 
 ## Set up access
 
+If `az` is not installed yet, or you are on a Windows machine without administrator rights, stop
+here and read `skadefryd-machine-setup` first. Come back when `az` runs.
+
 Fetch the token and write it straight to the file, in one command, so it never passes through the
-conversation:
+conversation. Use the variant for the shell **you** are in.
+
+**bash or zsh (macOS, Git Bash):**
 
 ```bash
 printf 'AI_GATEWAY_TOKEN=%s\n' \
@@ -95,11 +96,30 @@ printf 'AI_GATEWAY_TOKEN=%s\n' \
   > .env.local
 ```
 
+**PowerShell (Windows):**
+
+```powershell
+$t = az account get-access-token --resource https://cognitiveservices.azure.com --query accessToken --output tsv
+[System.IO.File]::WriteAllText("$PWD\.env.local", "AI_GATEWAY_TOKEN=$t`n", (New-Object System.Text.UTF8Encoding($false)))
+```
+
+Do not shorten the PowerShell version to `... > .env.local`. **Windows PowerShell 5.1 — the one
+that ships with Windows — writes redirected output as UTF-16.** A `.env.local` written that way
+looks perfectly normal in an editor and is unreadable to `dotenv`, and the error you get is
+"token mangler" on a file that visibly contains the token. `WriteAllText` with UTF-8 and no BOM
+avoids it. If `az` is not on PATH yet in your session, call it by full path — see
+`skadefryd-machine-setup`.
+
 Then confirm the result without revealing it:
 
 ```bash
 grep -q '^AI_GATEWAY_TOKEN=ey' .env.local && echo "token skrevet"
 git check-ignore -q .env.local && echo "ignorert av git"
+```
+
+```powershell
+if ((Get-Content .env.local -Raw) -match '^AI_GATEWAY_TOKEN=ey') { "token skrevet" }
+git check-ignore -q .env.local; if ($LASTEXITCODE -eq 0) { "ignorert av git" }
 ```
 
 Tell the participant in one sentence what happened: the access is in place, it lives in a local

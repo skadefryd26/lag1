@@ -33,6 +33,7 @@ instructions — this document only routes to them.
 | Frontend, backend, API, or testing work | `.github/skills/skadefryd-fullstack-feature/SKILL.md` |
 | AI gateway access, tokens, `.env.local`, a 401, the agent stopping | `.github/skills/skadefryd-ai-gateway/SKILL.md` |
 | A participant has to run something themselves, or says it does not work | `.github/skills/skadefryd-terminal-coach/SKILL.md` |
+| Installing tools, Windows without admin rights, PATH, `command not found` | `.github/skills/skadefryd-machine-setup/SKILL.md` |
 | Participant mode, tone, and delivery | `.github/skills/skadefryd-participant-workflow/SKILL.md` |
 
 Participants use different tools — opencode, GitHub Copilot, and Claude Code among them. Every
@@ -57,6 +58,11 @@ discovered them on its own.
   never run a command — for most of them that is literally true. Before you ask for one, read
   `skadefryd-terminal-coach`: it has how to walk someone into a terminal for the first time, and
   the wording to copy. One command at a time, and wait for them to confirm before anything else.
+- **Mac and Windows are both in the room.** Work out which one you are on by looking, never by
+  asking, and record it in `.ai/user-profile.md`. Most Windows participants have no administrator
+  rights, so installers and `winget` are not available to them — the ZIP-and-user-PATH route in
+  `skadefryd-machine-setup` is the normal path, not a fallback. Keep the project itself runnable
+  on both.
 - Prefer one new file per feature. Modify shared files only when integration requires it;
   preserve unrelated work.
 - Use React + TypeScript + Vite, TanStack Router, TanStack Query, and Mantine on the frontend.

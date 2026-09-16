@@ -34,7 +34,14 @@ an install. This skill is about those moments.
 
 ## Opening a terminal for the first time
 
-The first time, spell out all of it. Do not shorten this because it feels obvious.
+**Work out which machine they are on before you say a word about it.** Mac and Windows differ in
+every step here, and instructions for the wrong one make the person think they broke something.
+`skadefryd-machine-setup` shows how to detect it. Never ask "are you on Mac or Windows?" when you
+can see it yourself, and record it in `.ai/user-profile.md` so you only do it once.
+
+Spell out all of it the first time. Do not shorten this because it feels obvious.
+
+**On macOS:**
 
 > Nå trenger jeg at du gjør én ting på maskinen din. Det tar et minutt, og jeg forklarer hvert
 > steg.
@@ -50,20 +57,44 @@ The first time, spell out all of it. Do not shorten this because it feels obviou
 >
 > Si fra når du ser det vinduet, så gir jeg deg det du skal skrive.
 
-Then wait. When they confirm, give the command — one, alone, in a code block:
+**On Windows:**
 
-> Fint. Kopier linja under, klikk i terminalvinduet, lim den inn og trykk Enter.
+> Nå trenger jeg at du gjør én ting på maskinen din. Det tar et minutt, og jeg forklarer hvert
+> steg.
+>
+> Du skal bruke **PowerShell**. Det er et program som allerede ligger på maskinen din — et vindu
+> der du kan skrive kommandoer til datamaskinen i stedet for å klikke. Det ser kjedelig ut, og
+> det er umulig å ødelegge noe med det vi skal gjøre nå.
+>
+> 1. Trykk på Windows-tasten på tastaturet. Startmenyen åpner seg med et søkefelt.
+> 2. Skriv `powershell` og trykk Enter.
+> 3. Det åpner seg et blått eller svart vindu med litt tekst og en blinkende strek på slutten.
+>    Den blinkende streken betyr at den venter på deg.
+>
+> Du trenger **ikke** å høyreklikke og velge «Kjør som administrator». Alt vi skal gjøre virker
+> uten. Si fra når du ser vinduet.
+
+Then wait. When they confirm, give the command — one, alone, in a code block, and explain copy
+and paste for **their** machine:
+
+> Fint. Kopier linja under, klikk i vinduet, lim den inn og trykk Enter.
 >
 > ```
 > az login
 > ```
 >
-> Slik kopierer og limer du inn: marker linja og trykk `Cmd + C`. Klikk i terminalvinduet slik at
-> det er det aktive vinduet. Trykk `Cmd + V`. Trykk Enter.
+> Mac: marker linja og trykk `Cmd + C`, klikk i terminalvinduet, trykk `Cmd + V`, trykk Enter.
+> Windows: marker linja og trykk `Ctrl + C` **her i nettleseren**, klikk i PowerShell-vinduet, og
+> **høyreklikk** der — da limes teksten inn. Trykk Enter.
 >
 > Da åpner nettleseren seg og spør hvem du er. Velg Gjensidige-kontoen din, og velg
 > **Gjensidige Production Modern** hvis du får opp en liste. Når nettleseren sier at du er
 > logget inn, kan du lukke fanen og komme tilbake hit og skrive «ferdig».
+
+**The Windows copy-paste trap.** In a terminal window, `Ctrl + C` means *stop what is running*, not
+copy. Tell a Windows participant to press `Ctrl + C` in PowerShell and you kill their server or
+interrupt their login. Right-click pastes everywhere, including the old console, so use that. Copy
+in the browser is still `Ctrl + C` — be precise about which window you mean, every time.
 
 ## Things they will hit, and what to say
 
@@ -77,6 +108,12 @@ Then wait. When they confirm, give the command — one, alone, in a code block:
   Programmet kjører der. Lukker du det, stopper appen."
 - **"Den skriver ingenting når jeg taster passordet."** — Deliberate. The characters are hidden.
   Type it and press Enter.
+- **"Det står at jeg ikke er administrator."** — On Windows, expected, and not their problem to
+  solve. Nothing they need today requires it. Say so, and switch to the no-admin route in
+  `skadefryd-machine-setup`. Never ask them to phone IT for rights.
+- **`az is not recognized` right after you installed it** — the PATH change only reaches windows
+  opened afterwards. Have them close the window and open a new one, and use full paths yourself in
+  the meantime. See `skadefryd-machine-setup`.
 - **"Jeg får en feilmelding."** — Ask them to copy everything in the window and paste it here.
   That is allowed and it is the fastest way. Then read it for them and say in one sentence what it
   means and what you are doing about it. If they paste something that looks like a key or a

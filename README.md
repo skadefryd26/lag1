@@ -25,6 +25,8 @@ Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fago
 
 Dere skal ikke lage filer, kopiere maler eller lime inn tokens selv. Be AI-agenten om det dere vil ha, så ordner den oppsettet. Det gjelder også tilgangen til AI-gatewayen.
 
+Det spiller ingen rolle om du har Mac eller Windows, og du trenger ikke administratorrettigheter på maskinen. Mangler du et verktøy, installerer agenten det i din egen brukermappe. Si ifra hvis noe stopper opp, så løser den det.
+
 ## Første versjon
 
 Start enkelt. Første versjon bør inneholde:

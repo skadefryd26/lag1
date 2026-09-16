@@ -5,6 +5,16 @@
 - Participation mode: developer | non-developer
 - Preferred language: Norwegian | English
 
+## Machine
+
+The agent fills this in by looking, not by asking. See `skadefryd-machine-setup`.
+
+- Operating system: macOS | Windows
+- Administrator rights: yes | no
+- Terminal the participant uses: Terminal | PowerShell | other
+- Shell the agent runs in: zsh | PowerShell | Git Bash
+- Installed tool paths: az, gh, node (full paths when installed outside the normal PATH)
+
 ## Collaboration preferences
 
 - For a non-developer: explain actions in everyday language, ask about user needs and outcomes, and perform technical work and Git delivery steps after confirming the intended feature.

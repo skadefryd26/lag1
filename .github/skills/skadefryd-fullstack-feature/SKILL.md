@@ -20,7 +20,8 @@ description: 'Use when creating, extending, debugging, or testing a Skadefryd 20
 5. On the frontend, use TanStack Router for navigation, TanStack Query for server data, and Mantine components and theming for UI. Keep API requests out of presentational components when a feature hook or API module is appropriate.
 6. On the backend, expose typed Express request and response boundaries, validate untrusted input, return useful HTTP status codes, and keep route wiring separate from feature logic when practical.
 7. When the feature talks to the AI gateway, follow `skadefryd-ai-gateway`. Set up `.env.local` and the token yourself before the first call rather than after it fails, and keep the token in the backend — never in a `VITE_` variable or anywhere the browser downloads.
-8. Do not use real customer, claim, employee, or secret data. Use clearly fictional examples.
+8. Keep the project runnable on both macOS and Windows. Team members will have both. Do not put `VAR=value command` in an npm script — that is bash syntax and fails on Windows. Read configuration from `.env.local` in code instead, keep paths out of scripts, and make sure `npm install` and `npm run dev` are the only two commands anyone needs.
+9. Do not use real customer, claim, employee, or secret data. Use clearly fictional examples.
 
 ## Validation
 
