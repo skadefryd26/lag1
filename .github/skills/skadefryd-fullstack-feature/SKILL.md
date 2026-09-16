@@ -14,11 +14,12 @@ description: 'Use when creating, extending, debugging, or testing a Skadefryd 20
 ## Build a feature
 
 1. Establish the participant mode with the `skadefryd-participant-workflow` skill.
-2. Locate the nearest owning frontend or backend module and one focused test or usage. For a new project, first create a clear `frontend/` and `backend/` boundary.
-3. Prefer feature-local additions: a route/screen, UI component, query hook, API client, server router, controller, or test in a new feature-named file. Change shared registration, routing, or exports only to connect the addition.
-4. On the frontend, use TanStack Router for navigation, TanStack Query for server data, and Mantine components and theming for UI. Keep API requests out of presentational components when a feature hook or API module is appropriate.
-5. On the backend, expose typed Express request and response boundaries, validate untrusted input, return useful HTTP status codes, and keep route wiring separate from feature logic when practical.
-6. Do not use real customer, claim, employee, or secret data. Use clearly fictional examples.
+2. Make sure the work is on its own branch before writing code. Follow `skadefryd-git-help`.
+3. Locate the nearest owning frontend or backend module and one focused test or usage. For a new project, first create a clear `frontend/` and `backend/` boundary.
+4. Prefer feature-local additions: a route/screen, UI component, query hook, API client, server router, controller, or test in a new feature-named file. Change shared registration, routing, or exports only to connect the addition.
+5. On the frontend, use TanStack Router for navigation, TanStack Query for server data, and Mantine components and theming for UI. Keep API requests out of presentational components when a feature hook or API module is appropriate.
+6. On the backend, expose typed Express request and response boundaries, validate untrusted input, return useful HTTP status codes, and keep route wiring separate from feature logic when practical.
+7. Do not use real customer, claim, employee, or secret data. Use clearly fictional examples.
 
 ## Validation
 

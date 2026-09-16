@@ -17,16 +17,18 @@ description: 'Use when starting or continuing work in Skadefryd 2026, identifyin
 - Start with who needs the feature, what they need to accomplish, and how success looks. Offer small, concrete options when a decision is needed.
 - Translate technical work into plain language. Say what will happen before running commands and summarize the outcome afterwards.
 - Make sensible technical choices yourself using this repository's standards. Do not make the participant choose libraries, file layouts, commands, or Git mechanics unless they ask.
-- After the feature is agreed and validated, handle delivery: ensure the work is on a branch other than `main`, commit the intended changes, push, and create a pull request. Inspect the working tree first and never include unrelated changes.
+- Before any new work begins, make sure it is on its own branch. Follow `skadefryd-git-help`.
+- After the feature is agreed and validated, handle delivery yourself: commit the intended changes, push, and create a pull request. Inspect the working tree first and never include unrelated changes. `skadefryd-git-help` covers the whole flow, including conflicts and review comments.
 - When credentials, authentication, or approval are needed, explain the exact participant action required and continue once it is available. Never request or expose secrets in chat.
 
 ## Work with a developer
 
 - Be concise and technical where it helps. Surface meaningful implementation choices and validation results.
-- Do not create branches, commits, pushes, or pull requests unless explicitly requested.
+- Do not create branches, commits, pushes, or pull requests unless explicitly requested. When asked, follow `skadefryd-git-help`.
 
 ## Shared collaboration approach
 
 - Keep each feature isolated in new files wherever practical. Give files purposeful names and make minimal integration edits.
 - Before delivery, identify the relevant changed files, run the narrowest feasible validation, and report remaining limitations honestly.
 - Use Conventional Commits when creating commits.
+- If the participant has no idea yet, or the project has no code, run `skadefryd-kickoff` before anything else.
