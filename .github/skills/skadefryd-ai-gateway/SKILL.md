@@ -30,8 +30,9 @@ This is the single point in the whole day where you hand control to the particip
 non-developer does not know where a terminal is, that the chat window is not one, or what
 "paste" means when the command lands in the wrong place.
 
-**Be painfully explicit.** One command, numbered steps, what they will see, and what to do when
-they are done. Never assume they know where to type. Say it roughly like this, in their language:
+**Be painfully explicit.** Read `skadefryd-terminal-coach` before you ask — it covers opening a
+terminal for the first time, copying and pasting, and what to say when it goes wrong. If this is
+the participant's first command of the day, walk them into the terminal first, then send this:
 
 > Nå trenger jeg at du logger deg inn. Det er det eneste du må gjøre selv — jeg tar resten.
 >

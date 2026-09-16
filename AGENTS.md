@@ -32,6 +32,7 @@ instructions — this document only routes to them.
 | Anything involving Git, GitHub, branches, pull requests, or conflicts | `.github/skills/skadefryd-git-help/SKILL.md` |
 | Frontend, backend, API, or testing work | `.github/skills/skadefryd-fullstack-feature/SKILL.md` |
 | AI gateway access, tokens, `.env.local`, a 401, the agent stopping | `.github/skills/skadefryd-ai-gateway/SKILL.md` |
+| A participant has to run something themselves, or says it does not work | `.github/skills/skadefryd-terminal-coach/SKILL.md` |
 | Participant mode, tone, and delivery | `.github/skills/skadefryd-participant-workflow/SKILL.md` |
 
 Participants use different tools — opencode, GitHub Copilot, and Claude Code among them. Every
@@ -52,10 +53,10 @@ discovered them on its own.
   file, run a command, or paste a token into the chat. They do not know how, and telling them to
   is how a non-developer's morning ends. You have tools that write files and run commands — use
   them. The only exceptions are the steps that need their identity in their own terminal:
-  `az login` and `gh auth login`. When you do need one of those, be painfully explicit: tell them
-  to open a new terminal window and how, give one command alone in a code block, say what they
-  will see when it works, and wait for them to confirm before you do anything else. Never a list
-  of commands. See the AI gateway and participant-workflow skills for the exact wording.
+  `az login` and `gh auth login`. Assume the participant has never opened a terminal and has
+  never run a command — for most of them that is literally true. Before you ask for one, read
+  `skadefryd-terminal-coach`: it has how to walk someone into a terminal for the first time, and
+  the wording to copy. One command at a time, and wait for them to confirm before anything else.
 - Prefer one new file per feature. Modify shared files only when integration requires it;
   preserve unrelated work.
 - Use React + TypeScript + Vite, TanStack Router, TanStack Query, and Mantine on the frontend.

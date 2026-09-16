@@ -80,7 +80,7 @@ to `Review`. Give the participant the URL and explain what happens next — a te
 then it is merged into `main` so the rest of the team gets the change.
 
 If `gh` is not authenticated, `gh auth login` has to be run by the participant in their own
-terminal. Ask for it the way `skadefryd-ai-gateway` describes: a new terminal window, how to open
+terminal. Ask for it the way `skadefryd-terminal-coach` describes: a new terminal window, how to open
 one, the single command alone in a code block, what they will see, and a "say when you are done".
 Then wait and take the work back. Never ask for or echo credentials.
 
