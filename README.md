@@ -68,23 +68,4 @@ Teamet som best har brukt AI til å samarbeide på tvers av roller og fagområde
 - **Ansattmotivatoren:** Passer på bolleregelen, foreslår kaffepauser, lager vitser og gjør Jira-oppgaver mer motiverende.
 - **Forsikringsorakelet:** Gir skråsikre spådommer om fremtidens forsikringsbransje basert på svært lite informasjon.
 
-Eksemplene er kun inspirasjon. Juster dem, kombiner dem eller finn på noe helt eget.# MeetingBot 9000
-
-A local prototype that turns fictional or non-sensitive workday notes into polished standup updates.
-
-## Local development
-
-```bash
-npm install
-npm run dev
-```
-
-The frontend runs at `http://localhost:5173` and proxies API requests to the backend at `http://localhost:3001`.
-
-## Validation
-
-```bash
-npm run validate
-```
-
-The first version has no authentication, persistence, external integrations, or real meeting management.
+Eksemplene er kun inspirasjon. Juster dem, kombiner dem eller finn på noe helt eget.
