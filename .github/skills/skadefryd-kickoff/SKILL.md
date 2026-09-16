@@ -27,10 +27,34 @@ skill. Then check what already exists, in this order:
 Say plainly where the team is and what the next step is, for example: "Dere har ikke valgt idé
 ennå. Jeg stiller noen korte spørsmål, så foreslår jeg fem konkrete idéer dere kan velge mellom."
 
+## First person or joining a team already under way
+
+The check above tells you which of two completely different conversations you are in. Get it
+right — running the wrong one wastes a participant's morning.
+
+**Case 1 and 2, the project exists:** this person is joining. Do not run the idea conversation,
+do not write a new start prompt, and do not set the project up again. Say in two sentences what
+the team is building, then go to `skadefryd-project-board`, find a task nobody has taken, and get
+them onto their own branch. They should be doing something within ten minutes.
+
+**Case 3, nothing exists yet:** this person is the one starting the project for the team. Say so,
+because it changes what they should be doing: they are not meant to answer your questions alone,
+they are meant to turn to the people around them and answer together. Tell them that plainly —
+"Samle laget rundt skjermen, dette er teamdiskusjonen" — and only then start asking.
+
+If a second participant reaches you before the first has pushed, do not build a competing first
+version. Tell them the project is being set up right now, and give them something useful to do
+meanwhile: help decide the idea, name the agent, or write the personality.
+
 ## Run the idea conversation
 
 The goal is a chosen idea, not a complete specification. Keep it short: four questions, then
 concrete proposals.
+
+**Twenty minutes, not two hours.** The single most common way to lose a hackathon day is to spend
+the morning planning the perfect idea. The best ideas here appear while the thing is being built,
+not before. Say that out loud if the team is circling, recommend one of the options, and move.
+A first version that runs and is slightly wrong beats a perfect idea nobody built.
 
 Ask **one question at a time** and wait for the answer. Do not paste a numbered list of six
 questions at a non-developer — it reads as a form, and people abandon it.

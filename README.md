@@ -13,17 +13,49 @@ Utover dette har dere frie tøyler. Agenten kan løse et reelt problem, utforske
 
 Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fagområder kan bruke AI og vibe-coding sammen.
 
-## Slik starter teamet
+## Slik kommer dere i gang
 
-1. Velg idéen og hvem agenten skal hjelpe.
-2. Åpne `EXAMPLE_STARTPROMPT.md`.
-3. Be AI-agenten lage en ny startprompt med utgangspunkt i eksempelet. Fortell tydelig om teamets valgte prosjekt, målgruppe, ønsket funksjonalitet og avgrensninger.
-4. Les gjennom og juster startprompten sammen før dere godkjenner den.
-5. Kjør den godkjente startprompten for å få satt opp prosjektets første versjon.
-6. Test minimumsløsningen lokalt: brukeren skal kunne sende en chatmelding, backend skal bruke AI-gatewayen, og svaret skal vises i chatten.
-7. Push prosjektet når grunnoppsettet fungerer, slik at resten av teamet kan starte å bidra.
+Du trenger ikke kunne kode, og du trenger ikke vite hva dere skal bygge. Det holder å komme til steg 2.
 
-Dere skal ikke lage filer, kopiere maler eller lime inn tokens selv. Be AI-agenten om det dere vil ha, så ordner den oppsettet. Det gjelder også tilgangen til AI-gatewayen.
+**Én på laget starter prosjektet. Resten kobler seg på rett etterpå.** Grunnen er enkel: setter fem personer opp hvert sitt førsteutkast samtidig, får dere fem prosjekter som krasjer med hverandre. Bli enige om hvem som trykker i gang — hvem som helst, det trenger ikke være en utvikler.
+
+### Du som starter
+
+**1. Åpne AI-verktøyet ditt.** opencode, Claude Code eller GitHub Copilot — det du har. Det er her du jobber i dag, ikke i en kodeeditor.
+
+**2. Lim inn lenka til laget ditt, og be om hjelp.** Skriv for eksempel:
+
+> Hei, vi er lag 3. Lenka vår er https://github.com/skadefryd26/lag3 — hjelp oss i gang.
+
+Det er alt. Agenten henter ned prosjektet, sjekker at maskinen din har det den trenger, og begynner å stille spørsmål.
+
+**3. Ta samtalen med teamet, med agenten i rommet.** Den spør hvem dere er, hvem agenten deres skal hjelpe, og om det skal være seriøst eller tullete. Svar høyt sammen — dette *er* teamdiskusjonen, og den tar tjue minutter, ikke to timer. Deretter foreslår agenten fem konkrete idéer bygget på svarene deres. Velg én.
+
+**4. Sett i gang prosjektet.** Agenten bygger første versjon, sjekker at chatten faktisk svarer, og pusher den. Si fra til resten av laget når det er gjort — det er startskuddet deres.
+
+**5. Del opp arbeidet.** Agenten lager oppgaver på lagets tavle, én per del av første versjon, så alle har et sted å begynne.
+
+### Dere andre
+
+Vent til den første har pushet. Så gjør dere nøyaktig det samme — åpne verktøyet, lim inn lenka til laget — men skriv heller:
+
+> Hei, jeg er med på lag 3. Lenka vår er https://github.com/skadefryd26/lag3 — hva kan jeg bidra med?
+
+Agenten leser hva laget har bestemt seg for, finner en ledig oppgave på tavla, setter deg opp med din egen branch og forklarer underveis. Dere jobber hver for dere og setter det sammen etter hvert.
+
+### Ikke bruk lang tid på å planlegge
+
+Velg idé på tjue minutter og kom i gang. Det er lett å bruke hele formiddagen på å diskutere den perfekte idéen, og det er den sikreste måten å ikke få bygget noe på.
+
+De beste idéene blir til mens dere holder på. Første versjon trenger ikke være riktig — den trenger bare å kjøre, slik at dere ser noe på skjermen og får noe å reagere på. Er dere uenige mellom to idéer: velg den ene, bygg den, og se hva som skjer.
+
+### Er du i tvil om noe — spør agenten
+
+Det gjelder alt. Hvordan starter jeg? Hva er en branch? Hvorfor virker det ikke? Hva burde vi gjøre nå? Hvordan får jeg bidratt når jeg ikke kan kode? Kan vi endre idé?
+
+Agenten kjenner dette prosjektet, den kjenner oppgaven, og den er satt opp for å lede deg — ikke for å vente på at du vet hva du skal be om. Du kan ikke stille et for dumt spørsmål, og du kan ikke ødelegge noe ved å spørre.
+
+Du skal heller ikke lage filer, kopiere maler eller lime inn tokens selv. Si hva dere vil ha, så ordner agenten oppsettet. Det gjelder også tilgangen til AI-gatewayen.
 
 Det spiller ingen rolle om du har Mac eller Windows, og du trenger ikke administratorrettigheter på maskinen. Mangler du et verktøy, installerer agenten det i din egen brukermappe. Si ifra hvis noe stopper opp, så løser den det.
 
