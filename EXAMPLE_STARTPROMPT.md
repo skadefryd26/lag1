@@ -34,6 +34,8 @@ Avslutt med seksjonen `Åpne spørsmål`. Ikke start implementasjonen før teame
 
 ## Referansebrief: Bjarne og tidsreiseforsikring
 
+Dette er ett eksempel, og det er tilfeldigvis en chat. Teamets egen løsning trenger ikke være det — en knapp, et skjema, en generator eller et spill teller like mye. Behold strukturen under, bytt ut formen.
+
 ### Første versjon
 
 Lag en enkel løsning der:

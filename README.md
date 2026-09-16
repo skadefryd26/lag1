@@ -6,10 +6,12 @@ Lag en nettside med en AI-agent dere kaller **Bjarne**, eller et navn teamet sel
 
 Kravene er enkle:
 
-- Brukeren skal kunne snakke med agenten gjennom en chat.
-- Agenten skal bruke **Gjensidiges AI-gateway**.
+- Løsningen skal hjelpe noen med noe, i Bjarnes ånd.
+- Løsningen skal bruke **Gjensidiges AI-gateway**.
 
-Utover dette har dere frie tøyler. Agenten kan løse et reelt problem, utforske en faglig idé eller være helt useriøs. Velg gjerne noe alle på teamet kan bidra til.
+**Det må ikke være en chat.** En chat er den enkleste formen, og den som krever minst av dere — men den er ikke et krav. Det kan like gjerne være en knapp som gjør om en tekst til noe annet, et skjema som gir deg et svar tilbake, noe som leser det du har skrevet og sier hva som er galt med det, en generator, et spill der AI-en er motstanderen, eller noe ingen har tenkt på ennå. Det som teller er at AI-en gjør noe nyttig eller morsomt for noen.
+
+Utover dette har dere frie tøyler. Løsningen kan ta tak i et reelt problem, utforske en faglig idé eller være helt useriøs. Velg gjerne noe alle på teamet kan bidra til.
 
 Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fagområder kan bruke AI og vibe-coding sammen.
 
@@ -31,7 +33,7 @@ Det er alt. Agenten henter ned prosjektet, sjekker at maskinen din har det den t
 
 **3. Ta samtalen med teamet, med agenten i rommet.** Den spør hvem dere er, hvem agenten deres skal hjelpe, og om det skal være seriøst eller tullete. Svar høyt sammen — dette *er* teamdiskusjonen, og den tar tjue minutter, ikke to timer. Deretter foreslår agenten fem konkrete idéer bygget på svarene deres. Velg én.
 
-**4. Sett i gang prosjektet.** Agenten bygger første versjon, sjekker at chatten faktisk svarer, og pusher den. Si fra til resten av laget når det er gjort — det er startskuddet deres.
+**4. Sett i gang prosjektet.** Agenten bygger første versjon, sjekker at den faktisk svarer, og pusher den. Si fra til resten av laget når det er gjort — det er startskuddet deres.
 
 **5. Del opp arbeidet.** Agenten lager oppgaver på lagets tavle, én per del av første versjon, så alle har et sted å begynne.
 
@@ -61,14 +63,14 @@ Det spiller ingen rolle om du har Mac eller Windows, og du trenger ikke administ
 
 ## Første versjon
 
-Start enkelt. Første versjon bør inneholde:
+Start enkelt. Uansett hvilken form dere velger, er det den samme linja som må virke først:
 
-1. En chat der brukeren kan skrive til agenten.
-2. Et backend-endepunkt som mottar meldingen.
-3. En tjeneste i backend som sender forespørselen til Gjensidiges AI-gateway.
-4. Et agentsvar som vises i chatten.
+1. Noe brukeren gir fra seg — en melding, en tekst de limer inn, noen valg i et skjema, eller bare et klikk på en knapp.
+2. Et backend-endepunkt som tar imot det.
+3. En tjeneste i backend som legger ved agentens personlighet og sender forespørselen til Gjensidiges AI-gateway.
+4. Resultatet vist på skjermen.
 
-Bygg videre først når dette fungerer. Del gjerne arbeidet etter ansvar, for eksempel chatgrensesnitt, agentpersonlighet, backend-integrasjon og testing.
+Får dere den linja til å gå hele veien og tilbake, er resten pynt og påbygg — og det er den morsomme delen. Bygg videre først når dette fungerer. Del gjerne arbeidet etter ansvar, for eksempel grensesnittet, agentens personlighet, backend-integrasjonen og testing.
 
 ## Gjensidiges AI-gateway
 
@@ -111,5 +113,7 @@ Teamet som best har brukt AI til å samarbeide på tvers av roller og fagområde
 - **Skadebehandler for tidsreiseforsikring:** Hjelper med totalskadede tidsmaskiner, bagasje sendt til feil århundre og kunder som har møtt seg selv.
 - **Ansattmotivatoren:** Passer på bolleregelen, foreslår kaffepauser, lager vitser og gjør Jira-oppgaver mer motiverende.
 - **Forsikringsorakelet:** Gir skråsikre spådommer om fremtidens forsikringsbransje basert på svært lite informasjon.
+- **Vilkårsoversetteren:** Lim inn et avsnitt fra et forsikringsvilkår, få det tilbake på et språk et menneske forstår. Én knapp, ingen chat.
+- **Skadegjettleken:** To lag gjetter hva som skjedde i en oppdiktet skadesak. AI-en dømmer, og er urimelig streng.
 
-Eksemplene er kun inspirasjon. Juster dem, kombiner dem eller finn på noe helt eget.
+Legg merke til at flere av disse ikke er chatter i det hele tatt. Eksemplene er kun inspirasjon. Juster dem, kombiner dem eller finn på noe helt eget.

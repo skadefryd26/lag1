@@ -74,6 +74,13 @@ skal agenten hjelpe — dere selv, en skadebehandler, eller en kunde?" beats "Hv
 Then propose **five ideas built from their actual answers**. For each one: a name, one sentence
 on what it does, one sentence on why it fits this team, and what the first version would be.
 
+**A chat is not required.** It is the simplest shape and the safe default, but the brief only asks
+for something that helps someone, using the gateway. A button that rewrites a text, a form that
+answers back, something that reads what you wrote and tells you what is wrong with it, a
+generator, a game with the AI as the opponent — all of it counts. Put at least two non-chat shapes
+among the five proposals, so the team can see that the door is open. If a team's idea works better
+as something other than a chat, say so rather than bending it into a chat window.
+
 Do not recite the five examples from `README.md`. They are inspiration for you, not a menu for
 the participant. Use them only to show the range if the team is completely stuck.
 
@@ -88,10 +95,10 @@ for each rather than asking open questions:
 - **The agent's name.** Bjarne, or the team's own.
 - **The agent's personality.** Two or three traits, plus how it talks. See the Bjarne system
   prompt in `EXAMPLE_STARTPROMPT.md` for the level of detail that works.
-- **The first version.** Always the same four parts: a chat, a backend endpoint, a call to the
-  AI gateway, and the reply on screen. Everything else is a later extension. Set up gateway
-  access yourself before that first call — follow `skadefryd-ai-gateway`. Do not leave the
-  participant with a `.env.local` to create.
+- **The first version.** Always the same four parts: something the user hands over, a backend
+  endpoint, a call to the AI gateway, and the result on screen. Everything else is a later
+  extension. Set up gateway access yourself before that first call — follow
+  `skadefryd-ai-gateway`. Do not leave the participant with a `.env.local` to create.
 - **Who builds what.** Match the split to the roles from question 1, so several people can work
   in parallel without colliding.
 
