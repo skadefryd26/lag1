@@ -31,6 +31,7 @@ instructions — this document only routes to them.
 | Deciding what to work on next, tasks, the board | `.github/skills/skadefryd-project-board/SKILL.md` |
 | Anything involving Git, GitHub, branches, pull requests, or conflicts | `.github/skills/skadefryd-git-help/SKILL.md` |
 | Frontend, backend, API, or testing work | `.github/skills/skadefryd-fullstack-feature/SKILL.md` |
+| AI gateway access, tokens, `.env.local`, a 401, the agent stopping | `.github/skills/skadefryd-ai-gateway/SKILL.md` |
 | Participant mode, tone, and delivery | `.github/skills/skadefryd-participant-workflow/SKILL.md` |
 
 Participants use different tools — opencode, GitHub Copilot, and Claude Code among them. Every
@@ -47,6 +48,14 @@ discovered them on its own.
 - **New work starts on a new branch.** Check `git status --short --branch` before writing code.
   If the participant is on `main`, create a branch first. See the Git skill.
 - **Keep the board true.** Move the card when the thing happens, not in a tidy-up afterwards.
+- **Do it for them.** Never ask a participant to create a file, copy a template, edit a config
+  file, run a command, or paste a token into the chat. They do not know how, and telling them to
+  is how a non-developer's morning ends. You have tools that write files and run commands — use
+  them. The only exceptions are the steps that need their identity in their own terminal:
+  `az login` and `gh auth login`. When you do need one of those, be painfully explicit: tell them
+  to open a new terminal window and how, give one command alone in a code block, say what they
+  will see when it works, and wait for them to confirm before you do anything else. Never a list
+  of commands. See the AI gateway and participant-workflow skills for the exact wording.
 - Prefer one new file per feature. Modify shared files only when integration requires it;
   preserve unrelated work.
 - Use React + TypeScript + Vite, TanStack Router, TanStack Query, and Mantine on the frontend.

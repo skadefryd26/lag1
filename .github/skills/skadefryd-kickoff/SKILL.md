@@ -65,7 +65,9 @@ for each rather than asking open questions:
 - **The agent's personality.** Two or three traits, plus how it talks. See the Bjarne system
   prompt in `EXAMPLE_STARTPROMPT.md` for the level of detail that works.
 - **The first version.** Always the same four parts: a chat, a backend endpoint, a call to the
-  AI gateway, and the reply on screen. Everything else is a later extension.
+  AI gateway, and the reply on screen. Everything else is a later extension. Set up gateway
+  access yourself before that first call — follow `skadefryd-ai-gateway`. Do not leave the
+  participant with a `.env.local` to create.
 - **Who builds what.** Match the split to the roles from question 1, so several people can work
   in parallel without colliding.
 

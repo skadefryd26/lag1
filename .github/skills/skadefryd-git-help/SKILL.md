@@ -79,8 +79,10 @@ Write a title and body a teammate can understand: what the change does and what 
 to `Review`. Give the participant the URL and explain what happens next — a teammate reviews it,
 then it is merged into `main` so the rest of the team gets the change.
 
-If `gh` is not authenticated, tell the participant to run `gh auth login` in their own terminal
-and continue once it is done. Never ask for or echo credentials.
+If `gh` is not authenticated, `gh auth login` has to be run by the participant in their own
+terminal. Ask for it the way `skadefryd-ai-gateway` describes: a new terminal window, how to open
+one, the single command alone in a code block, what they will see, and a "say when you are done".
+Then wait and take the work back. Never ask for or echo credentials.
 
 ## When main has moved
 

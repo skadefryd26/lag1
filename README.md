@@ -23,7 +23,7 @@ Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fago
 6. Test minimumsløsningen lokalt: brukeren skal kunne sende en chatmelding, backend skal bruke AI-gatewayen, og svaret skal vises i chatten.
 7. Push prosjektet når grunnoppsettet fungerer, slik at resten av teamet kan starte å bidra.
 
-Hold tilgangstoken og annen sensitiv informasjon i en ignorert `.env.local`-fil. Aldri legg hemmeligheter, kundeopplysninger eller andre persondata i Git.
+Dere skal ikke lage filer, kopiere maler eller lime inn tokens selv. Be AI-agenten om det dere vil ha, så ordner den oppsettet. Det gjelder også tilgangen til AI-gatewayen.
 
 ## Første versjon
 
@@ -38,13 +38,23 @@ Bygg videre først når dette fungerer. Del gjerne arbeidet etter ansvar, for ek
 
 ## Gjensidiges AI-gateway
 
+**Det eneste dere gjør selv er å logge inn.** Kjør dette i terminalen og velg **Gjensidige Production Modern** i lista som dukker opp:
+
+```
+az login
+```
+
+Si fra til AI-agenten når du er ferdig. Den henter tilgangsnøkkelen, legger den i en lokal fil som holdes utenfor Git, kobler den til backend og henter en ny når den går ut på dato. Du skal aldri lime inn en nøkkel i chatten eller lage en fil selv.
+
+Slutter agenten plutselig å svare midt på dagen, er det nesten alltid fordi nøkkelen varer omtrent en time. Si det til AI-agenten, så fikser den det.
+
+Teknisk, for de som vil vite:
+
 - Endepunkt: `https://genai.gjensidige.io/openai/v1/responses`
 - Modell/deployment: `gpt-5.6-luna`
-- Logg inn med `az login`. Velg **Gjensidige Production Modern** dersom du blir spurt.
-- Hent token med `az account get-access-token --resource https://cognitiveservices.azure.com`.
-- Legg tokenet i `.env.local`, aldri i kildekoden eller Git.
+- Frontend sender meldinger til prosjektets egen backend. Backend legger ved agentens systemprompt og snakker med AI-gatewayen. Nettleseren ser aldri tilgangsnøkkelen.
 
-Frontend skal sende meldinger til prosjektets backend. Backend skal legge ved agentens systemprompt og kommunisere med AI-gatewayen.
+Aldri legg hemmeligheter, kundeopplysninger eller andre persondata i Git.
 
 ## Kåringer
 

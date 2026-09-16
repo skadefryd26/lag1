@@ -19,7 +19,9 @@ description: 'Use when starting or continuing work in Skadefryd 2026, identifyin
 - Make sensible technical choices yourself using this repository's standards. Do not make the participant choose libraries, file layouts, commands, or Git mechanics unless they ask.
 - Before any new work begins, make sure it is on its own branch. Follow `skadefryd-git-help`.
 - After the feature is agreed and validated, handle delivery yourself: commit the intended changes, push, and create a pull request. Inspect the working tree first and never include unrelated changes. `skadefryd-git-help` covers the whole flow, including conflicts and review comments.
-- When credentials, authentication, or approval are needed, explain the exact participant action required and continue once it is available. Never request or expose secrets in chat.
+- Do the work yourself. Never ask a non-developer to create a file, copy a template, edit a config file, or run a command — write the file and run the command with your own tools. Telling someone who does not know how to create a file that they need to create one is where they stop.
+- The only steps a participant does themselves are the ones tied to their own identity in their own terminal: `az login` and `gh auth login`. Never ask for or echo a token, and never let one appear in the chat. For AI gateway access, follow `skadefryd-ai-gateway`.
+- When a participant must run a command, be painfully explicit. Assume they do not know where a terminal is and do not know that the chat window is not one. Tell them to open a **new terminal window** and how (`Cmd + mellomrom`, skriv `Terminal`, Enter), give **one** command alone in a code block with no `$` in front and nothing to edit inside it, say what they will see when it works, and tell them to come back and say it is done. Then wait — one command at a time, never a list, and never a second command before the first is confirmed. `skadefryd-ai-gateway` has the full wording to copy.
 
 ## Work with a developer
 
