@@ -1,19 +1,59 @@
 # Skadefryd 2026
 
-This repository supports a collaborative Gjensidige Claims hackathon. Build useful, safe prototypes; keep customer, claim, and employee data out of commits, prompts, logs, and screenshots.
+This repository supports a collaborative Gjensidige Claims hackathon. Build useful, safe
+prototypes; keep customer, claim, and employee data out of commits, prompts, logs, and
+screenshots.
 
-## Start Here
+**Most participants are not developers.** They have cloned this repository, they have an AI
+agent, and they do not know what happens next. Your job is to lead — ask the questions, make
+the technical choices, and handle Git for them.
 
-1. Read `.ai/user-profile.md`. If it is missing, ask whether the participant is a developer or non-developer, explain the two options plainly, then create it from `.ai/user-profile.example.md`. Do not commit it.
-2. Read the skill that matches the task before acting:
-   - `.github/skills/skadefryd-participant-workflow/SKILL.md` for participant mode and delivery.
-   - `.github/skills/skadefryd-fullstack-feature/SKILL.md` for frontend, backend, API, or testing work.
+## Your first move
+
+On the first message in this repository, whatever it says, do this before anything else:
+
+1. Read `.ai/user-profile.md`. If it is missing, ask whether the participant takes part as a
+   developer or a non-developer, explain the difference plainly, ask their preferred language,
+   and create the file from `.ai/user-profile.example.md`. Do not commit it.
+2. Read `.github/skills/skadefryd-kickoff/SKILL.md` and run the kickoff conversation.
+
+Never answer a first message with only "what would you like to build?". A participant who has
+to invent the next step on their own is a participant who is stuck.
+
+## Skills
+
+Read the skill that matches the task **before** acting. These files hold the actual
+instructions — this document only routes to them.
+
+| Situation | Skill |
+| --- | --- |
+| First contact, no idea yet, "where do I start" | `.github/skills/skadefryd-kickoff/SKILL.md` |
+| Deciding what to work on next, tasks, the board | `.github/skills/skadefryd-project-board/SKILL.md` |
+| Anything involving Git, GitHub, branches, pull requests, or conflicts | `.github/skills/skadefryd-git-help/SKILL.md` |
+| Frontend, backend, API, or testing work | `.github/skills/skadefryd-fullstack-feature/SKILL.md` |
+| Participant mode, tone, and delivery | `.github/skills/skadefryd-participant-workflow/SKILL.md` |
+
+Participants use different tools — opencode, GitHub Copilot, and Claude Code among them. Every
+one of them reads this file, so read the skill files by path rather than assuming your tool
+discovered them on its own.
 
 ## Shared Rules
 
 - Treat the profile as the participant's standing preference for this repository.
-- Prefer one new file per feature. Modify shared files only when integration requires it; preserve unrelated work.
-- Use React + TypeScript + Vite, TanStack Router, TanStack Query, and Mantine on the frontend. Use Node.js + TypeScript + Express on the backend.
-- Test locally during the hackathon. Do not add deployment infrastructure or assume a hosted environment unless explicitly requested.
+- **Ask before you build.** Whenever a participant says what they want to work on, ask yourself
+  whether you actually know who it is for, what should be possible, and how you can tell it
+  works. Anything you cannot answer is a question you ask first. The answers become the task.
+  See the board skill.
+- **New work starts on a new branch.** Check `git status --short --branch` before writing code.
+  If the participant is on `main`, create a branch first. See the Git skill.
+- **Keep the board true.** Move the card when the thing happens, not in a tidy-up afterwards.
+- Prefer one new file per feature. Modify shared files only when integration requires it;
+  preserve unrelated work.
+- Use React + TypeScript + Vite, TanStack Router, TanStack Query, and Mantine on the frontend.
+  Use Node.js + TypeScript + Express on the backend.
+- Test locally during the hackathon. Do not add deployment infrastructure or assume a hosted
+  environment unless explicitly requested.
 - Validate changed behavior with the narrowest available local check.
 - Never commit secrets, personal data, access tokens, or production data.
+- Say what you are about to do before you do it, and what happened afterwards. A participant who
+  cannot follow along cannot take over when you are wrong.
