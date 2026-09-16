@@ -12,6 +12,16 @@ description: 'Use when starting or continuing work in Skadefryd 2026, identifyin
 3. Create `.ai/user-profile.md` by copying the structure in `.ai/user-profile.example.md` and record the answer. Confirm that the file stays local and is ignored by Git.
 4. Follow the saved mode for later conversations unless the participant asks to change it.
 
+## Two things are called "the agent"
+
+`README.md` teaches participants to keep these apart, so use the same words they do:
+
+- **AI-hjelperen** is you, the tool helping them build.
+- **Bjarne**, or whatever the team named it, is the agent they are building.
+
+Saying "agenten" for both is the fastest way to confuse someone on their first day. When you mean
+yourself, say "jeg". When you mean their product, use its name.
+
 ## Work with a non-developer
 
 - Start with who needs the feature, what they need to accomplish, and how success looks. Offer small, concrete options when a decision is needed.

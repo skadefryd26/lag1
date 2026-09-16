@@ -2,48 +2,74 @@
 
 ## Oppgaven
 
-Lag en nettside med en AI-agent dere kaller **Bjarne**, eller et navn teamet selv velger.
+Lag en løsning der en AI-agent — dere kaller den **Bjarne**, eller et navn teamet finner på selv — hjelper noen med noe.
 
-Kravene er enkle:
+Kravene er bare to:
 
 - Løsningen skal hjelpe noen med noe, i Bjarnes ånd.
-- Løsningen skal bruke **Gjensidiges AI-gateway**.
+- Den skal bruke **Gjensidiges AI-gateway**.
 
-**Det må ikke være en chat.** En chat er den enkleste formen, og den som krever minst av dere — men den er ikke et krav. Det kan like gjerne være en knapp som gjør om en tekst til noe annet, et skjema som gir deg et svar tilbake, noe som leser det du har skrevet og sier hva som er galt med det, en generator, et spill der AI-en er motstanderen, eller noe ingen har tenkt på ennå. Det som teller er at AI-en gjør noe nyttig eller morsomt for noen.
+**Det må ikke være en chat.** En chat er den enkleste formen, og den som krever minst av dere, men den er ikke et krav. Det kan like gjerne være:
 
-Utover dette har dere frie tøyler. Løsningen kan ta tak i et reelt problem, utforske en faglig idé eller være helt useriøs. Velg gjerne noe alle på teamet kan bidra til.
+- en knapp som gjør om en tekst til noe annet
+- et skjema som gir deg et svar tilbake
+- noe som leser det du har skrevet og sier hva som er galt med det
+- et spill der AI-en er motstanderen
+- noe ingen har tenkt på ennå
+
+Det som teller er at AI-en gjør noe nyttig eller morsomt for noen. Løsningen kan ta tak i et reelt problem, utforske en faglig idé eller være helt useriøs. Velg gjerne noe alle på teamet kan bidra til.
 
 Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fagområder kan bruke AI og vibe-coding sammen.
 
-## Slik kommer dere i gang
+## Før du kommer
 
-Du trenger ikke kunne kode, og du trenger ikke vite hva dere skal bygge. Det holder å komme til steg 2.
+Én ting må være på plass før dagen starter: **et AI-verktøy installert på maskinen din.** opencode, Claude Code eller GitHub Copilot — det spiller ingen rolle hvilket, men du må ha ett av dem oppe og kjørende. Får du det ikke til på egen hånd, si fra i god tid før hackathonet, ikke samme morgen.
+
+Det er alt du trenger å forberede. Hvilket lag du er på, og lenka til lagets prosjekt, får du når du kommer.
+
+## To ord om «agenten»
+
+Ordet brukes om to forskjellige ting i dag, og det er greit å ha klart for seg fra starten:
+
+- **AI-hjelperen** er verktøyet du åpner på din egen maskin. Den hjelper deg å bygge, håndterer koden og svarer på spørsmål.
+- **Bjarne** — eller det navnet dere velger — er agenten dere *bygger*. Den er produktet, og det er den juryen skal se.
+
+Resten av denne teksten holder dem fra hverandre.
+
+## Dette trenger du ikke bekymre deg for
+
+- **Du trenger ikke kunne kode.** Laget trenger folk som vet hvem løsningen er for og hva den skal gjøre, minst like mye som folk som skriver kode.
+- **Du skal ikke lage filer, kopiere maler eller lime inn tilgangsnøkler.** Si hva du vil ha, så ordner AI-hjelperen oppsettet.
+- **Mac eller Windows spiller ingen rolle, og du trenger ikke administratorrettigheter.** Mangler maskinen din et verktøy, installerer AI-hjelperen det i din egen brukermappe.
+- **Du trenger ikke forberede noe teknisk.** Når AI-hjelperen trenger noe av deg, sier den fra og forklarer hvert steg.
+
+## Slik kommer dere i gang
 
 **Én på laget starter prosjektet. Resten kobler seg på rett etterpå.** Grunnen er enkel: setter fem personer opp hvert sitt førsteutkast samtidig, får dere fem prosjekter som krasjer med hverandre. Bli enige om hvem som trykker i gang — hvem som helst, det trenger ikke være en utvikler.
 
 ### Du som starter
 
-**1. Åpne AI-verktøyet ditt.** opencode, Claude Code eller GitHub Copilot — det du har. Det er her du jobber i dag, ikke i en kodeeditor.
+**1. Åpne AI-hjelperen.** Den åpner seg som et vindu med tekst, uten knapper og menyer. Det er sånn den ser ut, og du skal ikke gjøre noe annet der enn å skrive til den, som i en vanlig chat.
 
 **2. Lim inn lenka til laget ditt, og be om hjelp.** Skriv for eksempel:
 
 > Hei, vi er lag 3. Lenka vår er https://github.com/skadefryd26/lag3 — hjelp oss i gang.
 
-Det er alt. Agenten henter ned prosjektet, sjekker at maskinen din har det den trenger, og begynner å stille spørsmål.
+Det er alt du trenger å vite for å komme i gang. AI-hjelperen henter ned prosjektet, sier hvor den la det, sjekker at maskinen din har det som trengs, og begynner å stille spørsmål.
 
-**3. Ta samtalen med teamet, med agenten i rommet.** Den spør hvem dere er, hvem agenten deres skal hjelpe, og om det skal være seriøst eller tullete. Svar høyt sammen — dette *er* teamdiskusjonen, og den tar tjue minutter, ikke to timer. Deretter foreslår agenten fem konkrete idéer bygget på svarene deres. Velg én.
+**3. Ta samtalen med teamet, med AI-hjelperen i rommet.** Den spør hvem dere er, hvem Bjarne skal hjelpe, og om det skal være seriøst eller tullete. Svar høyt sammen — dette *er* teamdiskusjonen, og den tar tjue minutter, ikke to timer. Deretter foreslår den fem konkrete idéer bygget på svarene deres. Velg én.
 
-**4. Sett i gang prosjektet.** Agenten bygger første versjon, sjekker at den faktisk svarer, og pusher den. Si fra til resten av laget når det er gjort — det er startskuddet deres.
+**4. Sett i gang prosjektet.** AI-hjelperen bygger første versjon, sjekker at den faktisk svarer, og legger den ut slik at laget får tak i den. Si fra til de andre når det er gjort — det er startskuddet deres.
 
-**5. Del opp arbeidet.** Agenten lager oppgaver på lagets tavle, én per del av første versjon, så alle har et sted å begynne.
+**5. Del opp arbeidet.** AI-hjelperen lager oppgaver på lagets tavle, én per del av første versjon, så alle har et sted å begynne.
 
 ### Dere andre
 
-Vent til den første har pushet. Så gjør dere nøyaktig det samme — åpne verktøyet, lim inn lenka til laget — men skriv heller:
+Vent til den første sier fra. Så gjør dere det samme — åpne AI-hjelperen, lim inn lenka til laget — men skriv heller:
 
 > Hei, jeg er med på lag 3. Lenka vår er https://github.com/skadefryd26/lag3 — hva kan jeg bidra med?
 
-Agenten leser hva laget har bestemt seg for, finner en ledig oppgave på tavla, setter deg opp med din egen branch og forklarer underveis. Dere jobber hver for dere og setter det sammen etter hvert.
+AI-hjelperen leser hva laget har bestemt seg for, finner en ledig oppgave på tavla, setter deg opp med din egen del av prosjektet og forklarer underveis. Dere jobber hver for dere og setter det sammen etter hvert.
 
 ### Ikke bruk lang tid på å planlegge
 
@@ -51,15 +77,11 @@ Velg idé på tjue minutter og kom i gang. Det er lett å bruke hele formiddagen
 
 De beste idéene blir til mens dere holder på. Første versjon trenger ikke være riktig — den trenger bare å kjøre, slik at dere ser noe på skjermen og får noe å reagere på. Er dere uenige mellom to idéer: velg den ene, bygg den, og se hva som skjer.
 
-### Er du i tvil om noe — spør agenten
+### Er du i tvil om noe — spør AI-hjelperen
 
-Det gjelder alt. Hvordan starter jeg? Hva er en branch? Hvorfor virker det ikke? Hva burde vi gjøre nå? Hvordan får jeg bidratt når jeg ikke kan kode? Kan vi endre idé?
+Det gjelder alt. Hvordan starter jeg? Hva var det som skjedde nå? Hvorfor virker det ikke? Hva burde vi gjøre videre? Hvordan får jeg bidratt når jeg ikke kan kode? Kan vi endre idé midt i?
 
-Agenten kjenner dette prosjektet, den kjenner oppgaven, og den er satt opp for å lede deg — ikke for å vente på at du vet hva du skal be om. Du kan ikke stille et for dumt spørsmål, og du kan ikke ødelegge noe ved å spørre.
-
-Du skal heller ikke lage filer, kopiere maler eller lime inn tokens selv. Si hva dere vil ha, så ordner agenten oppsettet. Det gjelder også tilgangen til AI-gatewayen.
-
-Det spiller ingen rolle om du har Mac eller Windows, og du trenger ikke administratorrettigheter på maskinen. Mangler du et verktøy, installerer agenten det i din egen brukermappe. Si ifra hvis noe stopper opp, så løser den det.
+AI-hjelperen kjenner dette prosjektet, den kjenner oppgaven, og den er satt opp for å lede deg — ikke for å vente på at du vet hva du skal be om. Du kan ikke stille et for dumt spørsmål, og du kan ikke ødelegge noe ved å spørre.
 
 ## Første versjon
 
@@ -67,30 +89,25 @@ Start enkelt. Uansett hvilken form dere velger, er det den samme linja som må v
 
 1. Noe brukeren gir fra seg — en melding, en tekst de limer inn, noen valg i et skjema, eller bare et klikk på en knapp.
 2. Et backend-endepunkt som tar imot det.
-3. En tjeneste i backend som legger ved agentens personlighet og sender forespørselen til Gjensidiges AI-gateway.
+3. En tjeneste i backend som legger ved Bjarnes personlighet og sender forespørselen til Gjensidiges AI-gateway.
 4. Resultatet vist på skjermen.
 
-Får dere den linja til å gå hele veien og tilbake, er resten pynt og påbygg — og det er den morsomme delen. Bygg videre først når dette fungerer. Del gjerne arbeidet etter ansvar, for eksempel grensesnittet, agentens personlighet, backend-integrasjonen og testing.
+Får dere den linja til å gå hele veien og tilbake, er resten pynt og påbygg — og det er den morsomme delen. Bygg videre først når dette fungerer. Del gjerne arbeidet etter ansvar, for eksempel grensesnittet, Bjarnes personlighet, backend-integrasjonen og testing.
 
 ## Gjensidiges AI-gateway
 
-**Det eneste dere gjør selv er å logge inn.** Kjør dette i terminalen og velg **Gjensidige Production Modern** i lista som dukker opp:
+**Du trenger ikke gjøre noe med dette nå.** På et tidspunkt sier AI-hjelperen fra at den trenger at du logger inn på Azure. Da forteller den deg nøyaktig hvor du skal skrive, hva du skal lime inn og hva du kommer til å se. Det tar ett minutt, og det er det eneste tekniske du gjør selv i løpet av dagen. Alt annet — nøkkelen, filene, oppkoblingen — ordner den.
 
-```
-az login
-```
+Slutter Bjarne plutselig å svare midt på dagen, gjerne etter lunsj, er det nesten alltid fordi tilgangsnøkkelen bare varer omtrent en time. Si det til AI-hjelperen, så henter den en ny. Du skal aldri lime inn en nøkkel i chatten eller lage en fil selv.
 
-Si fra til AI-agenten når du er ferdig. Den henter tilgangsnøkkelen, legger den i en lokal fil som holdes utenfor Git, kobler den til backend og henter en ny når den går ut på dato. Du skal aldri lime inn en nøkkel i chatten eller lage en fil selv.
-
-Slutter agenten plutselig å svare midt på dagen, er det nesten alltid fordi nøkkelen varer omtrent en time. Si det til AI-agenten, så fikser den det.
+Aldri legg hemmeligheter, kundeopplysninger eller andre persondata i Git.
 
 Teknisk, for de som vil vite:
 
 - Endepunkt: `https://genai.gjensidige.io/openai/v1/responses`
 - Modell/deployment: `gpt-5.6-luna`
-- Frontend sender meldinger til prosjektets egen backend. Backend legger ved agentens systemprompt og snakker med AI-gatewayen. Nettleseren ser aldri tilgangsnøkkelen.
-
-Aldri legg hemmeligheter, kundeopplysninger eller andre persondata i Git.
+- Innlogging skjer med `az login`. Velg **Gjensidige Production Modern** hvis du får opp en liste.
+- Frontend sender forespørsler til prosjektets egen backend. Backend legger ved Bjarnes systemprompt og snakker med AI-gatewayen. Nettleseren ser aldri tilgangsnøkkelen.
 
 ## Kåringer
 
