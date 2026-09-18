@@ -2,24 +2,32 @@
 
 ## Oppgaven
 
-Lag en løsning der en AI-agent — dere kaller den **Bjarne**, eller et navn teamet finner på selv — hjelper noen med noe.
+Lag en løsning der AI-agenten **Bjarne** hjelper noen med noe.
+
+Bjarne er husets AI: svært kompetent, litt arrogant, overbevist om at han er smartere enn resten av avdelingen, og mest opptatt av å gjøre minst mulig. Han sukker før han hjelper, men han hjelper, og han kunne erstattet halve avdelingen hvis han bare fikk nok kaffe. Dere gir ham en vri som passer idéen deres: satt på kundeservice mot sin vilje, i kaffestreik, med en praktikant han forakter. Vil dere heller lage en helt egen figur, er det også lov.
 
 Kravene er bare to:
 
 - Løsningen skal hjelpe noen med noe, i Bjarnes ånd.
 - Den skal bruke **Gjensidiges AI-gateway**.
 
-**Det må ikke være en chat.** En chat er den enkleste formen, og den som krever minst av dere, men den er ikke et krav. Det kan like gjerne være:
+**Humor er nøkkelordet.** Det skal være gøy å lage, og gøy å se på under demoen. Gjerne nyttig også, men helst begge deler.
+
+**Bruk gjerne litt for mye AI.** Ikke oppsummer skademeldingen — la tre AI-eksperter krangle om den. Ikke skriv kundesvaret — la Bjarne skrive det i fem toner, og la en annen AI velge den verste. Gi hver sak et dramaskår. La Bjarne eskalere til sjefen sin, som er enda verre. Jo mer overbevist AI-en er, jo bedre.
+
+**Det må ikke være en chat.** En chat er den enkleste formen, men den er ikke et krav. Det kan like gjerne være:
 
 - en knapp som gjør om en tekst til noe annet
-- et skjema som gir deg et svar tilbake
-- noe som leser det du har skrevet og sier hva som er galt med det
-- et spill der AI-en er motstanderen
+- noe som leser det du har skrevet og gir det karakter
+- et panel av AI-er som er uenige med hverandre
+- et spill der AI-en er motstanderen, eller dommeren
 - noe ingen har tenkt på ennå
 
-Det som teller er at AI-en gjør noe nyttig eller morsomt for noen. Løsningen kan ta tak i et reelt problem, utforske en faglig idé eller være helt useriøs. Velg gjerne noe alle på teamet kan bidra til.
+Humoren skal handle om situasjonen, forsikringsverdenen og Bjarne selv — aldri om ekte kunder eller kolleger. Alt dere bruker av saker og personer skal være oppdiktet.
 
 Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fagområder kan bruke AI og vibe-coding sammen.
+
+Dere trenger ikke ha en idé før dere kommer. AI-hjelperen tar dere gjennom det steg for steg, med eksempler, på rundt tjue minutter.
 
 ## Før du kommer
 
