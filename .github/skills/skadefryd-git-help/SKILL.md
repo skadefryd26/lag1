@@ -54,7 +54,7 @@ plain language and ask whether it belongs to the new work or the old. Never disc
 
 Name branches after the work: `feat/chat-ui`, `feat/bjarne-personality`, `fix/token-error`.
 
-Once the branch exists, move the task to `Under arbeid`. See `skadefryd-project-board`.
+Once the branch exists, assign the task to the participant. See `skadefryd-tasks`.
 
 ## Saving and pushing
 
@@ -75,14 +75,12 @@ gh pr create --fill
 ```
 
 Write a title and body a teammate can understand: what the change does and what to look at. Put
-`Closes #<n>` in the body so the issue closes on merge and the card follows. Then move the task
-to `Review`. Give the participant the URL and explain what happens next — a teammate reviews it,
+`Closes #<n>` in the body so the issue closes on merge. Give the participant the URL and explain what happens next — a teammate reviews it,
 then it is merged into `main` so the rest of the team gets the change.
 
-If `gh` is not authenticated, `gh auth login` has to be run by the participant in their own
-terminal. Ask for it the way `skadefryd-terminal-coach` describes: a new terminal window, how to open
-one, the single command alone in a code block, what they will see, and a "say when you are done".
-Then wait and take the work back. Never ask for or echo credentials.
+If `gh` is not authenticated, log the participant in with `skadefryd-login`: you start
+`gh auth login`, they approve it in the browser. Never ask them to type a command, and never ask
+for or echo credentials.
 
 ## When main has moved
 
@@ -131,8 +129,13 @@ participant does not need to open a new one. Say this explicitly, because it is 
   conflict as above, then push again.
 - **Updates rejected on `main`** — the work should not be on `main`. Move it to a branch rather
   than forcing anything.
-- **"Permission denied (publickey)"** — an SSH key problem. The participant fixes this in their
-  own terminal, or switches to HTTPS with `gh auth login`.
+- **"Permission denied (publickey)"** — the remote uses SSH. Switch it to HTTPS yourself with
+  `git remote set-url origin https://github.com/skadefryd26/<repo>.git`, and make sure
+  `gh auth setup-git` has run. See `skadefryd-login`.
+- **`403` or "Permission to ... denied"** — the participant has not been added to the team
+  repository, or has not accepted the invitation. `skadefryd-login` covers both.
+- **The push hangs** — Git is asking for a password in a terminal nobody can see. Stop it, run
+  `gh auth setup-git`, and push again.
 - **Committed on the wrong branch** — the commits can be moved. Show what will happen first, and
   get a yes before doing it.
 

@@ -1,6 +1,6 @@
 ---
 name: skadefryd-machine-setup
-description: 'Read before installing anything or running the first command on a Skadefryd 2026 participant''s machine. Covers detecting Windows or macOS, installing Azure CLI, GitHub CLI, and Node without administrator rights on a locked-down Windows machine using ZIP packages and the user PATH, and the Mac equivalents. Use on "az is not recognized", "command not found", "brew not found", "winget needs admin", "I am not an administrator", or a PATH that does not take effect.'
+description: 'Read before installing anything or running the first command on a Skadefryd 2026 participant''s machine, including when git is missing and the team repository cannot be cloned. Covers detecting Windows or macOS, installing Git, Azure CLI, GitHub CLI, and Node without administrator rights on a locked-down Windows machine using ZIP packages and the user PATH, and the Mac equivalents. Use on "az is not recognized", "command not found", "brew not found", "winget needs admin", "I am not an administrator", or a PATH that does not take effect.'
 ---
 
 # Skadefryd Machine Setup
@@ -8,8 +8,9 @@ description: 'Read before installing anything or running the first command on a 
 The participant should be contributing within the hour. Everything in this file exists to make
 that happen without them installing, configuring, or understanding anything.
 
-**You do all of it.** Read `skadefryd-terminal-coach` for how to talk while you work, and
-`skadefryd-ai-gateway` for what happens once the tools are in place.
+**You do all of it.** The participant never types a command. Say in one sentence what you are
+installing and why before you start, and in one sentence what happened afterwards.
+`skadefryd-login` and `skadefryd-ai-gateway` cover what happens once the tools are in place.
 
 ## First: work out what machine you are on
 
@@ -25,15 +26,11 @@ $env:PROCESSOR_ARCHITECTURE    # AMD64 or ARM64
 ```
 
 Record the answer in `.ai/user-profile.md` — operating system, which shell you are running in,
-which terminal program the participant has, and the full paths to any tool you install. Every
-later session reads that instead of working it out again. The file is local and ignored by Git.
+and the full paths to any tool you install. Every later session reads that instead of working it
+out again. The file is local and ignored by Git.
 
-Two surfaces, and do not mix them up:
-
-- **Commands you run.** Must be correct for the shell *you* are in.
-- **Commands the participant runs.** Must be correct for *their* terminal program, which may be a
-  different shell from yours. On Windows they will almost certainly be in PowerShell even if you
-  are in Git Bash.
+Every command you run must be correct for the shell *you* are in. On Windows that may be
+PowerShell or Git Bash depending on the AI tool — check, do not assume.
 
 ## Windows: assume no administrator rights
 
@@ -50,6 +47,22 @@ Install everything under one folder so it is easy to find and easy to delete:
 $base = "$env:LOCALAPPDATA\Programs\skadefryd"
 New-Item -ItemType Directory -Force -Path $base | Out-Null
 ```
+
+### Git
+
+Needed before anything else — without it the team repository cannot be cloned. Git for Windows
+publishes **MinGit**, a portable ZIP meant exactly for this: no installer, no admin.
+
+```powershell
+$rel = Invoke-RestMethod "https://api.github.com/repos/git-for-windows/git/releases/latest"
+$url = ($rel.assets | Where-Object { $_.name -match '^MinGit-[\d.]+-64-bit\.zip$' } | Select-Object -First 1).browser_download_url
+Invoke-WebRequest -Uri $url -OutFile "$env:TEMP\mingit.zip"
+Expand-Archive -Path "$env:TEMP\mingit.zip" -DestinationPath "$base\git" -Force
+$git = (Get-ChildItem -Path "$base\git" -Recurse -Filter git.exe | Where-Object { $_.Directory.Name -eq 'cmd' } | Select-Object -First 1).FullName
+```
+
+Use the `cmd\git.exe` one — that is the folder that goes on PATH. On ARM64, pick the
+`MinGit-*-arm64.zip` asset instead.
 
 ### Azure CLI
 
@@ -102,7 +115,7 @@ $nodedir = (Get-ChildItem -Path "$base\node" -Recurse -Filter node.exe | Select-
 The **user** PATH needs no admin rights. The system PATH does — never touch it.
 
 ```powershell
-$dirs = @((Split-Path $az), (Split-Path $gh), $nodedir)
+$dirs = @((Split-Path $git), (Split-Path $az), (Split-Path $gh), $nodedir)
 $user = [Environment]::GetEnvironmentVariable('Path', 'User')
 foreach ($d in $dirs) { if ($user -notlike "*$d*") { $user = "$user;$d" } }
 [Environment]::SetEnvironmentVariable('Path', $user.Trim(';'), 'User')
@@ -112,8 +125,9 @@ foreach ($d in $dirs) { if ($user -notlike "*$d*") { $user = "$user;$d" } }
 afterwards. Your own shell, and every command you run from it during this session, will still say
 `az is not recognized`. That is expected and it is not a failed install.
 
-For the rest of this session, call the tools by their full path — `& $az`, `& $gh` — and tell the
-participant that the short names will work once they open a new terminal window. Verify the
+For the rest of this session, call the tools by their full path — `& $git`, `& $az`, `& $gh` —
+and write those paths into `.ai/user-profile.md` so the next session finds them. The short names
+work in sessions started after this one. Verify the
 install with the full path, never with the bare name:
 
 ```powershell
@@ -131,22 +145,26 @@ install with the full path, never with the bare name:
 - **"running scripts is disabled on this system"** — execution policy. Do not change it machine
   wide. Run the commands inline, or use
   `powershell -ExecutionPolicy Bypass -Command "..."`, which is per-process and needs no admin.
-- **They open a new terminal and it still does not work** — the user PATH edit landed in a
-  different user profile, or the terminal was already open when you set it. Close every terminal
-  window and open a fresh one.
+- **A later session still does not find the tools** — the AI tool was started before the PATH
+  change, or the edit landed in a different user profile. Use the full paths from
+  `.ai/user-profile.md`, and tell the participant that restarting their AI tool will fix it.
 
 ## macOS
 
 ```bash
-brew install azure-cli gh node
+brew install git azure-cli gh node
 ```
+
+Git usually exists already. If `git` instead opens a dialog about installing command line
+developer tools, tell the participant to click **Install** and wait a few minutes. If it asks for
+an administrator password they do not have, use the self-service portal below.
 
 If `brew` is missing — common on a managed Gjensidige Mac, and installing Homebrew itself wants
 an administrator password:
 
 1. Check whether the Mac has a self-service portal for software. Many managed Macs do, and
-   Azure CLI or Node may be a click away. Ask the participant to look, and tell them exactly
-   what to look for.
+   Azure CLI or Node may be a click away. Tell the participant exactly which app to open and
+   which button to click — they do the clicking, you do everything else.
 2. If not, install into the user's own space rather than system-wide. Node has a `darwin-x64` /
    `darwin-arm64` tarball from `nodejs.org` that extracts anywhere, and `gh` has a `macOS`
    tarball on its releases page. Same principle as Windows: unpack under the user's home folder
@@ -164,9 +182,9 @@ way as soon as the tooling is fixed.
 
 Confirm in one sentence per tool, in plain language, and never show version output as proof:
 
-> Maskinen din er klar. Jeg har lagt inn de tre verktøyene prosjektet trenger, i din egen
+> Maskinen din er klar. Jeg har lagt inn verktøyene prosjektet trenger, i din egen
 > brukermappe — ingen administratorrettigheter, ingenting som rører resten av maskinen. Vil du bli
 > kvitt dem senere, er det bare å slette én mappe, så sier jeg fra hvilken.
 
-Then get straight to `az login` via `skadefryd-ai-gateway`, and then to building something. The
-setup is not the point of the day.
+Then get back to what the participant came for. The logins happen when they are needed, via
+`skadefryd-login`. The setup is not the point of the day.

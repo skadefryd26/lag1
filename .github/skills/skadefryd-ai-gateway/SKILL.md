@@ -6,67 +6,28 @@ description: 'Use whenever a Skadefryd 2026 project needs to talk to Gjensidige'
 # Skadefryd AI Gateway
 
 Every team's agent runs on Gjensidige's AI gateway. Getting access working is the one step that
-stops a non-developer cold: it involves a terminal, a login, a token, and a file that does not
-exist yet and must never be committed.
+stops a non-developer cold: it involves a login, a token, and a file that does not exist yet and
+must never be committed.
 
-**You do all of it.** The participant does not create files, copy templates, or paste tokens.
+**You do all of it.** The participant does not open a terminal, create files, copy templates, or
+paste tokens.
 
 ## What you set up, what they do
 
-You do everything except the one thing that requires their identity in their own terminal:
-
 | Step | Who |
 | --- | --- |
-| `az login` | The participant, in their own terminal |
+| Starting `az login` | You |
+| Approving the login in the browser | The participant |
 | Fetching the token | You |
 | Creating `.env.local` and writing the token into it | You |
 | Checking that it is ignored by Git | You |
 | Wiring the backend call | You |
 | Refreshing the token when it expires | You |
 
-## Asking for `az login`
-
-This is the single point in the whole day where you hand control to the participant, and a
-non-developer does not know where a terminal is, that the chat window is not one, or what
-"paste" means when the command lands in the wrong place.
-
-**Be painfully explicit.** Read `skadefryd-terminal-coach` before you ask — it covers opening a
-terminal for the first time, copying and pasting, and what to say when it goes wrong. If this is
-the participant's first command of the day, walk them into the terminal first, then send this:
-
-> Nå trenger jeg at du logger deg inn. Det er det eneste du må gjøre selv — jeg tar resten.
->
-> 1. Åpne et **nytt terminalvindu**. På Mac: trykk `Cmd + mellomrom`, skriv `Terminal`, trykk
->    Enter. Ikke skriv i chatten her — det må skje i terminalvinduet.
-> 2. Kopier denne linja, lim den inn i terminalvinduet og trykk Enter:
->
->    ```
->    az login
->    ```
->
-> 3. Nettleseren åpner seg. Velg Gjensidige-kontoen din, og velg
->    **Gjensidige Production Modern** hvis du får opp en liste.
-> 4. Når nettleseren sier at du er logget inn, kan du lukke fanen.
-> 5. Kom tilbake hit og skriv «ferdig», så fortsetter jeg.
-
-Then stop and wait. Do not send the next step, do not start building something else in the
-meantime, and do not send a second command before the first one is confirmed done.
-
-Rules for any command a participant has to run themselves:
-
-- **One command at a time.** Never a list of three.
-- **Say where it goes** — a new terminal window, not the chat, not the browser.
-- **Give the command alone on its own line in a code block**, with nothing to edit inside it and
-  no `$` or `>` in front that they might copy along with it.
-- **Say what they will see** when it works, so they can tell the difference between done and stuck.
-- **Say what to do next** — normally: come back and say it is done.
-- **Then wait**, and take the work back the moment they confirm.
-
-If `az` is not installed, the message is `command not found: az` on a Mac or
-`az is not recognized` on Windows. **That is your job, not theirs** — go to
-`skadefryd-machine-setup` and install it yourself, then come back and send the `az login` steps.
-Do not hand a non-developer an install command, and on Windows do not send them anywhere near an
-installer that asks for administrator rights.
+Check `az account show` first. If the participant is not logged in, follow `skadefryd-login`: you
+run `az login`, they pick their Gjensidige account in the browser, and you carry on. If `az` is
+not installed, install it yourself with `skadefryd-machine-setup` — on Windows without
+administrator rights — and never hand the participant an installer or a command.
 
 ## Never do this
 
@@ -125,8 +86,8 @@ git check-ignore -q .env.local; if ($LASTEXITCODE -eq 0) { "ignorert av git" }
 Tell the participant in one sentence what happened: the access is in place, it lives in a local
 file, it is not going into Git, and they did not have to do anything with it.
 
-If `az account get-access-token` fails with a login error, the participant's `az login` has
-expired. Send them the one line above again and continue once they say it is done.
+If `az account get-access-token` fails with a login error, the Azure login has expired. Start it
+again with `skadefryd-login`, and continue once the participant has approved it in the browser.
 
 ## Call the gateway
 
@@ -151,7 +112,7 @@ yourself** with the same command as above. Do not ask permission and do not make
 debug it. Say afterwards what happened, in one sentence: the access key had a time limit, you
 fetched a new one, it works again.
 
-If the refresh itself fails, that is the `az login` case above.
+If the refresh itself fails, the Azure login has expired. Start it again with `skadefryd-login`.
 
 ## When something else fails
 
