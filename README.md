@@ -101,6 +101,14 @@ Velg idé på tjue minutter og kom i gang. Det er lett å bruke hele formiddagen
 
 De beste idéene blir til mens dere holder på. Første versjon trenger ikke være riktig — den trenger bare å kjøre, slik at dere ser noe på skjermen og får noe å reagere på. Er dere uenige mellom to idéer: velg den ene, bygg den, og se hva som skjer.
 
+### Aldri laget noe før? Start med noe dumt
+
+Når første versjon kjører, be opencode om noe lite du ser med en gang, for eksempel:
+
+> Legg til en knapp som skyter konfetti når Bjarne har svart
+
+eller «få Bjarne til å sukke høyt før hvert svar». Det tar et par minutter, og så ser du det i nettleseren. Når det virker, spør: «Hva er det mest overdrevne vi kunne lagt til nå?» Det er sånn man tør å tenke større.
+
 ### Hvis du lukker opencode
 
 Skriv den samme linja igjen når du åpner den. opencode finner prosjektet der det ligger, og fortsetter der du slapp.

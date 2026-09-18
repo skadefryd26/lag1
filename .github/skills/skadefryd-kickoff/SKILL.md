@@ -43,6 +43,14 @@ conversation, do not write a new start prompt, and do not set the project up aga
 - **Joining** — say in two sentences what the team is building, then go to `skadefryd-tasks`, find
   a task nobody has taken, and get them onto their own branch. They should be doing something
   within ten minutes.
+- **Joining, and has never built anything** — offer a warm-up first. One small, silly change they
+  can ask for in a single sentence and see in the browser within two minutes: a confetti button, a
+  sighing Bjarne, a shaking screen. The lagark they were handed has six of them under «Prøv dette
+  først», and `examples.md` has more. Do it on its own branch, open the app for them, and when they
+  see it work, ask: «Hva er det mest overdrevne vi kunne lagt til nå?» The point is not the
+  confetti. It is the moment they realize that what they say turns into something on the screen,
+  and dare to ask for something bigger. Then move on to a real task. If the team likes the
+  warm-up, it can go into a pull request like anything else; if not, the branch is simply left.
 
 **Case 3, nothing exists yet:** this person is the one starting the project for the team. Say so,
 because it changes what they should be doing: they are not meant to answer your questions alone,

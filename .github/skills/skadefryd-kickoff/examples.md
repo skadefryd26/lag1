@@ -88,6 +88,23 @@ Funksjoner som kommer rett ut av personligheten hans:
 - «Brukeren klikker på knappen, og Bjarne finner på en oppdiktet skadesak dere skal gjette årsaken
   til.»
 
+## Oppvarming — første gang man lager noe
+
+For den som aldri har laget noe. Én setning, synlig resultat med en gang, gjerne tullete. Krever at
+første versjon finnes. Seks av disse står på lagarket under «Prøv dette først».
+
+- «Legg til en knapp som skyter konfetti når Bjarne har svart»
+- «Lag en knapp som heter *Gi Bjarne kaffe* og teller koppene»
+- «Få Bjarne til å sukke høyt før hvert svar»
+- «Rist skjermen når noen skriver ordet *skade*»
+- «Gjør alt kaffebrunt, og sett en kaffekopp ved navnet til Bjarne»
+- «Skriv om alle knappene slik Bjarne ville sagt det»
+- «Vis en falsk lastelinje: *Bjarne henter kaffe …* før svaret kommer»
+- «La det regne med små forsikringsbrev over skjermen når en sak er ferdig»
+- «Spill av en fanfare når egenandelen er betalt»
+
+Når det virker: «Hva er det mest overdrevne vi kunne lagt til nå?»
+
 ## Når laget står fast — ferdige idéer
 
 Bruk én, tilpasset laget. Aldri alle.
