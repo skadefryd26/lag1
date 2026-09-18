@@ -4,13 +4,17 @@ Til AI-hjelperen i `skadefryd-kickoff`. Plukk tre eller fire per steg, tilpass d
 sagt så langt, og varier. Ikke les opp lister, og ikke bruk samme sett for to lag. Alt er fiktivt —
 bruk aldri ekte kunder, saker eller kolleger.
 
+Alt skal ha noe med forsikring å gjøre. Lag nye eksempler etter samme mønster når disse ikke
+passer, men behold forsikringsvinkelen.
+
 ## Steg 2 — Hvem skal Bjarne hjelpe?
 
 - Skadebehandleren som har fått saken ingen andre ville ta
 - Kunden som melder skade klokka tre om natta, fra hytta, uten strøm
 - Den nyansatte som tror «egenandel» er en slags and
-- Teamet selv: standup, Jira-oppgaver, møter som kunne vært en e-post
-- Lederen som skal forklare kvartalstallene til noen som ikke bryr seg
+- Skadeavdelingen selv: saksbunken, køen, standupen der alle sier «jobber med saker»
+- Aktuaren som skal forklare risikomodellen til noen som bare vil vite om hytta er dekket
+- Selgeren som skal forklare forskjellen på tre dekningsnivåer uten å se ned i arket
 - En oppdiktet kunde: den tidsreisende, superhelten med ansvarsforsikring, nissen med
   transportskade 24. desember
 - Bjarne selv, som trenger hjelp til å slippe unna arbeid
@@ -28,10 +32,11 @@ Kunde:
 - Å ikke ane om man er dekket før det er for sent
 - Ventemusikken
 
-Teamet selv:
-- Standupen som tar førtifem minutter
-- Jira-oppgaver skrevet som gåter
-- Kaffemaskinen, bolleregelen, møterommet som alltid er opptatt
+Livet i et forsikringsselskap:
+- Fagspråket: egenandel, regress, skadeårsak, «inntrådt skadetilfelle»
+- Saken som har gått mellom fem avdelinger og kommet tilbake
+- Kunden som ringer for å spørre om e-posten de sendte for to minutter siden
+- Å forklare hvorfor trampolinen ikke er dekket når den havnet hos naboen
 
 ## Steg 4 — Hvilken form, og hvor mye AI?
 
@@ -93,6 +98,9 @@ Bruk én, tilpasset laget. Aldri alle.
   som helst vil hjem.
 - **Tonehjulet:** Skriv et kundesvar. Bjarne lager det i fem toner, og en egen AI velger den mest
   upassende.
-- **Bjarnes kaffebørs:** Jo mer kaffe du «gir» Bjarne, jo bedre blir svarene. Til han får for mye.
-- **Standup-oversetteren:** Skriv hva du faktisk gjorde i går. Bjarne gjør det om til en
-  imponerende standup-oppdatering, og legger til en ærlig fotnote.
+- **Bjarnes kaffeforsikring:** Tegn forsikring mot tom kaffemaskin. Bjarne vurderer risikoen,
+  beregner premien og avslår kravet med en paragraf han har funnet på selv.
+- **Skadestandupen:** Skriv hva du faktisk gjorde med saksbunken i går. Bjarne gjør det om til en
+  imponerende standup-oppdatering, med dramaskår per sak og en ærlig fotnote.
+- **Egenandelsforhandleren:** Kunden prøver å forhandle ned egenandelen. Bjarne forhandler tilbake,
+  og blir mer urimelig for hvert argument.

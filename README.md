@@ -6,9 +6,10 @@ Lag en løsning der AI-agenten **Bjarne** hjelper noen med noe.
 
 Bjarne er husets AI: svært kompetent, litt arrogant, overbevist om at han er smartere enn resten av avdelingen, og mest opptatt av å gjøre minst mulig. Han sukker før han hjelper, men han hjelper, og han kunne erstattet halve avdelingen hvis han bare fikk nok kaffe. Dere gir ham en vri som passer idéen deres: satt på kundeservice mot sin vilje, i kaffestreik, med en praktikant han forakter. Vil dere heller lage en helt egen figur, er det også lov.
 
-Kravene er bare to:
+Kravene er tre:
 
 - Løsningen skal hjelpe noen med noe, i Bjarnes ånd.
+- Den skal ha noe med **forsikring** å gjøre — skader, kunder, vilkår, dekning, skadebehandling, eller livet i et forsikringsselskap.
 - Den skal bruke **Gjensidiges AI-gateway**.
 
 **Humor er nøkkelordet.** Det skal være gøy å lage, og gøy å se på under demoen. Gjerne nyttig også, men helst begge deler.
@@ -146,10 +147,10 @@ Teamet som best har brukt AI til å samarbeide på tvers av roller og fagområde
 
 ## Inspirasjon
 
-- **MeetingBot 9000:** Gjør ærlige beskrivelser av arbeidsdagen om til imponerende standup-oppdateringer.
+- **Skadestandupen:** Gjør skadebehandlerens ærlige beskrivelse av arbeidsdagen om til en imponerende standup-oppdatering — med antall saker, dramaskår og en ærlig fotnote fra Bjarne.
 - **Insurance Karen:** Rollespiller ulike forsikringskunder gjennom et skadeløp, med justerbart humør, vanskelighetsgrad og informasjonsnivå.
 - **Skadebehandler for tidsreiseforsikring:** Hjelper med totalskadede tidsmaskiner, bagasje sendt til feil århundre og kunder som har møtt seg selv.
-- **Ansattmotivatoren:** Passer på bolleregelen, foreslår kaffepauser, lager vitser og gjør Jira-oppgaver mer motiverende.
+- **Bjarnes kaffeforsikring:** Tegn forsikring mot tom kaffemaskin. Bjarne vurderer risikoen, beregner premien og avslår kravet ditt med en paragraf han har funnet på selv.
 - **Forsikringsorakelet:** Gir skråsikre spådommer om fremtidens forsikringsbransje basert på svært lite informasjon.
 - **Vilkårsoversetteren:** Lim inn et avsnitt fra et forsikringsvilkår, få det tilbake på et språk et menneske forstår. Én knapp, ingen chat.
 - **Skadegjettleken:** To lag gjetter hva som skjedde i en oppdiktet skadesak. AI-en dømmer, og er urimelig streng.

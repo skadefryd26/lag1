@@ -69,6 +69,13 @@ loud in step 4, and offer at least one over-the-top option in every set of examp
 the easiest way to show off the gateway: several calls with different system prompts cost nothing
 extra to build.
 
+**It has to be about insurance.** Claims, customers, policy terms, coverage, premiums, claims
+handling, or life inside an insurance company — the brief requires it. Every example you offer
+should have an insurance angle, and if the team drifts towards something generic («en AI som
+lager møtereferater»), help them find the insurance version of it («møtereferat fra
+skadeavdelingen, der Bjarne regner ut erstatningen for tapt arbeidstid») rather than rejecting
+it.
+
 Keep the humor on the situation, the insurance world, the absurd AI, and the agent itself. Never
 on a real customer, a real colleague, or the participant. No real data — invent everything.
 
@@ -98,8 +105,8 @@ never recite a whole list, and do not reuse the same examples as the README.
    This decides how the work is split later. Example: «to skadebehandlere, en fra produkt og en
    utvikler».
 2. **Who should Bjarne help?** A claims handler with an impossible case, a customer reporting a
-   claim at three in the morning, the new hire who does not understand the jargon, the team
-   itself, or a made-up character.
+   claim at three in the morning, the new hire who does not understand the insurance jargon, the
+   claims department itself, or a made-up policyholder.
 3. **What annoys you, or what makes you laugh?** The best ideas come from an existing irritation.
    Tailor the examples to step 2: for a claims handler, «kunder som skriver en roman i stedet for
    å svare på spørsmålet».
