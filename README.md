@@ -23,7 +23,12 @@ Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fago
 
 ## Før du kommer
 
-Én ting må være på plass før dagen starter: **et AI-verktøy installert på maskinen din.** opencode, Claude Code eller GitHub Copilot — det spiller ingen rolle hvilket, men du må ha ett av dem oppe og kjørende. Får du det ikke til på egen hånd, si fra i god tid før hackathonet, ikke samme morgen.
+To ting må være på plass før dagen starter:
+
+1. **Et AI-verktøy installert på maskinen din.** opencode, Claude Code eller GitHub Copilot — det spiller ingen rolle hvilket, men du må ha ett av dem oppe og kjørende.
+2. **Invitasjonen fra GitHub er godtatt.** Du får en e-post på jobbadressen din med emnet «… invited you to join the skadefryd26 organization». Trykk på den grønne knappen og logg inn med GitHub-kontoen din. Har du ingen, kan du lage en der og da. Det går helt fint å bruke en privat konto. GitHub er stedet der laget lagrer det dere lager, sånn at alle jobber på samme prosjekt.
+
+Får du ikke til noe av dette på egen hånd, si fra i god tid før hackathonet, ikke samme morgen.
 
 Det er alt du trenger å forberede. Hvilket lag du er på, og en ferdig tekst du skal lime inn i AI-hjelperen, får du når du kommer.
 
@@ -104,7 +109,7 @@ Får dere den linja til å gå hele veien og tilbake, er resten pynt og påbygg 
 
 ## Gjensidiges AI-gateway
 
-**Du trenger ikke gjøre noe med dette nå.** På et tidspunkt sier AI-hjelperen fra at du må logge inn. Da åpner nettleseren seg, du velger Gjensidige-kontoen din, og så er det gjort. Det samme skjer én gang for GitHub, der laget lagrer koden sin. Du skriver ingenting i terminalen. Alt annet — nøkkelen, filene, oppkoblingen — ordner AI-hjelperen.
+**Du trenger ikke gjøre noe med dette nå.** På et tidspunkt sier AI-hjelperen fra at du må logge inn. Da åpner nettleseren seg, du velger Gjensidige-kontoen din, og så er det gjort. Det samme skjer én gang for GitHub. Du skriver ingenting i terminalen. Alt annet — nøkkelen, filene, oppkoblingen — ordner AI-hjelperen.
 
 Slutter Bjarne plutselig å svare midt på dagen, gjerne etter lunsj, er det nesten alltid fordi tilgangsnøkkelen bare varer omtrent en time. Si det til AI-hjelperen, så henter den en ny. Du skal aldri lime inn en nøkkel i chatten eller lage en fil selv.
 
@@ -158,14 +163,23 @@ Alt som ellers ville vært et steg for hver deltaker, gjøres én gang her.
 
 Uten secreten virker alt annet som før. Boardet blir bare ikke oppdatert.
 
-**Én gang per lag** — oppretter repoet fra malen, lager boardet, inviterer deltakerne og skriver ut teksten laget skal lime inn:
+**Lagene** — lag en liste med lagnummer og jobb-e-post, én deltaker per linje, for eksempel eksportert fra Excel som CSV:
 
-```bash
-gh auth refresh -s project        # første gang, hvis du mangler project-tilgang
-./scripts/opprett-lag.sh 3 githubnavn1 githubnavn2 githubnavn3
+```text
+lag;epost
+1;kari.nordmann@gjensidige.no
+1;ola.nordmann@gjensidige.no
+2;per.hansen@gjensidige.no
 ```
 
-Scriptet er trygt å kjøre på nytt, for eksempel for å legge til en deltaker som kom sent. Invitasjonen trenger ikke deltakeren finne i e-posten — AI-hjelperen godtar den for dem når de logger inn.
+```bash
+gh auth refresh -s project,admin:org      # første gang
+./scripts/opprett-lag.sh ~/Downloads/deltakere.csv
+```
+
+For hvert lag lager scriptet repoet fra malen, boardet og et GitHub-team med skrivetilgang til repoet. Deretter inviterer det deltakerne til organisasjonen på e-post, rett inn i riktig team. Invitasjonen kan godtas med hvilken som helst GitHub-konto, også en privat konto som ikke er knyttet til jobbadressen. Til slutt skriver scriptet ut teksten hvert lag skal lime inn.
+
+Send invitasjonene i god tid, så deltakerne rekker å godta dem før dagen. GitHub begrenser hvor mange invitasjoner en organisasjon kan sende per døgn. Scriptet er trygt å kjøre på nytt med en utvidet liste, og den som allerede er invitert, blir ikke invitert igjen. Hold lista utenfor repoet, fordi den inneholder personopplysninger.
 
 Lagrepoene lages fra `main` i `skadefryd2026-base`. Endringer i malen etter at et lag er opprettet, kommer ikke med i det laget av seg selv.
 

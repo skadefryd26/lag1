@@ -1,6 +1,6 @@
 ---
 name: skadefryd-login
-description: 'Read before logging a Skadefryd 2026 participant in to GitHub (gh auth login) or Azure (az login), before the first push, before the first call to the AI gateway, or when a command fails with "not logged in", "authentication required", "gh auth login", "Please run az login", AADSTS, or a 403 on push. You start the login yourself; the participant only approves it in the browser. Also covers accepting the invitation to the team repository.'
+description: 'Read before logging a Skadefryd 2026 participant in to GitHub (gh auth login) or Azure (az login), before the first push, before the first call to the AI gateway, or when a command fails with "not logged in", "authentication required", "gh auth login", "Please run az login", AADSTS, or a 403 on push. You start the login yourself; the participant only approves it in the browser. Also covers the invitation to join the team.'
 ---
 
 # Skadefryd Login
@@ -86,25 +86,34 @@ gh auth setup-git
 `gh auth setup-git` makes plain `git push` use the same login. Without it, the first push asks
 for a password in a terminal the participant cannot see, and hangs.
 
-### Accept the invitation to the team
+### Check that they are on the team
 
-The organizers add each participant to their team's repository. GitHub sends an invitation that
-has to be accepted before pushing works, and a participant who does not know what GitHub is will
-not find it in their email. Accept it for them:
+The organizers invite every participant to the `skadefryd26` organization by work email, straight
+into a team called `lag<N>` that can push to the team repository. The participant accepts by
+clicking the link in that email, and can do it with any GitHub account — often a private one that
+is not tied to the work email at all. That is fine.
+
+Check right after the login:
 
 ```bash
-gh api user/repository_invitations --jq '.[] | select(.repository.owner.login == "skadefryd26") | "\(.id) \(.repository.name)"'
-gh api -X PATCH user/repository_invitations/<id>
-gh api -X PATCH user/memberships/orgs/skadefryd26 -f state=active   # only if they were invited to the org
+gh api user/memberships/orgs/skadefryd26 --jq .state
 ```
 
-The last one fails harmlessly if there is no org invitation. Say in one sentence that you
-accepted the invitation to their team.
+- **`active`** — they are in. Carry on.
+- **`pending`** — the invitation is tied to this account but not accepted. Accept it for them with
+  `gh api -X PATCH user/memberships/orgs/skadefryd26 -f state=active`, and say so in one sentence.
+- **`404` / not found** — this account has not accepted the email invitation. Ask them to find it:
 
-If there is no invitation and pushing fails with `403` or `Permission denied`, the participant has
-not been added to the team yet. That is an organizer problem. Say so plainly, tell them to show
-this message to an organizer, and keep working locally in the meantime. Nothing is lost. The work
-can be pushed later.
+> Du har fått en e-post fra GitHub på jobbadressen din, med emnet «… invited you to join the
+> skadefryd26 organization». Åpne den, trykk den grønne knappen **Join @skadefryd26**, og logg
+> inn med den samme GitHub-kontoen du nettopp brukte. Si «ferdig» her når det er gjort.
+
+Then check again. If they cannot find the email, it is an organizer problem, not theirs: tell
+them to ask an organizer to send the invitation again, and keep working locally in the meantime.
+Nothing is lost — the work can be pushed later.
+
+If pushing fails with `403` or `Permission denied` even though the state is `active`, they are
+probably on the wrong team. Say which team you expected (`lag<N>`) and send them to an organizer.
 
 ### No GitHub account
 
