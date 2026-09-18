@@ -129,4 +129,4 @@ Gjør alt for meg. Jeg skal ikke skrive noe i terminalen.
 "
 done
 
-printf '\nTekstene lagene limer inn i AI-hjelperen sin — lik for alle på samme lag:\n%s' "$prompts"
+printf '\nTekstene lagene limer inn i kodeagenten sin — lik for alle på samme lag:\n%s' "$prompts"

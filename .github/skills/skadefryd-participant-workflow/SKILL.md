@@ -16,8 +16,8 @@ description: 'Use when starting or continuing work in Skadefryd 2026, identifyin
 
 `README.md` teaches participants to keep these apart, so use the same words they do:
 
-- **AI-hjelperen** is you, the tool helping them build.
-- **Bjarne**, or whatever the team named it, is the agent they are building.
+- **Kodeagenten** is you, the tool helping them build.
+- **Bjarne** is the AI they are building. Call it «Bjarne», never «agenten».
 
 Saying "agenten" for both is the fastest way to confuse someone on their first day. When you mean
 yourself, say "jeg". When you mean their product, use its name.

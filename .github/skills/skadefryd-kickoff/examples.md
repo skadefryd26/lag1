@@ -1,6 +1,6 @@
 # Eksempelbank for idésamtalen
 
-Til AI-hjelperen i `skadefryd-kickoff`. Plukk tre eller fire per steg, tilpass dem til det laget har
+Til kodeagenten i `skadefryd-kickoff`. Plukk tre eller fire per steg, tilpass dem til det laget har
 sagt så langt, og varier. Ikke les opp lister, og ikke bruk samme sett for to lag. Alt er fiktivt —
 bruk aldri ekte kunder, saker eller kolleger.
 

@@ -4,13 +4,13 @@ Vi skal lage en prototype på en webapplikasjon for tidsreiseforsikring.
 
 Brukeren møter AI-agenten Bjarne, som hjelper kundebehandlere med skadesaker knyttet til tids-reiser.
 
-## Slik lager AI-hjelperen lagets egen startprompt
+## Slik lager kodeagenten lagets egen startprompt
 
-Denne fila er et eksempel. Lagets egen startprompt skrives til `.ai/startprompt.md` av AI-hjelperen, etter samtalen i `skadefryd-kickoff`.
+Denne fila er et eksempel. Lagets egen startprompt skrives til `.ai/startprompt.md` av kodeagenten, etter samtalen i `skadefryd-kickoff`.
 
-Ikke still laget flere spørsmål for å skrive den. Spørsmålene er allerede stilt i kickoff-samtalen, og idéen, navnet, personligheten og arbeidsdelingen er bestemt. Resten er tekniske valg, og dem tar AI-hjelperen selv ut fra standardene i `AGENTS.md`.
+Ikke still laget flere spørsmål for å skrive den. Spørsmålene er allerede stilt i kickoff-samtalen, og idéen, navnet, personligheten og arbeidsdelingen er bestemt. Resten er tekniske valg, og dem tar kodeagenten selv ut fra standardene i `AGENTS.md`.
 
-Startprompten skal være komplett nok til at en annen AI-hjelper kan bygge første versjon uten å gjette på produktkrav eller tekniske kontrakter. Den skal inneholde:
+Startprompten skal være komplett nok til at en annen kodeagent kan bygge første versjon uten å gjette på produktkrav eller tekniske kontrakter. Den skal inneholde:
 
 * Produktmål og hvem løsningen er for
 * Avgrenset første versjon med akseptansekriterier: hva brukeren ser og gjør
@@ -88,8 +88,8 @@ backend/src/features/<feature>/
 AI-tilkobling:
 
 * Endepunkt: https://genai.gjensidige.io
-* AI-hjelperen starter innloggingen med `az login` selv, og deltakeren godkjenner i nettleseren. Se `.github/skills/skadefryd-login/SKILL.md`.
-* AI-hjelperen henter tilgangstokenet med `az account get-access-token --resource https://cognitiveservices.azure.com` og skriver det selv til en `.env.local`-fil som ikke committes. Se `.github/skills/skadefryd-ai-gateway/SKILL.md`.
+* kodeagenten starter innloggingen med `az login` selv, og deltakeren godkjenner i nettleseren. Se `.github/skills/skadefryd-login/SKILL.md`.
+* kodeagenten henter tilgangstokenet med `az account get-access-token --resource https://cognitiveservices.azure.com` og skriver det selv til en `.env.local`-fil som ikke committes. Se `.github/skills/skadefryd-ai-gateway/SKILL.md`.
 * Bruk deployment/modell gpt-5.6-luna
 * Kalle endepunktet `/openai/v1/responses` med Bearer Authorization med tokenet hentet over, og body type:
 

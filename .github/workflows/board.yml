@@ -1,5 +1,5 @@
 # Holder lagets board oppdatert ut fra issues og pull requests, så verken
-# deltakerne eller AI-hjelperne deres trenger å tenke på det.
+# deltakerne eller kodeagentene deres trenger å tenke på det.
 #
 # Krever org-secreten SKADEFRYD_BOARD_TOKEN (se «For arrangører» i README).
 # Mangler den, hopper workflowen stille over.
