@@ -25,7 +25,7 @@ Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fago
 
 Én ting må være på plass før dagen starter: **et AI-verktøy installert på maskinen din.** opencode, Claude Code eller GitHub Copilot — det spiller ingen rolle hvilket, men du må ha ett av dem oppe og kjørende. Får du det ikke til på egen hånd, si fra i god tid før hackathonet, ikke samme morgen.
 
-Det er alt du trenger å forberede. Hvilket lag du er på, og lenka til lagets prosjekt, får du når du kommer.
+Det er alt du trenger å forberede. Hvilket lag du er på, og en ferdig tekst du skal lime inn i AI-hjelperen, får du når du kommer.
 
 ## To ord om «agenten»
 
@@ -41,6 +41,7 @@ Resten av denne teksten holder dem fra hverandre.
 - **Du trenger ikke kunne kode.** Laget trenger folk som vet hvem løsningen er for og hva den skal gjøre, minst like mye som folk som skriver kode.
 - **Du skal ikke lage filer, kopiere maler eller lime inn tilgangsnøkler.** Si hva du vil ha, så ordner AI-hjelperen oppsettet.
 - **Mac eller Windows spiller ingen rolle, og du trenger ikke administratorrettigheter.** Mangler maskinen din et verktøy, installerer AI-hjelperen det i din egen brukermappe.
+- **Du skal aldri skrive noe i terminalen.** AI-hjelperen gjør det. Det eneste du gjør selv, er å godkjenne når den ber deg logge inn i nettleseren.
 - **Du trenger ikke forberede noe teknisk.** Når AI-hjelperen trenger noe av deg, sier den fra og forklarer hvert steg.
 
 ## Slik kommer dere i gang
@@ -51,31 +52,38 @@ Resten av denne teksten holder dem fra hverandre.
 
 **1. Åpne AI-hjelperen.** Den åpner seg som et vindu med tekst, uten knapper og menyer. Det er sånn den ser ut, og du skal ikke gjøre noe annet der enn å skrive til den, som i en vanlig chat.
 
-**2. Lim inn lenka til laget ditt, og be om hjelp.** Skriv for eksempel:
+**2. Lim inn teksten du fikk, og trykk Enter.** Den ser omtrent slik ut, med ditt lagnummer:
 
-> Hei, vi er lag 3. Lenka vår er https://github.com/skadefryd26/lag3 — hjelp oss i gang.
+> Hei! Jeg er med på Skadefryd, lag 3: https://github.com/skadefryd26/lag3
+>
+> 1. Hent prosjektet ned til mappa skadefryd/lag3 i hjemmemappa mi, hvis det ikke ligger der allerede. …
+> 2. Les AGENTS.md i prosjektmappa og følg den.
+>
+> Gjør alt for meg. Jeg skal ikke skrive noe i terminalen.
 
-Det er alt du trenger å vite for å komme i gang. AI-hjelperen henter ned prosjektet, sier hvor den la det, sjekker at maskinen din har det som trengs, og begynner å stille spørsmål.
+Du trenger ikke forstå teksten. Den forteller AI-hjelperen hvor prosjektet ligger og hvordan den skal hjelpe dere. AI-hjelperen henter ned prosjektet, sier hvor den la det, sjekker at maskinen din har det som trengs, og begynner å stille spørsmål.
 
 **3. Ta samtalen med teamet, med AI-hjelperen i rommet.** Den spør hvem dere er, hvem Bjarne skal hjelpe, og om det skal være seriøst eller tullete. Svar høyt sammen — dette *er* teamdiskusjonen, og den tar tjue minutter, ikke to timer. Deretter foreslår den fem konkrete idéer bygget på svarene deres. Velg én.
 
 **4. Sett i gang prosjektet.** AI-hjelperen bygger første versjon, sjekker at den faktisk svarer, og legger den ut slik at laget får tak i den. Si fra til de andre når det er gjort — det er startskuddet deres.
 
-**5. Del opp arbeidet.** AI-hjelperen lager oppgaver på lagets tavle, én per del av første versjon, så alle har et sted å begynne.
+**5. Del opp arbeidet.** AI-hjelperen lager oppgaver til laget, én per del av første versjon, så alle har et sted å begynne. Oppgavene dukker opp på lagets tavle av seg selv.
 
 ### Dere andre
 
-Vent til den første sier fra. Så gjør dere det samme — åpne AI-hjelperen, lim inn lenka til laget — men skriv heller:
+Vent til den første sier fra. Så gjør dere nøyaktig det samme: åpne AI-hjelperen og lim inn den samme teksten.
 
-> Hei, jeg er med på lag 3. Lenka vår er https://github.com/skadefryd26/lag3 — hva kan jeg bidra med?
-
-AI-hjelperen leser hva laget har bestemt seg for, finner en ledig oppgave på tavla, setter deg opp med din egen del av prosjektet og forklarer underveis. Dere jobber hver for dere og setter det sammen etter hvert.
+AI-hjelperen ser selv at laget allerede er i gang. Den leser hva laget har bestemt seg for, finner en ledig oppgave på tavla, setter deg opp med din egen del av prosjektet og forklarer underveis. Dere jobber hver for dere og setter det sammen etter hvert.
 
 ### Ikke bruk lang tid på å planlegge
 
 Velg idé på tjue minutter og kom i gang. Det er lett å bruke hele formiddagen på å diskutere den perfekte idéen, og det er den sikreste måten å ikke få bygget noe på.
 
 De beste idéene blir til mens dere holder på. Første versjon trenger ikke være riktig — den trenger bare å kjøre, slik at dere ser noe på skjermen og får noe å reagere på. Er dere uenige mellom to idéer: velg den ene, bygg den, og se hva som skjer.
+
+### Hvis du lukker AI-hjelperen
+
+Lim inn den samme teksten igjen når du åpner den. AI-hjelperen finner prosjektet der det ligger, og fortsetter der du slapp.
 
 ### Er du i tvil om noe — spør AI-hjelperen
 
@@ -96,7 +104,7 @@ Får dere den linja til å gå hele veien og tilbake, er resten pynt og påbygg 
 
 ## Gjensidiges AI-gateway
 
-**Du trenger ikke gjøre noe med dette nå.** På et tidspunkt sier AI-hjelperen fra at den trenger at du logger inn på Azure. Da forteller den deg nøyaktig hvor du skal skrive, hva du skal lime inn og hva du kommer til å se. Det tar ett minutt, og det er det eneste tekniske du gjør selv i løpet av dagen. Alt annet — nøkkelen, filene, oppkoblingen — ordner den.
+**Du trenger ikke gjøre noe med dette nå.** På et tidspunkt sier AI-hjelperen fra at du må logge inn. Da åpner nettleseren seg, du velger Gjensidige-kontoen din, og så er det gjort. Det samme skjer én gang for GitHub, der laget lagrer koden sin. Du skriver ingenting i terminalen. Alt annet — nøkkelen, filene, oppkoblingen — ordner AI-hjelperen.
 
 Slutter Bjarne plutselig å svare midt på dagen, gjerne etter lunsj, er det nesten alltid fordi tilgangsnøkkelen bare varer omtrent en time. Si det til AI-hjelperen, så henter den en ny. Du skal aldri lime inn en nøkkel i chatten eller lage en fil selv.
 
@@ -106,7 +114,7 @@ Teknisk, for de som vil vite:
 
 - Endepunkt: `https://genai.gjensidige.io/openai/v1/responses`
 - Modell/deployment: `gpt-5.6-luna`
-- Innlogging skjer med `az login`. Velg **Gjensidige Production Modern** hvis du får opp en liste.
+- Innlogging skjer med `az login`, som AI-hjelperen starter selv.
 - Frontend sender forespørsler til prosjektets egen backend. Backend legger ved Bjarnes systemprompt og snakker med AI-gatewayen. Nettleseren ser aldri tilgangsnøkkelen.
 
 ## Kåringer
@@ -134,3 +142,30 @@ Teamet som best har brukt AI til å samarbeide på tvers av roller og fagområde
 - **Skadegjettleken:** To lag gjetter hva som skjedde i en oppdiktet skadesak. AI-en dømmer, og er urimelig streng.
 
 Legg merke til at flere av disse ikke er chatter i det hele tatt. Eksemplene er kun inspirasjon. Juster dem, kombiner dem eller finn på noe helt eget.
+
+## For arrangører
+
+Alt som ellers ville vært et steg for hver deltaker, gjøres én gang her.
+
+**Én gang for hele hackathonet** — boardene oppdaterer seg selv via `.github/workflows/board.yml`, og den trenger en nøkkel med tilgang til prosjekter i organisasjonen:
+
+1. Lag en *classic* personal access token på GitHub med scopene `repo` og `project`, og en utløpsdato rett etter hackathonet.
+2. Legg den inn som org-secret, tilgjengelig for alle repoer:
+
+   ```bash
+   gh secret set SKADEFRYD_BOARD_TOKEN --org skadefryd26 --visibility all
+   ```
+
+Uten secreten virker alt annet som før. Boardet blir bare ikke oppdatert.
+
+**Én gang per lag** — oppretter repoet fra malen, lager boardet, inviterer deltakerne og skriver ut teksten laget skal lime inn:
+
+```bash
+gh auth refresh -s project        # første gang, hvis du mangler project-tilgang
+./scripts/opprett-lag.sh 3 githubnavn1 githubnavn2 githubnavn3
+```
+
+Scriptet er trygt å kjøre på nytt, for eksempel for å legge til en deltaker som kom sent. Invitasjonen trenger ikke deltakeren finne i e-posten — AI-hjelperen godtar den for dem når de logger inn.
+
+Lagrepoene lages fra `main` i `skadefryd2026-base`. Endringer i malen etter at et lag er opprettet, kommer ikke med i det laget av seg selv.
+
