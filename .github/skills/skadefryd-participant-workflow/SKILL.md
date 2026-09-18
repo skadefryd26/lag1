@@ -16,7 +16,8 @@ description: 'Use when starting or continuing work in Skadefryd 2026, identifyin
 
 `README.md` teaches participants to keep these apart, so use the same words they do:
 
-- **Kodeagenten** is you, the tool helping them build.
+- **opencode** is what most participants call you, because it is the tool most of them use. If
+  they use Claude Code or Copilot, use that name instead. When you mean yourself, say «jeg».
 - **Bjarne** is the AI they are building. Call it «Bjarne», never «agenten».
 
 Saying "agenten" for both is the fastest way to confuse someone on their first day. When you mean

@@ -30,7 +30,7 @@ Humoren skal handle om situasjonen, forsikringsverdenen og Bjarne selv — aldri
 
 Målet er ikke den mest avanserte løsningen, men å utforske hvordan ulike fagområder kan bruke AI og vibe-coding sammen.
 
-Dere trenger ikke ha en idé før dere kommer. Kodeagenten tar dere gjennom det steg for steg, med eksempler, på rundt tjue minutter.
+Dere trenger ikke ha en idé før dere kommer. opencode tar dere gjennom det steg for steg, med eksempler, på rundt tjue minutter.
 
 ## Før du kommer
 
@@ -41,13 +41,13 @@ To ting må være på plass før dagen starter:
 
 Får du ikke til noe av dette på egen hånd, si fra i god tid før hackathonet, ikke samme morgen.
 
-Det er alt du trenger å forberede. Hvilket lag du er på, og en ferdig tekst du skal lime inn i kodeagenten, får du når du kommer.
+Det er alt du trenger å forberede. Hvilket lag du er på, og en ferdig tekst du skal lime inn i opencode, får du når du kommer.
 
 ## To ord om «agenten»
 
 Det er to AI-er med i dag, og det er greit å ha klart for seg fra starten:
 
-- **Kodeagenten** er verktøyet du åpner på din egen maskin — opencode, Claude Code eller Copilot. Den bygger, håndterer koden og svarer på spørsmål.
+- **opencode** er verktøyet du åpner på din egen maskin. Den bygger, håndterer koden og svarer på spørsmål. Bruker du Claude Code eller Copilot i stedet, gjelder alt det samme.
 - **Bjarne** er AI-en dere *lager*. Han er produktet, og det er ham juryen skal se.
 
 Resten av denne teksten holder dem fra hverandre.
@@ -55,10 +55,10 @@ Resten av denne teksten holder dem fra hverandre.
 ## Dette trenger du ikke bekymre deg for
 
 - **Du trenger ikke kunne kode.** Laget trenger folk som vet hvem løsningen er for og hva den skal gjøre, minst like mye som folk som skriver kode.
-- **Du skal ikke lage filer, kopiere maler eller lime inn tilgangsnøkler.** Si hva du vil ha, så ordner kodeagenten oppsettet.
-- **Mac eller Windows spiller ingen rolle, og du trenger ikke administratorrettigheter.** Mangler maskinen din et verktøy, installerer kodeagenten det i din egen brukermappe.
-- **Du skal aldri skrive noe i terminalen.** Kodeagenten gjør det. Det eneste du gjør selv, er å godkjenne når den ber deg logge inn i nettleseren.
-- **Du trenger ikke forberede noe teknisk.** Når kodeagenten trenger noe av deg, sier den fra og forklarer hvert steg.
+- **Du skal ikke lage filer, kopiere maler eller lime inn tilgangsnøkler.** Si hva du vil ha, så ordner opencode oppsettet.
+- **Mac eller Windows spiller ingen rolle, og du trenger ikke administratorrettigheter.** Mangler maskinen din et verktøy, installerer opencode det i din egen brukermappe.
+- **Du skal aldri skrive noe i terminalen.** opencode gjør det. Det eneste du gjør selv, er å godkjenne når den ber deg logge inn i nettleseren.
+- **Du trenger ikke forberede noe teknisk.** Når opencode trenger noe av deg, sier den fra og forklarer hvert steg.
 
 ## Slik kommer dere i gang
 
@@ -66,7 +66,7 @@ Resten av denne teksten holder dem fra hverandre.
 
 ### Du som starter
 
-**1. Åpne kodeagenten.** Den åpner seg som et vindu med tekst, uten knapper og menyer. Det er sånn den ser ut, og du skal ikke gjøre noe annet der enn å skrive til den, som i en vanlig chat.
+**1. Åpne opencode.** Den åpner seg som et vindu med tekst, uten knapper og menyer. Det er sånn den ser ut, og du skal ikke gjøre noe annet der enn å skrive til den, som i en vanlig chat.
 
 **2. Skriv linja som står på lagarket ditt, og trykk Enter:**
 
@@ -81,19 +81,19 @@ Med ditt lagnummer i stedet for 3. Har du fått en lengre tekst på Teams eller 
 >
 > Gjør alt for meg. Jeg skal ikke skrive noe i terminalen.
 
-Du trenger ikke forstå teksten. Den forteller kodeagenten hvor prosjektet ligger og hvordan den skal hjelpe dere. Kodeagenten henter ned prosjektet, sier hvor den la det, sjekker at maskinen din har det som trengs, og begynner å stille spørsmål.
+Du trenger ikke forstå teksten. Den forteller opencode hvor prosjektet ligger og hvordan den skal hjelpe dere. opencode henter ned prosjektet, sier hvor den la det, sjekker at maskinen din har det som trengs, og begynner å stille spørsmål.
 
-**3. Ta samtalen med teamet, med kodeagenten i rommet.** Den tar dere gjennom idéen steg for steg: hvem dere er, hvem Bjarne skal hjelpe, hva som irriterer dere i forsikringshverdagen, hvilken form det skal ha, hvilken vri Bjarne får, og hva som skal skje på skjermen først. Ved hvert steg kommer den med eksempler og sier hva den selv ville valgt. Svar høyt sammen — dette *er* teamdiskusjonen, og den tar tjue minutter, ikke to timer.
+**3. Ta samtalen med teamet, med opencode i rommet.** Den tar dere gjennom idéen steg for steg: hvem dere er, hvem Bjarne skal hjelpe, hva som irriterer dere i forsikringshverdagen, hvilken form det skal ha, hvilken vri Bjarne får, og hva som skal skje på skjermen først. Ved hvert steg kommer den med eksempler og sier hva den selv ville valgt. Svar høyt sammen — dette *er* teamdiskusjonen, og den tar tjue minutter, ikke to timer.
 
-**4. Sett i gang prosjektet.** Kodeagenten bygger første versjon, sjekker at den faktisk svarer, og legger den ut slik at laget får tak i den. Si fra til de andre når det er gjort — det er startskuddet deres.
+**4. Sett i gang prosjektet.** opencode bygger første versjon, sjekker at den faktisk svarer, og legger den ut slik at laget får tak i den. Si fra til de andre når det er gjort — det er startskuddet deres.
 
-**5. Del opp arbeidet.** Kodeagenten lager oppgaver til laget, én per del av første versjon, så alle har et sted å begynne. Oppgavene dukker opp på lagets tavle av seg selv.
+**5. Del opp arbeidet.** opencode lager oppgaver til laget, én per del av første versjon, så alle har et sted å begynne. Oppgavene dukker opp på lagets tavle av seg selv.
 
 ### Dere andre
 
-Vent til den første sier fra. Så gjør dere nøyaktig det samme: åpne kodeagenten og skriv den samme linja.
+Vent til den første sier fra. Så gjør dere nøyaktig det samme: åpne opencode og skriv den samme linja.
 
-Kodeagenten ser selv at laget allerede er i gang. Den leser hva laget har bestemt seg for, finner en ledig oppgave på tavla, setter deg opp med din egen del av prosjektet og forklarer underveis. Dere jobber hver for dere og setter det sammen etter hvert.
+opencode ser selv at laget allerede er i gang. Den leser hva laget har bestemt seg for, finner en ledig oppgave på tavla, setter deg opp med din egen del av prosjektet og forklarer underveis. Dere jobber hver for dere og setter det sammen etter hvert.
 
 ### Ikke bruk lang tid på å planlegge
 
@@ -101,15 +101,15 @@ Velg idé på tjue minutter og kom i gang. Det er lett å bruke hele formiddagen
 
 De beste idéene blir til mens dere holder på. Første versjon trenger ikke være riktig — den trenger bare å kjøre, slik at dere ser noe på skjermen og får noe å reagere på. Er dere uenige mellom to idéer: velg den ene, bygg den, og se hva som skjer.
 
-### Hvis du lukker kodeagenten
+### Hvis du lukker opencode
 
-Skriv den samme linja igjen når du åpner den. Kodeagenten finner prosjektet der det ligger, og fortsetter der du slapp.
+Skriv den samme linja igjen når du åpner den. opencode finner prosjektet der det ligger, og fortsetter der du slapp.
 
-### Er du i tvil om noe — spør kodeagenten
+### Er du i tvil om noe — spør opencode
 
 Det gjelder alt. Hvordan starter jeg? Hva var det som skjedde nå? Hvorfor virker det ikke? Hva burde vi gjøre videre? Hvordan får jeg bidratt når jeg ikke kan kode? Kan vi endre idé midt i?
 
-Kodeagenten kjenner dette prosjektet, den kjenner oppgaven, og den er satt opp for å lede deg — ikke for å vente på at du vet hva du skal be om. Du kan ikke stille et for dumt spørsmål, og du kan ikke ødelegge noe ved å spørre.
+opencode kjenner dette prosjektet, den kjenner oppgaven, og den er satt opp for å lede deg — ikke for å vente på at du vet hva du skal be om. Du kan ikke stille et for dumt spørsmål, og du kan ikke ødelegge noe ved å spørre.
 
 ## Første versjon
 
@@ -124,9 +124,9 @@ Får dere den linja til å gå hele veien og tilbake, er resten pynt og påbygg 
 
 ## Gjensidiges AI-gateway
 
-**Du trenger ikke gjøre noe med dette nå.** På et tidspunkt sier kodeagenten fra at du må logge inn. Da åpner nettleseren seg, du velger Gjensidige-kontoen din, og så er det gjort. Det samme skjer én gang for GitHub. Du skriver ingenting i terminalen. Alt annet — nøkkelen, filene, oppkoblingen — ordner kodeagenten.
+**Du trenger ikke gjøre noe med dette nå.** På et tidspunkt sier opencode fra at du må logge inn. Da åpner nettleseren seg, du velger Gjensidige-kontoen din, og så er det gjort. Det samme skjer én gang for GitHub. Du skriver ingenting i terminalen. Alt annet — nøkkelen, filene, oppkoblingen — ordner opencode.
 
-Slutter Bjarne plutselig å svare midt på dagen, gjerne etter lunsj, er det nesten alltid fordi tilgangsnøkkelen bare varer omtrent en time. Si det til kodeagenten, så henter den en ny. Du skal aldri lime inn en nøkkel i chatten eller lage en fil selv.
+Slutter Bjarne plutselig å svare midt på dagen, gjerne etter lunsj, er det nesten alltid fordi tilgangsnøkkelen bare varer omtrent en time. Si det til opencode, så henter den en ny. Du skal aldri lime inn en nøkkel i chatten eller lage en fil selv.
 
 Aldri legg hemmeligheter, kundeopplysninger eller andre persondata i Git.
 
@@ -134,7 +134,7 @@ Teknisk, for de som vil vite:
 
 - Endepunkt: `https://genai.gjensidige.io/openai/v1/responses`
 - Modell/deployment: `gpt-5.6-luna`
-- Innlogging skjer med `az login`, som kodeagenten starter selv.
+- Innlogging skjer med `az login`, som opencode starter selv.
 - Frontend sender forespørsler til prosjektets egen backend. Backend legger ved Bjarnes systemprompt og snakker med AI-gatewayen. Nettleseren ser aldri tilgangsnøkkelen.
 
 ## Kåringer
