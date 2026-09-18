@@ -1,6 +1,6 @@
 ---
 name: skadefryd-kickoff
-description: 'Use at the very first interaction in Skadefryd 2026, when a participant has just cloned the repository, has no idea yet, asks what to build, asks where to start, or the project has no application code. Runs the guided conversation from blank slate to a chosen idea and an approved start prompt.'
+description: 'Use at the very first interaction in Skadefryd 2026, when a participant has just pasted their team link, has just cloned the repository, comes back after closing their AI tool, has no idea yet, asks what to build, asks where to start, or the project has no application code. Works out whether this person is starting, joining or returning, and runs the guided conversation from blank slate to a chosen idea, a saved start prompt and a first version on main.'
 ---
 
 # Skadefryd Kickoff
@@ -17,8 +17,11 @@ the next step. Never answer a first message with only "what would you like to bu
 Before anything else, establish the participant mode with the `skadefryd-participant-workflow`
 skill. Then check what already exists, in this order:
 
+Run `git pull` on `main` first, so you see what the team has pushed since the folder was cloned.
+
 1. `.ai/project.md` — the team's chosen idea. If it exists, the idea is settled: summarize it
-   in two sentences, then move to `skadefryd-fullstack-feature` for the next feature.
+   in two sentences. `.ai/startprompt.md` next to it holds the full brief — read it before you
+   build anything.
 2. Application code (`frontend/`, `backend/`, `package.json`). If it exists but `.ai/project.md`
    does not, infer the project from the code, confirm the summary with the participant, and
    write `.ai/project.md`.
@@ -32,10 +35,14 @@ ennå. Jeg stiller noen korte spørsmål, så foreslår jeg fem konkrete idéer 
 The check above tells you which of two completely different conversations you are in. Get it
 right — running the wrong one wastes a participant's morning.
 
-**Case 1 and 2, the project exists:** this person is joining. Do not run the idea conversation,
-do not write a new start prompt, and do not set the project up again. Say in two sentences what
-the team is building, then go to `skadefryd-project-board`, find a task nobody has taken, and get
-them onto their own branch. They should be doing something within ten minutes.
+**Case 1 and 2, the project exists:** this person is joining, or coming back. Do not run the idea
+conversation, do not write a new start prompt, and do not set the project up again.
+
+- **Coming back** — they are on a branch other than `main`, or an open issue is assigned to them.
+  Say in one sentence what they were doing, and carry on with it.
+- **Joining** — say in two sentences what the team is building, then go to `skadefryd-tasks`, find
+  a task nobody has taken, and get them onto their own branch. They should be doing something
+  within ten minutes.
 
 **Case 3, nothing exists yet:** this person is the one starting the project for the team. Say so,
 because it changes what they should be doing: they are not meant to answer your questions alone,
@@ -102,28 +109,41 @@ for each rather than asking open questions:
 - **Who builds what.** Match the split to the roles from question 1, so several people can work
   in parallel without colliding.
 
-Turn the division of work into tasks on the board straight away, one per part of the first
-version, using `skadefryd-project-board`. That is what gives every team member somewhere to
+Turn the division of work into issues straight away, one per part of the first version, using
+`skadefryd-tasks`. That is what gives every team member somewhere to
 start without asking. Anything the team mentioned but did not choose goes in `Idé`.
 
-Write the result to `.ai/project.md` and commit it. This file is shared with the team and tells
-every participant's agent what is being built. Keep it short — idea, agent name, personality,
-first version, division of work, decisions taken. It is not a specification.
+Write the result to `.ai/project.md`. This file tells every participant's agent what is being
+built. Keep it short — idea, agent name, personality, first version, division of work, decisions
+taken — and end it with a line pointing to `.ai/startprompt.md`. It is not a specification.
 
 ## Produce the start prompt
 
-Read `EXAMPLE_STARTPROMPT.md` and write a new start prompt in Norwegian for the team's actual
-idea, following the structure listed there. Show it to the team, invite changes, and get an
-explicit yes.
+Read `EXAMPLE_STARTPROMPT.md` and write the team's own start prompt in Norwegian to
+`.ai/startprompt.md`, following the structure listed there. **Do not ask the team more
+questions to write it.** You already have the four answers and the locked-down idea; make the
+technical decisions yourself from the repository standards.
 
-Do not create files, install packages, or implement anything before the team has approved the
-start prompt.
+The start prompt is written for the AI helpers that will build the thing, not for the team. Do
+not paste it into the conversation. Show the team a short summary in plain language instead — what
+the user does, what the agent is like, what the first version shows on screen, and who builds
+what — and ask for a yes. Change the file if they want something different.
+
+Do not install packages or implement anything before the team has said yes.
 
 ## Then start building
 
-After approval, hand over to `skadefryd-fullstack-feature` for the implementation, and to
-`skadefryd-git-help` before any code is written, so the work starts on its own branch rather
-than on `main`.
+The first version is the one exception to "new work goes on a branch". The team is waiting for
+it, there is nothing on `main` to protect yet, and a pull request nobody knows how to review is
+only a delay. Commit `.ai/project.md`, `.ai/startprompt.md` and the first version directly to
+`main` and push. Everything after that goes through branches and pull requests
+(`skadefryd-git-help`).
 
-Tell the team when the minimum version works, and say explicitly that this is the moment to
-push and split up the remaining work.
+Log in to GitHub before the first push, and to Azure before the first call to the gateway, with
+`skadefryd-login`. Hand over to `skadefryd-fullstack-feature` for the implementation.
+
+Push `.ai/project.md` and `.ai/startprompt.md` as soon as the team says yes, before the code
+works. Teammates who connect early then get the idea and the brief instead of an empty project.
+
+When the minimum version works and is pushed, tell the participant plainly: "Nå kan dere andre
+koble dere på." That is the starting signal for the rest of the team.

@@ -11,7 +11,7 @@ The agent fills this in by looking, not by asking. See `skadefryd-machine-setup`
 
 - Operating system: macOS | Windows
 - Administrator rights: yes | no
-- Terminal the participant uses: Terminal | PowerShell | other
+- Project folder: full path to the cloned team repository, e.g. ~/skadefryd/lag3
 - Shell the agent runs in: zsh | PowerShell | Git Bash
 - Installed tool paths: az, gh, node (full paths when installed outside the normal PATH)
 

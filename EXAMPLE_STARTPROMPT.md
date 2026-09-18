@@ -4,31 +4,26 @@ Vi skal lage en prototype på en webapplikasjon for tidsreiseforsikring.
 
 Brukeren møter AI-agenten Bjarne, som hjelper kundebehandlere med skadesaker knyttet til tids-reiser.
 
-## Fase 1: Lag teamets startprompt først
+## Slik lager AI-hjelperen lagets egen startprompt
 
-Ikke opprett filer, installer pakker eller implementer applikasjonen i første svar. Start alltid med å stille spørsmålene nedenfor. Målet er å lage en ny, konkret startprompt for teamets faktiske behov.
+Denne fila er et eksempel. Lagets egen startprompt skrives til `.ai/startprompt.md` av AI-hjelperen, etter samtalen i `skadefryd-kickoff`.
 
-1. Hvem er brukerne, og hva må de kunne gjøre i første versjon?
-2. Hvilke konkrete brukerflyter og skjermbilder skal inngå i minimumsløsningen?
-3. Hvilke data er fiktive, hvilke data må aldri brukes, og hvilke integrasjoner er nødvendige?
-4. Hvilke deler av løsningen skal teammedlemmer kunne bygge uavhengig av hverandre?
-5. Hvilke tekniske krav, kvalitetskrav eller avgrensninger har teamet utover dette eksempelet?
-6. Hva skal eksplisitt ikke bygges i første versjon?
+Ikke still laget flere spørsmål for å skrive den. Spørsmålene er allerede stilt i kickoff-samtalen, og idéen, navnet, personligheten og arbeidsdelingen er bestemt. Resten er tekniske valg, og dem tar AI-hjelperen selv ut fra standardene i `AGENTS.md`.
 
-Etter at spørsmålene er besvart, skriv en ny startprompt på norsk. Den nye startprompten skal være komplett nok til at et nytt AI-arbeid kan starte implementasjonen uten å gjette på produktkrav eller tekniske kontrakter.
+Startprompten skal være komplett nok til at en annen AI-hjelper kan bygge første versjon uten å gjette på produktkrav eller tekniske kontrakter. Den skal inneholde:
 
-Den nye startprompten skal inneholde:
-
-* Produktmål og målgruppe
-* Avgrenset første versjon med akseptansekriterier
+* Produktmål og hvem løsningen er for
+* Avgrenset første versjon med akseptansekriterier: hva brukeren ser og gjør
+* Agentens navn og systemprompt
 * Tekniske rammer og kjente integrasjoner
 * Sikkerhet og håndtering av hemmeligheter
-* Foreslått filstruktur og ansvarsdeling
+* Foreslått filstruktur og ansvarsdeling, koblet til oppgavene (issues) i repoet
 * API-kontrakter, inkludert request-, response- og feiltyper når de er kjent
 * Plan for lokal oppstart og smal validering
 * Mulige senere utvidelser, tydelig merket som utenfor første versjon
+* `Åpne spørsmål`, hvis det finnes noen
 
-Avslutt med seksjonen `Åpne spørsmål`. Ikke start implementasjonen før teamet har godkjent startprompten.
+Laget skal ikke lese eller godkjenne startprompten linje for linje. Vis dem et kort sammendrag på vanlig norsk — hva brukeren gjør, hvordan agenten er, hva første versjon viser på skjermen, og hvem som bygger hva — og få et ja før implementasjonen starter.
 
 ---
 
@@ -93,9 +88,8 @@ backend/src/features/<feature>/
 AI-tilkobling:
 
 * Endepunkt: https://genai.gjensidige.io
-* Logg inn med az login
-* Hvis du blir spurt, velg Gjensidige Production Modern
-* Hent tilgangstoken med kommandoen: az account get-access-token --resource https://cognitiveservices.azure.com, og legg det i en .env.local fil som ikke committes
+* AI-hjelperen starter innloggingen med `az login` selv, og deltakeren godkjenner i nettleseren. Se `.github/skills/skadefryd-login/SKILL.md`.
+* AI-hjelperen henter tilgangstokenet med `az account get-access-token --resource https://cognitiveservices.azure.com` og skriver det selv til en `.env.local`-fil som ikke committes. Se `.github/skills/skadefryd-ai-gateway/SKILL.md`.
 * Bruk deployment/modell gpt-5.6-luna
 * Kalle endepunktet `/openai/v1/responses` med Bearer Authorization med tokenet hentet over, og body type:
 
