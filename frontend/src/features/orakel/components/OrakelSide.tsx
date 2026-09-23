@@ -125,15 +125,6 @@ export function OrakelSide() {
         )}
 
         {svar && <Box className="svar-omrade"><Spaadomsliste svar={svar} /><AnkePanel key={skanneNr} spaadom={svar} onOverproevd={setSvar} /></Box>}
-
-        <Box className="forsikring-valg">
-          <Title order={2}>Sjekk pris og kjøp forsikring</Title>
-          <Box className="valg-kolonne">
-            <Group gap="sm"><Button variant="outline" className="valgknapp">Bil</Button><Button variant="outline" className="valgknapp">MC</Button><Button variant="outline" className="valgknapp">Person</Button><Button variant="outline" className="valgknapp">Hus</Button></Group>
-            <Group gap="sm" mt="sm"><Button variant="outline" className="valgknapp">Innbø</Button><Button variant="outline" className="valgknapp">Hund</Button><Button variant="outline" className="valgknapp">Reise</Button></Group>
-            <Text className="alle-forsikringer">Se alle forsikringer&nbsp; →</Text>
-          </Box>
-        </Box>
       </Container>
 
       <style>{`
@@ -157,10 +148,7 @@ export function OrakelSide() {
         .bjarne-knapp { margin-top: 26px; color: #080c37; background: #f4ffa9; font-weight: 800; border-radius: 0; }
         .bjarne-knapp:hover { background: #e7f88d; }
         .svar-omrade { max-width: 720px; margin: 32px auto 0; }
-        .forsikring-valg { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 80px 10%; }
-        .forsikring-valg h2 { color: #080c37; font-size: clamp(31px, 3.2vw, 46px); line-height: 1.08; letter-spacing: -.04em; max-width: 360px; }
-        .valg-kolonne { padding-top: 5px; }.valgknapp { border-color: #080c37; border-radius: 999px; color: #080c37; background: white; font-size: 17px; }.alle-forsikringer { display: inline-block; margin-top: 22px; padding-bottom: 4px; color: #080c37; border-bottom: 1px solid #080c37; font-weight: 700; }
-        @media (max-width: 760px) { .gjensidige-toppinnhold { height: 60px; }.gjensidige-segmenter, .gjensidige-handlinger, .gjensidige-undermeny { display: none; }.bjarne-hero, .forsikring-valg { grid-template-columns: 1fr; }.bjarne-handflate { min-height: 350px; }.bjarne-budskap { padding: 36px 28px 42px; }.forsikring-valg { padding: 52px 16px; gap: 16px; }.forside-innhold { padding: 0; }.bjarne-hero { margin: 0 -0.75rem; } }
+        @media (max-width: 760px) { .gjensidige-toppinnhold { height: 60px; }.gjensidige-segmenter, .gjensidige-handlinger, .gjensidige-undermeny { display: none; }.bjarne-hero { grid-template-columns: 1fr; }.bjarne-handflate { min-height: 350px; }.bjarne-budskap { padding: 36px 28px 42px; }.forside-innhold { padding: 0; }.bjarne-hero { margin: 0 -0.75rem; } }
       `}</style>
     </Box>
   );
