@@ -18,6 +18,7 @@ export function OrakelSide() {
   const [skanneNr, setSkanneNr] = useState(0);
   const [ankeResultat, setAnkeResultat] = useState<AnkeSvar | null>(null);
   const [overproevdAntall, setOverproevdAntall] = useState(0);
+  const [kaffeRabatt, setKaffeRabatt] = useState(false);
   const svarRef = useRef<HTMLDivElement>(null);
   const timer = useRef<number | null>(null);
   // Showet tåler én skannefeil. Nummer to er bare irriterende, så den
@@ -28,6 +29,7 @@ export function OrakelSide() {
     setSvar(null);
     setAnkeResultat(null);
     setOverproevdAntall(0);
+    setKaffeRabatt(false);
     setFeil(null);
     setStatus("skanner");
     setSkanneNr((n) => n + 1);
@@ -136,7 +138,7 @@ export function OrakelSide() {
           </Alert>
         )}
 
-        {svar && <Box className="svar-omrade" ref={svarRef}><Spaadomsliste key={`${skanneNr}-${ankeResultat ? "anke" : "original"}`} svar={svar} overproeving={ankeResultat ? { svar: ankeResultat, antall: overproevdAntall } : undefined} /><AnkePanel key={skanneNr} spaadom={svar} onOverproeving={visOverproeving} /></Box>}
+        {svar && <Box className="svar-omrade" ref={svarRef}><Spaadomsliste key={`${skanneNr}-${ankeResultat ? "anke" : "original"}`} svar={svar} overproeving={ankeResultat ? { svar: ankeResultat, antall: overproevdAntall } : undefined} kaffeRabatt={kaffeRabatt} onGiKaffe={() => setKaffeRabatt(true)} /><AnkePanel key={skanneNr} spaadom={svar} onOverproeving={visOverproeving} /></Box>}
       </Container>
 
       <style>{`
