@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from "react";
 import { Alert, Box, Container, Text, Title } from "@mantine/core";
 import { hentSpaadom } from "../api/orakelApi";
 import type { OrakelSvar } from "../types/orakel";
+import { AnkePanel } from "../../anke/components/AnkePanel";
 import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
 
@@ -12,6 +13,7 @@ export function OrakelSide() {
   const [nedtelling, setNedtelling] = useState(3);
   const [svar, setSvar] = useState<OrakelSvar | null>(null);
   const [feil, setFeil] = useState<string | null>(null);
+  const [skanneNr, setSkanneNr] = useState(0);
   const timer = useRef<number | null>(null);
 
   const startSkanning = useCallback(() => {
@@ -19,6 +21,7 @@ export function OrakelSide() {
     setFeil(null);
     setStatus("skanner");
     setNedtelling(3);
+    setSkanneNr((n) => n + 1);
 
     let sekunder = 3;
     timer.current = window.setInterval(async () => {
@@ -72,6 +75,7 @@ export function OrakelSide() {
         )}
 
         {svar && <Spaadomsliste svar={svar} />}
+        {svar && <AnkePanel key={skanneNr} spaadom={svar} onOverproevd={setSvar} />}
       </Container>
     </Box>
   );
