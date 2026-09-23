@@ -6,7 +6,7 @@ import { AnkePanel } from "../../anke/components/AnkePanel";
 import type { AnkeSvar } from "../../anke/types/anke";
 import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
-import { spillSalgspitch, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader } from "../lyd/bjarneLyd";
+import { spillSalgspitch, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader, naarTaleFerdig } from "../lyd/bjarneLyd";
 
 type Status = "klar" | "skanner" | "feilet";
 
@@ -34,8 +34,7 @@ export function OrakelSide() {
     setStatus("skanner");
     setSkanneNr((n) => n + 1);
 
-    // Lyd: Bjarnes salgspitch, så elektrisk summing mens hånden leses
-    spillSalgspitch();
+    // Lyd: kort elektrisk summing først, så overtar Bjarne (se Handflate)
     startSumming();
 
     let sekunder = 3;
@@ -66,11 +65,11 @@ export function OrakelSide() {
 
       try {
         const resultat = await hentSpaadom();
-        // All lyd stopper før skadene presenteres og leses opp
-        stoppAllLyd();
+        // Vis resultatet med en gang, men la Bjarne snakke ferdig
+        // trollordet han er midt i før diagnosen leses opp.
         setSvar(resultat);
         setStatus("klar");
-        spillSkader(resultat.predictions);
+        naarTaleFerdig(() => spillSkader(resultat));
       } catch (err) {
         stoppAllLyd();
         setFeil(err instanceof Error ? err.message : "Noe gikk galt.");
@@ -97,7 +96,16 @@ export function OrakelSide() {
       <Box className="gjensidige-toppmeny">
         <Container size="lg" className="gjensidige-toppinnhold">
           <Group gap={38} wrap="nowrap">
-            <Text className="gjensidige-logo">Gjensidige <span>◐</span></Text>
+            <Text className="gjensidige-logo">
+              Gjensidige
+              <svg className="gjensidige-merke" viewBox="0 0 100 100" role="img" aria-label="Gjensidige">
+                <circle cx="50" cy="50" r="50" fill="#003b6f" />
+                <path
+                  d="M54 22 A28 28 0 1 0 78 50 L78 46 L50 46 L50 58 L63 58 A15 15 0 1 1 60 35 Z"
+                  fill="#ffffff"
+                />
+              </svg>
+            </Text>
             <Group gap="lg" className="gjensidige-segmenter">
               <Text className="aktiv-segment">Privat</Text>
               <Text>Bedrift</Text>
@@ -107,8 +115,17 @@ export function OrakelSide() {
           <Group gap="lg" className="gjensidige-handlinger">
             <Text>⌕&nbsp; Søk</Text>
             <Text>🛒&nbsp; Handlevogn</Text>
-            <Text>⌘&nbsp; Meld skade</Text>
-            <Text>▢&nbsp; Logg inn</Text>
+            <Text className="meny-med-ikon">
+              <svg className="plaster-kryss" viewBox="0 0 24 24" role="img" aria-label="Meld skade">
+                <g fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <rect x="2.2" y="9.2" width="19.6" height="5.6" rx="2.8" transform="rotate(-45 12 12)" fill="#ffd9a0" />
+                  <rect x="2.2" y="9.2" width="19.6" height="5.6" rx="2.8" transform="rotate(45 12 12)" fill="#ffd9a0" />
+                  <circle cx="12" cy="12" r="2.3" fill="#e8935a" stroke="none" />
+                </g>
+              </svg>
+              &nbsp; Meld skade
+            </Text>
+            <Text>🔒&nbsp; Logg inn</Text>
           </Group>
         </Container>
       </Box>
@@ -144,8 +161,10 @@ export function OrakelSide() {
       <style>{`
         .gjensidige-toppmeny { background: #070b36; color: white; }
         .gjensidige-toppinnhold { height: 74px; display: flex; align-items: center; justify-content: space-between; }
-        .gjensidige-logo { font-size: 18px; font-weight: 800; letter-spacing: -.4px; white-space: nowrap; }
-        .gjensidige-logo span { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: white; color: #070b36; margin-left: 3px; font-size: 16px; }
+        .gjensidige-logo { font-size: 18px; font-weight: 800; letter-spacing: -.4px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+        .gjensidige-merke { width: 28px; height: 28px; display: inline-block; vertical-align: middle; }
+        .meny-med-ikon { display: inline-flex; align-items: center; }
+        .plaster-kryss { width: 18px; height: 18px; }
         .gjensidige-segmenter, .gjensidige-handlinger { font-size: 15px; white-space: nowrap; }
         .aktiv-segment { color: #f4ffa9; border-bottom: 2px solid #f4ffa9; padding: 26px 0 22px; }
         .gjensidige-undermeny { background: #f5ffd0; color: #090d39; height: 42px; display: flex; align-items: center; font-size: 14px; font-weight: 600; }

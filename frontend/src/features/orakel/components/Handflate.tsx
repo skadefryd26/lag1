@@ -97,19 +97,27 @@ export function Handflate({ status, nedtelling, onLegg, onHandMatch }: Props) {
     streamRef.current?.getTracks().forEach((track) => track.stop());
   }, []);
 
-  // Veksle trollord mens hånden leses, og les dem høyt
+  // Veksle trollord mens hånden leses, og les dem høyt.
+  // Vent til den korte summingen er ferdig før Bjarne begynner å prate.
   useEffect(() => {
     if (!skanner) return;
-    // les det første trollordet med en gang
-    spillSpaaord(TROLLORD[trollordIndex]);
-    const t = window.setInterval(() => {
-      setTrollordIndex((i) => {
-        const neste = (i + 1) % TROLLORD.length;
-        spillSpaaord(TROLLORD[neste]);
-        return neste;
-      });
-    }, 1600);
-    return () => window.clearInterval(t);
+    const SUMME_MS = 750;
+    let intervall: number | undefined;
+    const start = window.setTimeout(() => {
+      // les det første trollordet når summingen er ferdig
+      spillSpaaord(TROLLORD[trollordIndex]);
+      intervall = window.setInterval(() => {
+        setTrollordIndex((i) => {
+          const neste = (i + 1) % TROLLORD.length;
+          spillSpaaord(TROLLORD[neste]);
+          return neste;
+        });
+      }, 1600);
+    }, SUMME_MS);
+    return () => {
+      window.clearTimeout(start);
+      if (intervall) window.clearInterval(intervall);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skanner]);
 

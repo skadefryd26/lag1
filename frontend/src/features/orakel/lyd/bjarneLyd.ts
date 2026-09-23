@@ -40,9 +40,14 @@ export function spillSalgspitch() {
 
 /** Les et spåord høyt med selvsikker stemme. */
 export function spillSpaaord(tekst: string) {
+  // Hopp over hvis Bjarne fortsatt snakker, så trollordene ikke hoper seg
+  // opp i køen og forsinker diagnosen når resultatet kommer.
+  if ("speechSynthesis" in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending)) {
+    return;
+  }
   // fjern stjerner og prikker så stemmen ikke leser dem
   const rent = tekst.replace(/[*…]/g, " ").trim();
-  si(rent, { rate: 0.85, pitch: 0.7 });
+  si(rent, { rate: 0.9, pitch: 0.7 });
 }
 
 // Morsomme instruksjoner Bjarne gir når skanningen feiler.
@@ -61,10 +66,12 @@ export function spillFeilReplikk(): string {
   return replikk;
 }
 
-/** Les skadesakene høyt, én etter én. */
-export function spillSkader(skader: { skade: string }[]) {
-  si("Her er skjebnen din. Heldigvis har jeg løsninger.", { rate: 0.85, pitch: 0.75 });
-  for (const s of skader) {
+/** Les spådommens kommentar, overgangen og deretter skadesakene høyt, én etter én. */
+export function spillSkader(svar: { kommentar: string; predictions: { skade: string }[] }) {
+  const rent = svar.kommentar.replace(/[*…]/g, " ").trim();
+  if (rent) si(rent, { rate: 0.85, pitch: 0.75 });
+  si("Dette er dine kommende skader.", { rate: 0.85, pitch: 0.75 });
+  for (const s of svar.predictions) {
     si(s.skade, { rate: 0.9, pitch: 0.75 });
   }
 }
@@ -77,8 +84,32 @@ export function stoppAllLyd() {
   }
 }
 
-/** Start elektrisk summing (loop). Kall stoppSumming() for å avslutte. */
-export function startSumming() {
+/**
+ * Stopp summingen, men la Bjarne snakke ferdig setningen han er midt i.
+ * Venter til talekøen er tom (eller til `maksVentMs` er gått) og kaller `saa`.
+ * Brukes når resultatet er klart så trollordet ikke kuttes midt i.
+ */
+export function naarTaleFerdig(saa: () => void, maksVentMs = 1200) {
+  stoppSumming();
+  if (!("speechSynthesis" in window)) {
+    saa();
+    return;
+  }
+  const start = Date.now();
+  const sjekk = window.setInterval(() => {
+    const ferdig = !window.speechSynthesis.speaking && !window.speechSynthesis.pending;
+    if (ferdig || Date.now() - start > maksVentMs) {
+      window.clearInterval(sjekk);
+      saa();
+    }
+  }, 120);
+}
+
+/**
+ * Kort elektrisk summing. Stopper seg selv etter `varighetMs` (default 700 ms),
+ * så den ikke overlapper Bjarnes prating. Kall stoppSumming() for å avbryte før tiden.
+ */
+export function startSumming(varighetMs = 700) {
   const c = ctx();
   if (c.state === "suspended") void c.resume();
   stoppSumming();
@@ -106,6 +137,9 @@ export function startSumming() {
   lfo.start();
 
   summeNode = { osc, gain, lfo };
+
+  // Summingen er kort og stopper seg selv, så pratingen kan overta uten overlapp.
+  window.setTimeout(() => stoppSumming(), varighetMs);
 }
 
 export function stoppSumming() {

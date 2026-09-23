@@ -5,6 +5,7 @@ import type { AnkeSvar } from "../../anke/types/anke";
 import { ikonForSkade } from "./skadeIkon";
 import { si, stoppAllLyd } from "../lyd/bjarneLyd";
 import { formaterKr, kjopAltKvittering, kjopKvittering, neiReplikk, premieTall } from "./kjopTekster";
+import { PengeRegn } from "./PengeRegn";
 
 type Valg = "ingen" | "sikret" | "avslatt";
 
@@ -26,6 +27,7 @@ type Props = {
 export function Spaadomsliste({ svar, overproeving, kaffeRabatt, onGiKaffe }: Props) {
   const [valg, setValg] = useState<Valg[]>(() => svar.predictions.map(() => "ingen"));
   const [bjarneSier, setBjarneSier] = useState<string | null>(null);
+  const [regnTrigger, setRegnTrigger] = useState(0);
   const ankeFerdig = overproeving?.antall === svar.predictions.length;
   const visSvar = ankeFerdig
     ? { kommentar: overproeving.svar.vurdering, predictions: overproeving.svar.predictions }
@@ -42,6 +44,7 @@ export function Spaadomsliste({ svar, overproeving, kaffeRabatt, onGiKaffe }: Pr
 
   function sikreAlt() {
     setValg(visSvar.predictions.map(() => "sikret"));
+    setRegnTrigger((n) => n + 1);
     const replikk = kjopAltKvittering();
     setBjarneSier(replikk);
     stoppAllLyd();
@@ -60,6 +63,8 @@ export function Spaadomsliste({ svar, overproeving, kaffeRabatt, onGiKaffe }: Pr
 
   return (
     <Stack gap="md" mt="xl">
+      {regnTrigger > 0 && <PengeRegn key={regnTrigger} aktiv />}
+
       {overproeving && (
         <Card withBorder radius="md" padding="lg" style={{ background: "#07133b", borderColor: "#00bfd3", color: "white" }}>
           <Text fw={900} fz="xl" c="white">TROND TAR OVER SAKEN</Text>
