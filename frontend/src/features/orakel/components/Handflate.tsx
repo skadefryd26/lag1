@@ -53,12 +53,17 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
         userSelect: "none",
       }}
     >
-      {/* Håndflate i ekte håndstørrelse */}
       <Box
         style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          width: 300,
+          height: 300,
+          transform: "translate(-50%, -50%)",
           fontSize: 300,
+          lineHeight: 1,
           textAlign: "center",
-          lineHeight: "440px",
           filter: skanner
             ? "drop-shadow(0 0 40px #b388ff) drop-shadow(0 0 12px #7048e8)"
             : "none",
@@ -67,48 +72,41 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
         }}
       >
         ✋
+        {skanner && (
+          <svg
+            viewBox="0 0 300 300"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+            }}
+          >
+            <path
+              d="M208 166 C 194 186, 188 225, 143 258"
+              className="livslinje"
+              stroke="#00e5ff"
+              strokeWidth={3}
+              fill="none"
+            />
+            <path
+              d="M76 202 C 120 218, 176 211, 209 192"
+              className="livslinje"
+              stroke="#b388ff"
+              strokeWidth={3}
+              fill="none"
+            />
+            <path
+              d="M77 165 C 116 151, 174 152, 208 166"
+              className="livslinje"
+              stroke="#ff4dff"
+              strokeWidth={3}
+              fill="none"
+            />
+          </svg>
+        )}
       </Box>
-
-      {/* Elektrisk livslinje: ledninger som tegner seg i håndflaten.
-          Emojien fyller ca. midtre del av 340x440-boksen; håndflaten (der
-          linjene hører hjemme) ligger grovt mellom y 250-380, x 130-235. */}
-      {skanner && (
-        <svg
-          viewBox="0 0 340 440"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            pointerEvents: "none",
-          }}
-        >
-          {/* Livslinje – buer rundt tommelroten, nederst i håndflaten */}
-          <path
-            d="M140 240 C 128 285, 138 325, 178 355"
-            className="livslinje"
-            stroke="#00e5ff"
-            strokeWidth={3}
-            fill="none"
-          />
-          {/* Hodelinje – midt i håndflaten */}
-          <path
-            d="M130 285 C 158 293, 190 291, 212 282"
-            className="livslinje"
-            stroke="#b388ff"
-            strokeWidth={3}
-            fill="none"
-          />
-          {/* Hjertelinje – øvre del av håndflaten, under fingrene */}
-          <path
-            d="M130 255 C 158 244, 190 246, 214 255"
-            className="livslinje"
-            stroke="#ff4dff"
-            strokeWidth={3}
-            fill="none"
-          />
-        </svg>
-      )}
 
       {/* Gnister – holdes innenfor håndflaten (x 40-65%, y 55-80%) */}
       {skanner && (
