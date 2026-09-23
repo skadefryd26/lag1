@@ -30,14 +30,52 @@ function trekkUtJson(tekst: string): unknown {
   return JSON.parse(utenFence.slice(start, slutt + 1));
 }
 
-function normaliser(data: unknown): OrakelSvar {
+const MAANEDER = [
+  "januar",
+  "februar",
+  "mars",
+  "april",
+  "mai",
+  "juni",
+  "juli",
+  "august",
+  "september",
+  "oktober",
+  "november",
+  "desember",
+];
+
+function datoErIFremtiden(dato: string, iDag: Date): boolean {
+  const treff = /^(\d{1,2})\.\s+(\p{L}+)\s+(\d{4})$/u.exec(dato.trim().toLowerCase());
+  if (!treff) return false;
+
+  const maaned = MAANEDER.indexOf(treff[2]);
+  const dag = Number(treff[1]);
+  const aar = Number(treff[3]);
+  const kalenderdato = new Date(Date.UTC(aar, maaned, dag));
+  const gyldigDato =
+    maaned >= 0 &&
+    kalenderdato.getUTCFullYear() === aar &&
+    kalenderdato.getUTCMonth() === maaned &&
+    kalenderdato.getUTCDate() === dag;
+
+  return gyldigDato && kalenderdato.getTime() > Date.UTC(iDag.getUTCFullYear(), iDag.getUTCMonth(), iDag.getUTCDate());
+}
+
+function reserveDato(indeks: number, iDag: Date): string {
+  return `1. ${MAANEDER[iDag.getUTCMonth()]} ${iDag.getUTCFullYear() + indeks + 1}`;
+}
+
+function normaliser(data: unknown, iDag: Date): OrakelSvar {
   const obj = data as { kommentar?: unknown; predictions?: unknown };
   const predictions = Array.isArray(obj.predictions) ? obj.predictions : [];
-  const rensede: Spaadom[] = predictions.slice(0, 3).map((p) => {
+  const rensede: Spaadom[] = predictions.slice(0, 3).map((p, indeks) => {
     const s = p as Partial<Spaadom>;
     return {
       skade: String(s.skade ?? "Ukjent skade"),
-      dato: String(s.dato ?? "en dag"),
+      dato: datoErIFremtiden(String(s.dato ?? ""), iDag)
+        ? String(s.dato)
+        : reserveDato(indeks, iDag),
       dramascore: Math.min(6, Math.max(1, Number(s.dramascore) || 3)),
       premie: String(s.premie ?? "kr 999 / mnd"),
     };
@@ -49,8 +87,10 @@ function normaliser(data: unknown): OrakelSvar {
 }
 
 export async function hentSpaadom(): Promise<OrakelSvar> {
+  const iDag = new Date();
+  const dagensDato = `${iDag.getUTCFullYear()}-${String(iDag.getUTCMonth() + 1).padStart(2, "0")}-${String(iDag.getUTCDate()).padStart(2, "0")}`;
   const input =
-    "Les håndflaten min og spå de tre skadene fremtiden bringer. Jeg holder hånden opp mot kameraet nå.";
+    `Les håndflaten min og spå de tre skadene fremtiden bringer. Dagens dato er ${dagensDato}. Alle tre datoer MÅ være senere enn dagens dato og skrives som «14. mars 2027». Jeg holder hånden opp mot kameraet nå.`;
   const raa = await kallGateway(BJARNE_SYSTEMPROMPT, input);
-  return normaliser(trekkUtJson(raa));
+  return normaliser(trekkUtJson(raa), iDag);
 }
