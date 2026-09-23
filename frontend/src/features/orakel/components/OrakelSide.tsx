@@ -5,7 +5,7 @@ import type { OrakelSvar } from "../types/orakel";
 import { AnkePanel } from "../../anke/components/AnkePanel";
 import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
-import { spillSukk, startSumming, stoppSumming } from "../lyd/bjarneLyd";
+import { spillSukk, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader } from "../lyd/bjarneLyd";
 
 type Status = "klar" | "skanner" | "feilet";
 
@@ -39,15 +39,21 @@ export function OrakelSide() {
 
         // Bjarne gidder ikke helt: skanningen feiler av og til (~1 av 4)
         if (Math.random() < 0.25) {
+          stoppAllLyd();
+          spillFeilReplikk();
           setStatus("feilet");
           return;
         }
 
         try {
           const resultat = await hentSpaadom();
+          // All lyd stopper før skadene presenteres og leses opp
+          stoppAllLyd();
           setSvar(resultat);
           setStatus("klar");
+          spillSkader(resultat.predictions);
         } catch (err) {
+          stoppAllLyd();
           setFeil(err instanceof Error ? err.message : "Noe gikk galt.");
           setStatus("klar");
         }

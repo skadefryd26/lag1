@@ -46,6 +46,38 @@ export function spillSpaaord(tekst: string) {
   si(rent, { rate: 0.85, pitch: 0.7 });
 }
 
+// Morsomme instruksjoner Bjarne gir når skanningen feiler.
+const FEIL_REPLIKKER = [
+  "Sukk. Jeg ser ingenting. Gå og vask hendene, og prøv igjen.",
+  "Nei, dette går ikke. Bytt hånd, er du snill.",
+  "Håndflaten er uklar. Snurr rundt én gang og prøv på nytt.",
+  "Ingenting. Pust på hånden, tørk den på buksa, og prøv igjen.",
+  "Blankt. Klapp tre ganger og legg hånden tilbake.",
+];
+
+/** Bjarne gir en morsom instruksjon når skanningen feiler. Returnerer teksten. */
+export function spillFeilReplikk(): string {
+  const replikk = FEIL_REPLIKKER[Math.floor(Math.random() * FEIL_REPLIKKER.length)];
+  si(replikk, { rate: 0.85, pitch: 0.65 });
+  return replikk;
+}
+
+/** Les skadesakene høyt, én etter én. */
+export function spillSkader(skader: { skade: string }[]) {
+  si("Sukk. Her er skjebnen din.", { rate: 0.8, pitch: 0.65 });
+  for (const s of skader) {
+    si(s.skade, { rate: 0.9, pitch: 0.75 });
+  }
+}
+
+/** Stopp ALL lyd: summing og all tale. */
+export function stoppAllLyd() {
+  stoppSumming();
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+}
+
 /** Start elektrisk summing (loop). Kall stoppSumming() for å avslutte. */
 export function startSumming() {
   const c = ctx();
