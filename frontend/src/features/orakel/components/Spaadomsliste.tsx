@@ -87,7 +87,6 @@ export function Spaadomsliste({ svar }: { svar: OrakelSvar }) {
           </Group>
 
           <Group mt="lg" gap="sm" wrap="wrap">
-            <Button variant="outline" color="grape" radius="xl">{forsikringsCta(p.skade)}</Button>
             {valg[i] === "sikret" ? (
               <Badge size="lg" color="green" variant="light">Sikret ✓</Badge>
             ) : valg[i] === "avslatt" ? (
