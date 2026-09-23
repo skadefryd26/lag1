@@ -22,7 +22,7 @@ function velgStemme(): SpeechSynthesisVoice | null {
   );
 }
 
-function si(tekst: string, opts: { rate?: number; pitch?: number } = {}) {
+export function si(tekst: string, opts: { rate?: number; pitch?: number } = {}) {
   if (!("speechSynthesis" in window)) return;
   const u = new SpeechSynthesisUtterance(tekst);
   const stemme = velgStemme();
