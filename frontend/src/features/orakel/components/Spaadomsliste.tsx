@@ -16,13 +16,22 @@ function dramaFarge(score: number): string {
 
 type Overproeving = { svar: AnkeSvar; antall: number };
 
-export function Spaadomsliste({ svar, overproeving }: { svar: OrakelSvar; overproeving?: Overproeving }) {
+type Props = {
+  svar: OrakelSvar;
+  overproeving?: Overproeving;
+  kaffeRabatt: boolean;
+  onGiKaffe: () => void;
+};
+
+export function Spaadomsliste({ svar, overproeving, kaffeRabatt, onGiKaffe }: Props) {
   const [valg, setValg] = useState<Valg[]>(() => svar.predictions.map(() => "ingen"));
   const [bjarneSier, setBjarneSier] = useState<string | null>(null);
   const ankeFerdig = overproeving?.antall === svar.predictions.length;
   const visSvar = ankeFerdig
     ? { kommentar: overproeving.svar.vurdering, predictions: overproeving.svar.predictions }
     : svar;
+  const prisMedKaffe = (premie: string): number =>
+    Math.round(premieTall(premie) * (kaffeRabatt ? 0.8 : 1));
 
   function settValg(i: number, nyttValg: Valg, replikk: string) {
     setValg((forrige) => forrige.map((v, idx) => (idx === i ? nyttValg : v)));
@@ -40,12 +49,12 @@ export function Spaadomsliste({ svar, overproeving }: { svar: OrakelSvar; overpr
   }
 
   const total = useMemo(
-    () => visSvar.predictions.reduce((sum, p, i) => (valg[i] === "sikret" ? sum + premieTall(p.premie) : sum), 0),
-    [visSvar.predictions, valg],
+    () => visSvar.predictions.reduce((sum, p, i) => (valg[i] === "sikret" ? sum + prisMedKaffe(p.premie) : sum), 0),
+    [visSvar.predictions, valg, kaffeRabatt],
   );
   const totalAlt = useMemo(
-    () => visSvar.predictions.reduce((sum, p) => sum + premieTall(p.premie), 0),
-    [visSvar.predictions],
+    () => visSvar.predictions.reduce((sum, p) => sum + prisMedKaffe(p.premie), 0),
+    [visSvar.predictions, kaffeRabatt],
   );
   const antallSikret = valg.filter((v) => v === "sikret").length;
 
@@ -114,7 +123,10 @@ export function Spaadomsliste({ svar, overproeving }: { svar: OrakelSvar; overpr
                   <Stack gap={4} style={{ minWidth: 0 }}>
                     <Text fw={800} fz="xl" c="#171137">{p.skade}</Text>
                     <Text size="md" c="#3f3a4a">Forventet: {p.dato}</Text>
-                    <Text size="md" c="#6b4100" fw={700}>Anbefalt premie: {p.premie}</Text>
+                    <Text size="md" c="#6b4100" fw={700}>
+                      Anbefalt premie: {kaffeRabatt ? formaterKr(prisMedKaffe(p.premie)) : p.premie}
+                    </Text>
+                    {kaffeRabatt && <Text size="sm" c="#5f6470" td="line-through">Før kaffe: {p.premie}</Text>}
                   </Stack>
                 </Group>
                 <Badge size="lg" color={dramaFarge(p.dramascore)} variant="filled" style={{ flexShrink: 0 }}>
@@ -153,6 +165,24 @@ export function Spaadomsliste({ svar, overproeving }: { svar: OrakelSvar; overpr
         </Group>
         {antallSikret > 0 && <Text mt="md" fw={700} c="#176b34">Du har sikret deg mot {antallSikret} av {visSvar.predictions.length} skader - total: {formaterKr(total)}</Text>}
       </Card>}
+      {(!overproeving || ankeFerdig) && (
+        <Card withBorder radius="md" padding="lg" style={{ background: "#f7f0e4", borderColor: "#ac7c45" }}>
+          <Group justify="space-between" align="center" wrap="wrap" gap="md">
+            <Stack gap={3}>
+              <Text fw={800} fz="lg" c="#49301c">☕ Bestikk Bjarne med kaffe</Text>
+              <Text size="sm" c="#49301c">En kopp gir 20 % lavere oppdiktet månedspris.</Text>
+            </Stack>
+            <Button color="orange" onClick={onGiKaffe} disabled={kaffeRabatt}>
+              {kaffeRabatt ? "Kaffe servert ✓" : "Gi Bjarne kaffe"}
+            </Button>
+          </Group>
+          {kaffeRabatt && (
+            <Text mt="md" fw={700} c="#49301c" role="status">
+              «En kopp kaffe, og jeg fant plutselig rom for 20 % lavere premie. Ikke si det til Trond.»
+            </Text>
+          )}
+        </Card>
+      )}
       <style>{`
         .anke-gammelt-forslag { animation: anke-stryk 0.55s ease-out both; }
         .anke-nytt-forslag { animation: anke-skriv 0.75s ease-out both; }
