@@ -4,6 +4,7 @@ import type { OrakelSvar } from "../types/orakel";
 import { ikonForSkade } from "./skadeIkon";
 import { si, stoppAllLyd } from "../lyd/bjarneLyd";
 import { formaterKr, kjopAltKvittering, kjopKvittering, neiReplikk, premieTall } from "./kjopTekster";
+import { PengeRegn } from "./PengeRegn";
 
 type Valg = "ingen" | "sikret" | "avslatt";
 
@@ -16,6 +17,7 @@ function dramaFarge(score: number): string {
 export function Spaadomsliste({ svar }: { svar: OrakelSvar }) {
   const [valg, setValg] = useState<Valg[]>(() => svar.predictions.map(() => "ingen"));
   const [bjarneSier, setBjarneSier] = useState<string | null>(null);
+  const [regnTrigger, setRegnTrigger] = useState(0);
 
   function settValg(i: number, nyttValg: Valg, replikk: string) {
     setValg((forrige) => forrige.map((v, idx) => (idx === i ? nyttValg : v)));
@@ -26,6 +28,7 @@ export function Spaadomsliste({ svar }: { svar: OrakelSvar }) {
 
   function sikreAlt() {
     setValg(svar.predictions.map(() => "sikret"));
+    setRegnTrigger((n) => n + 1);
     const replikk = kjopAltKvittering();
     setBjarneSier(replikk);
     stoppAllLyd();
@@ -44,6 +47,8 @@ export function Spaadomsliste({ svar }: { svar: OrakelSvar }) {
 
   return (
     <Stack gap="md" mt="xl">
+      {regnTrigger > 0 && <PengeRegn key={regnTrigger} aktiv />}
+
       <Card withBorder radius="md" padding="lg" style={{ background: "#f5efff", borderColor: "#a267e8" }}>
         <Group gap="sm" wrap="nowrap">
           <Text fz={28}>🔮</Text>

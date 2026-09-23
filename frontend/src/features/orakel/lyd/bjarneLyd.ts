@@ -61,10 +61,12 @@ export function spillFeilReplikk(): string {
   return replikk;
 }
 
-/** Les skadesakene høyt, én etter én. */
-export function spillSkader(skader: { skade: string }[]) {
-  si("Her er skjebnen din. Heldigvis har jeg løsninger.", { rate: 0.85, pitch: 0.75 });
-  for (const s of skader) {
+/** Les spådommens kommentar, overgangen og deretter skadesakene høyt, én etter én. */
+export function spillSkader(svar: { kommentar: string; predictions: { skade: string }[] }) {
+  const rent = svar.kommentar.replace(/[*…]/g, " ").trim();
+  if (rent) si(rent, { rate: 0.85, pitch: 0.75 });
+  si("Dette er dine kommende skader.", { rate: 0.85, pitch: 0.75 });
+  for (const s of svar.predictions) {
     si(s.skade, { rate: 0.9, pitch: 0.75 });
   }
 }
@@ -77,8 +79,11 @@ export function stoppAllLyd() {
   }
 }
 
-/** Start elektrisk summing (loop). Kall stoppSumming() for å avslutte. */
-export function startSumming() {
+/**
+ * Kort elektrisk summing. Stopper seg selv etter `varighetMs` (default 700 ms),
+ * så den ikke overlapper Bjarnes prating. Kall stoppSumming() for å avbryte før tiden.
+ */
+export function startSumming(varighetMs = 700) {
   const c = ctx();
   if (c.state === "suspended") void c.resume();
   stoppSumming();
@@ -106,6 +111,9 @@ export function startSumming() {
   lfo.start();
 
   summeNode = { osc, gain, lfo };
+
+  // Summingen er kort og stopper seg selv, så pratingen kan overta uten overlapp.
+  window.setTimeout(() => stoppSumming(), varighetMs);
 }
 
 export function stoppSumming() {

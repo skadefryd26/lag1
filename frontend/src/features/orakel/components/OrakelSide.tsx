@@ -26,8 +26,7 @@ export function OrakelSide() {
     setStatus("skanner");
     setSkanneNr((n) => n + 1);
 
-    // Lyd: Bjarnes salgspitch, så elektrisk summing mens hånden leses
-    spillSalgspitch();
+    // Lyd: kort elektrisk summing først, så overtar Bjarne (se Handflate)
     startSumming();
 
     let sekunder = 3;
@@ -62,7 +61,7 @@ export function OrakelSide() {
         stoppAllLyd();
         setSvar(resultat);
         setStatus("klar");
-        spillSkader(resultat.predictions);
+        spillSkader(resultat);
       } catch (err) {
         stoppAllLyd();
         setFeil(err instanceof Error ? err.message : "Noe gikk galt.");
