@@ -5,6 +5,7 @@ import type { OrakelSvar } from "../types/orakel";
 import { AnkePanel } from "../../anke/components/AnkePanel";
 import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
+import { spillSukk, startSumming, stoppSumming } from "../lyd/bjarneLyd";
 
 type Status = "klar" | "skanner" | "feilet";
 
@@ -23,6 +24,10 @@ export function OrakelSide() {
     setNedtelling(3);
     setSkanneNr((n) => n + 1);
 
+    // Lyd: høyt sukk fra Bjarne, så elektrisk summing mens hånden leses
+    spillSukk();
+    startSumming();
+
     let sekunder = 3;
     timer.current = window.setInterval(async () => {
       sekunder -= 1;
@@ -30,6 +35,7 @@ export function OrakelSide() {
 
       if (sekunder <= 0) {
         if (timer.current) window.clearInterval(timer.current);
+        stoppSumming();
 
         // Bjarne gidder ikke helt: skanningen feiler av og til (~1 av 4)
         if (Math.random() < 0.25) {
