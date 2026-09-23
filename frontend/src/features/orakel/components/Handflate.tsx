@@ -146,7 +146,7 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
             <span style={{ display: "block", fontStyle: "italic", color: "#00e5ff" }}>
               {TROLLORD[trollordIndex]}
             </span>
-            <span>Leser håndflaten … {nedtelling}</span>
+            <span>{nedtelling > 0 ? `Leser håndflaten … ${nedtelling}` : "Tyder skjebnen …"}</span>
           </>
         )}
         {feilet && "Skanningen glapp. *sukk* Trykk for å prøve igjen."}
