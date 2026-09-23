@@ -11,7 +11,7 @@ type GatewayResponse = {
  */
 export async function kallGateway(
   instructions: string,
-  input: string,
+  input: string | Array<Record<string, unknown>>,
 ): Promise<string> {
   const token = process.env.AI_GATEWAY_TOKEN;
   if (!token) {
@@ -36,7 +36,8 @@ export async function kallGateway(
     throw new Error("UGYLDIG_TOKEN");
   }
   if (!res.ok) {
-    throw new Error(`GATEWAY_FEIL_${res.status}`);
+    const detaljer = await res.text();
+    throw new Error(`GATEWAY_FEIL_${res.status}: ${detaljer.slice(0, 500)}`);
   }
 
   const data = (await res.json()) as GatewayResponse;
