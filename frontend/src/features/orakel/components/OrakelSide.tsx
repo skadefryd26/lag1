@@ -21,7 +21,6 @@ export function OrakelSide() {
     setSvar(null);
     setFeil(null);
     setStatus("skanner");
-    setNedtelling(3);
     setSkanneNr((n) => n + 1);
 
     // Lyd: høyt sukk fra Bjarne, så elektrisk summing mens hånden leses
@@ -29,36 +28,42 @@ export function OrakelSide() {
     startSumming();
 
     let sekunder = 3;
+    setNedtelling(sekunder);
     timer.current = window.setInterval(async () => {
       sekunder -= 1;
-      setNedtelling(sekunder);
 
-      if (sekunder <= 0) {
-        if (timer.current) window.clearInterval(timer.current);
-        stoppSumming();
-
-        // Bjarne gidder ikke helt: skanningen feiler av og til (~1 av 4)
-        if (Math.random() < 0.25) {
-          stoppAllLyd();
-          spillFeilReplikk();
-          setStatus("feilet");
-          return;
-        }
-
-        try {
-          const resultat = await hentSpaadom();
-          // All lyd stopper før skadene presenteres og leses opp
-          stoppAllLyd();
-          setSvar(resultat);
-          setStatus("klar");
-          spillSkader(resultat.predictions);
-        } catch (err) {
-          stoppAllLyd();
-          setFeil(err instanceof Error ? err.message : "Noe gikk galt.");
-          setStatus("klar");
-        }
+      if (sekunder > 0) {
+        // Vis 3 → 2 → 1, ett sekund per tall
+        setNedtelling(sekunder);
+        return;
       }
-    }, 800);
+
+      // Nedtelling ferdig
+      setNedtelling(0);
+      if (timer.current) window.clearInterval(timer.current);
+      stoppSumming();
+
+      // Bjarne gidder ikke helt: skanningen feiler av og til (~1 av 4)
+      if (Math.random() < 0.25) {
+        stoppAllLyd();
+        spillFeilReplikk();
+        setStatus("feilet");
+        return;
+      }
+
+      try {
+        const resultat = await hentSpaadom();
+        // All lyd stopper før skadene presenteres og leses opp
+        stoppAllLyd();
+        setSvar(resultat);
+        setStatus("klar");
+        spillSkader(resultat.predictions);
+      } catch (err) {
+        stoppAllLyd();
+        setFeil(err instanceof Error ? err.message : "Noe gikk galt.");
+        setStatus("klar");
+      }
+    }, 1000);
   }, []);
 
   return (
