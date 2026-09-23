@@ -61,7 +61,9 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
         ✋
       </Box>
 
-      {/* Elektrisk livslinje: ledninger som tegner seg i håndflaten */}
+      {/* Elektrisk livslinje: ledninger som tegner seg i håndflaten.
+          Emojien fyller ca. midtre del av 340x440-boksen; håndflaten (der
+          linjene hører hjemme) ligger grovt mellom y 250-380, x 130-235. */}
       {skanner && (
         <svg
           viewBox="0 0 340 440"
@@ -73,25 +75,25 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
             pointerEvents: "none",
           }}
         >
-          {/* Livslinje – buet ledning */}
+          {/* Livslinje – buer rundt tommelroten, nederst i håndflaten */}
           <path
-            d="M120 180 C 150 230, 150 300, 190 340"
+            d="M140 240 C 128 285, 138 325, 178 355"
             className="livslinje"
             stroke="#00e5ff"
             strokeWidth={3}
             fill="none"
           />
-          {/* Hodelinje */}
+          {/* Hodelinje – midt i håndflaten */}
           <path
-            d="M115 210 C 160 220, 200 220, 235 205"
+            d="M130 285 C 158 293, 190 291, 212 282"
             className="livslinje"
             stroke="#b388ff"
             strokeWidth={3}
             fill="none"
           />
-          {/* Hjertelinje */}
+          {/* Hjertelinje – øvre del av håndflaten, under fingrene */}
           <path
-            d="M120 175 C 165 160, 205 165, 240 175"
+            d="M130 255 C 158 244, 190 246, 214 255"
             className="livslinje"
             stroke="#ff4dff"
             strokeWidth={3}
@@ -100,7 +102,7 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
         </svg>
       )}
 
-      {/* Gnister */}
+      {/* Gnister – holdes innenfor håndflaten (x 40-65%, y 55-80%) */}
       {skanner && (
         <>
           {[...Array(8)].map((_, i) => (
@@ -108,8 +110,8 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
               key={i}
               style={{
                 position: "absolute",
-                left: `${25 + Math.random() * 50}%`,
-                top: `${25 + Math.random() * 45}%`,
+                left: `${38 + Math.random() * 22}%`,
+                top: `${52 + Math.random() * 22}%`,
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
