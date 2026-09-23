@@ -1,7 +1,24 @@
 import { Router } from "express";
-import { hentSpaadom } from "../services/orakelService.js";
+import { hentSpaadom, inneholderHandflate } from "../services/orakelService.js";
 
 export const orakelRouter = Router();
+
+orakelRouter.post("/handflate", async (req, res) => {
+  const bilde = req.body?.bilde;
+  if (typeof bilde !== "string" || !bilde.startsWith("data:image/")) {
+    res.status(400).json({ error: "Mangler kamerabilde." });
+    return;
+  }
+
+  try {
+    const handflate = await inneholderHandflate(bilde);
+    res.json({ handflate });
+  } catch (err) {
+    const kode = err instanceof Error ? err.message : "UKJENT";
+    console.error("Håndflate-feil:", kode);
+    res.status(503).json({ error: "Bjarne får ikke sett håndflaten akkurat nå." });
+  }
+});
 
 orakelRouter.post("/spaadom", async (_req, res) => {
   try {

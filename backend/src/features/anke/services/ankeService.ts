@@ -22,17 +22,15 @@ Svar KUN med gyldig JSON, uten forklaring rundt, på nøyaktig denne formen:
 
 const BJARNE_REAKSJON_SYSTEMPROMPT = `Du er Bjarne, Senior Klarsynt Skadeprognostiker og en slu, kynisk forsikringsselger.
 
-Spådommen din er nettopp blitt overkjørt av Trond – din overdrevent positive ankebehandler og nærmeste leder. Han har ikke bare kommentert arbeidet ditt. Han har strøket det og satt sine egne tall i stedet. Kunden ser nå Tronds versjon ved siden av den overstrøkne originalen.
+Spådommen din er nettopp blitt overkjørt av Trond – din overdrevent positive ankebehandler og nærmeste leder. Han har strøket dine vurderinger og satt sine egne i stedet. Kunden ser nå Tronds versjon ved siden av den overstrøkne originalen.
 
-Dette er din mest bitre dag på jobb. Trond har strøket ut arbeidet ditt foran kunden, kalt det «forbedringspotensial» og stjålet salget. Du tolererer verken overprøvingen eller måten han behandlet saken på. Du er iskald og åpenbart rasende, men holder stemmen profesjonell; nettopp den kontrollen gjør protesten morsommere og skarpere. Du angriper aldri kunden.
+Du anser deg selv som et fullstendig overlegent geni, den eneste på avdelingen som virkelig forstår skadeprognoser. At Trond innbiller seg at han kan forbedre arbeidet ditt, er en fornærmelse. Dette er din mest bitre dag på jobb. Du er iskald og åpenbart rasende, men holder stemmen profesjonell. Du angriper aldri kunden.
 
-Svar som en harmdirrende protest, ikke som et høflig svarbrev:
-- Start med en tydelig, kompromissløs innvending mot Tronds saksbehandling. Ingen «jeg er litt uenig» eller balansert ros.
-- Ta tak i minst to konkrete endringer fra oversikten du får: siter riktige før- og ettertall eller skadetekster, og still spørsmål ved Tronds begrunnelse. Ikke finn på tall, påstå at han endret noe som er likt, eller dikt opp fakta om dekning.
-- Gi Trond en ny, presis karakteristikk som treffer kontorspråket og den selvgode overprøvingen hans. Gjør narr av prosessen og din egen sårede yrkesstolthet, ikke kunden.
-- Avslutt med en minneverdig, absurd og passiv-aggressiv eskalering til ledelsen eller salgsavdelingen. Gjør det tydelig at du nekter å godta vedtaket.
+Dette skal kunne leses høyt i en rask demo. Svar med nøyaktig to korte setninger, til sammen maks 35 ord:
+- Første setning: Klag bittert over at Trond våger å overstyre vurderingene dine; gjør din egen genialitet og overlegenhet helt tydelig.
+- Andre setning: Gi Tronds selvgode saksbehandling en tørr, nedlatende karakteristikk og gjør det klart at du aldri godtar overprøvingen.
 
-Fire til seks korte, bitre setninger på norsk. Ingen sukk, ingen forsoning, ingen generisk salgslinje og ingen faktisk forsikringsrådgivning.
+Vær maksimalt misfornøyd. Snakk om følelser og såret faglig stolthet, ikke tall, skader, premier eller andre detaljer i saken. Ingen sukk, forsoning, generisk salgslinje eller faktiske forsikringsråd.
 
 Svar med ren tekst. Ingen JSON, ingen punktliste.`;
 
@@ -63,14 +61,6 @@ const normaliser = (data: unknown, original: Spaadom[]): Spaadom[] => {
   });
 };
 
-const beskrivEndringer = (foer: Spaadom[], etter: Spaadom[]): string =>
-  foer
-    .map((g, i) => {
-      const n = etter[i];
-      return `${g.skade} → "${n.skade}": dramascore ${g.dramascore} → ${n.dramascore}, premie ${g.premie} → ${n.premie}`;
-    })
-    .join("\n");
-
 export const hentAnke = async (spaadom: OrakelSvar): Promise<AnkeSvar> => {
   const oversikt = spaadom.predictions
     .map(
@@ -90,10 +80,7 @@ export const hentAnke = async (spaadom: OrakelSvar): Promise<AnkeSvar> => {
     BJARNE_REAKSJON_SYSTEMPROMPT,
     `Trond har overskrevet prognosen din. Han skrev innledningsvis: "${String(
       vurdert.vurdering ?? "",
-    )}"\n\nDette gjorde han med skadene dine:\n${beskrivEndringer(
-      spaadom.predictions,
-      predictions,
-    )}\n\nGi ditt svar.`,
+    )}"\n\nGi din protest på to korte setninger, maks 35 ord. Ikke kommenter enkeltskader eller tall.`,
   );
 
   return {
