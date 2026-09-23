@@ -3,6 +3,7 @@ import { Alert, Box, Button, Container, Group, Text, Title } from "@mantine/core
 import { hentSpaadom } from "../api/orakelApi";
 import type { OrakelSvar } from "../types/orakel";
 import { AnkePanel } from "../../anke/components/AnkePanel";
+import type { AnkeSvar } from "../../anke/types/anke";
 import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
 import { spillSalgspitch, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader } from "../lyd/bjarneLyd";
@@ -15,6 +16,9 @@ export function OrakelSide() {
   const [svar, setSvar] = useState<OrakelSvar | null>(null);
   const [feil, setFeil] = useState<string | null>(null);
   const [skanneNr, setSkanneNr] = useState(0);
+  const [ankeResultat, setAnkeResultat] = useState<AnkeSvar | null>(null);
+  const [overproevdAntall, setOverproevdAntall] = useState(0);
+  const svarRef = useRef<HTMLDivElement>(null);
   const timer = useRef<number | null>(null);
   // Showet tåler én skannefeil. Nummer to er bare irriterende, så den
   // kommer aldri. Ref fordi intervallet under leser verdien i en closure.
@@ -22,6 +26,8 @@ export function OrakelSide() {
 
   const startSkanning = useCallback(() => {
     setSvar(null);
+    setAnkeResultat(null);
+    setOverproevdAntall(0);
     setFeil(null);
     setStatus("skanner");
     setSkanneNr((n) => n + 1);
@@ -68,6 +74,12 @@ export function OrakelSide() {
         setStatus("klar");
       }
     }, 1000);
+  }, []);
+
+  const visOverproeving = useCallback((resultat: AnkeSvar, antall: number) => {
+    setAnkeResultat(resultat);
+    setOverproevdAntall(antall);
+    if (antall === 0) svarRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   return (
@@ -123,7 +135,7 @@ export function OrakelSide() {
           </Alert>
         )}
 
-        {svar && <Box className="svar-omrade"><Spaadomsliste svar={svar} /><AnkePanel key={skanneNr} spaadom={svar} onOverproevd={setSvar} /></Box>}
+        {svar && <Box className="svar-omrade" ref={svarRef}><Spaadomsliste key={`${skanneNr}-${ankeResultat ? "anke" : "original"}`} svar={svar} overproeving={ankeResultat ? { svar: ankeResultat, antall: overproevdAntall } : undefined} /><AnkePanel key={skanneNr} spaadom={svar} onOverproeving={visOverproeving} /></Box>}
       </Container>
 
       <style>{`
