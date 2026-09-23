@@ -60,13 +60,6 @@ export function Spaadomsliste({ svar, overproeving }: { svar: OrakelSvar; overpr
         </Card>
       )}
 
-      {ankeFerdig && (
-        <Card withBorder radius="md" padding="xl" style={{ background: "#fff0e8", borderColor: "#e8590c", borderLeftWidth: 8 }} role="status">
-          <Text fw={900} fz="xl" c="#9c2900">😤 BJARNE GODTAR IKKE TRONDS VEDTAK</Text>
-          <Text fz="lg" fw={600} c="#3e2118" mt="sm">«{overproeving.svar.bjarnesReaksjon}»</Text>
-        </Card>
-      )}
-
       <Card withBorder radius="md" padding="lg" style={{ background: ankeFerdig ? "#edf9fc" : "#f5efff", borderColor: ankeFerdig ? "#00a4bd" : "#a267e8" }}>
         <Group gap="sm" wrap="nowrap">
           <Text fz={28}>{ankeFerdig ? "🚀" : "🔮"}</Text>
@@ -76,6 +69,13 @@ export function Spaadomsliste({ svar, overproeving }: { svar: OrakelSvar; overpr
           </Stack>
         </Group>
       </Card>
+
+      {ankeFerdig && (
+        <Card withBorder radius="md" padding="xl" style={{ background: "#fff0e8", borderColor: "#e8590c", borderLeftWidth: 8 }} role="status">
+          <Text fw={900} fz="xl" c="#9c2900">😤 BJARNE GODTAR IKKE TRONDS VEDTAK</Text>
+          <Text fz="lg" fw={600} c="#3e2118" mt="sm">«{overproeving.svar.bjarnesReaksjon}»</Text>
+        </Card>
+      )}
 
       {svar.predictions.map((gammeltForslag, i) => {
         const erstattet = !!overproeving && overproeving.antall > i;
