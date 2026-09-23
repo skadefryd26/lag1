@@ -28,7 +28,7 @@ ankeRouter.post("/anke", async (req, res) => {
     const kode = err instanceof Error ? err.message : "UKJENT";
     if (kode === "MANGLER_TOKEN" || kode === "UGYLDIG_TOKEN") {
       res.status(503).json({
-        error: "BJARNE 2.0™ er nede for planlagt verdiskaping. Prøv igjen om litt.",
+        error: "Trond er nede for planlagt verdiskaping. Prøv igjen om litt.",
       });
       return;
     }
