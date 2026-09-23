@@ -18,7 +18,7 @@ orakelRouter.post("/spaadom", async (_req, res) => {
     }
     console.error("Orakel-feil:", kode);
     res.status(500).json({
-      error: "Bjarne mistet kontakten med åndeverdenen. *sukk* Prøv igjen.",
+      error: "Bjarne mistet kontakten med salgsavdelingen. Prøv igjen.",
     });
   }
 });

@@ -5,7 +5,7 @@ import type { OrakelSvar } from "../types/orakel";
 import { AnkePanel } from "../../anke/components/AnkePanel";
 import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
-import { spillSukk, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader } from "../lyd/bjarneLyd";
+import { spillSalgspitch, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader } from "../lyd/bjarneLyd";
 
 type Status = "klar" | "skanner" | "feilet";
 
@@ -26,8 +26,8 @@ export function OrakelSide() {
     setStatus("skanner");
     setSkanneNr((n) => n + 1);
 
-    // Lyd: høyt sukk fra Bjarne, så elektrisk summing mens hånden leses
-    spillSukk();
+    // Lyd: Bjarnes salgspitch, så elektrisk summing mens hånden leses
+    spillSalgspitch();
     startSumming();
 
     let sekunder = 3;
@@ -112,14 +112,14 @@ export function OrakelSide() {
             <Text className="bjarne-overtekst">VI ER DER NÅR DET GJELDER</Text>
             <Title order={1}>Bjarne ser hva fremtiden kan by på</Title>
             <Text className="bjarne-brodtekst">
-              Legg hånden på skjermen, så leser vår motvillig klarsynte skadebehandler de små og store uhellene som kanskje venter. Dette er en lek, ikke forsikringsråd.
+              Legg hånden på skjermen, så finner Bjarnes skadeorakel risikoene du ikke visste at du kunne sikre. Dette er en lek, ikke forsikringsråd.
             </Text>
             <Button className="bjarne-knapp" onClick={startSkanning}>La Bjarne lese håndflaten</Button>
           </Box>
         </Box>
 
         {feil && (
-          <Alert color="red" mt="xl" title="Bjarne trakk på skuldrene">
+          <Alert color="red" mt="xl" title="Bjarne finner ikke en salgbar løsning">
             {feil}
           </Alert>
         )}

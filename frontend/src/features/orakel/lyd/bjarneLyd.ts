@@ -1,5 +1,5 @@
 // Lyd for Krystallkulen – nettleseren lager alt selv, ingen lydfiler.
-// Sukk + spåord via talesyntese (SpeechSynthesis), summing via Web Audio.
+// Salgspitch + spåord via talesyntese (SpeechSynthesis), summing via Web Audio.
 
 let audioCtx: AudioContext | null = null;
 let summeNode: { osc: OscillatorNode; gain: GainNode; lfo: OscillatorNode } | null = null;
@@ -33,13 +33,12 @@ export function si(tekst: string, opts: { rate?: number; pitch?: number } = {}) 
   window.speechSynthesis.speak(u);
 }
 
-/** Høyt sukk fra Bjarne. */
-export function spillSukk() {
-  // dypt, sakte, lav pitch = tungt sukk
-  si("Haaah. Sukk.", { rate: 0.7, pitch: 0.6 });
+/** Bjarnes korte, selvsikre åpning før håndlesningen. */
+export function spillSalgspitch() {
+  si("La oss se hvilke dekninger håndflaten din kvalifiserer til.", { rate: 0.85, pitch: 0.8 });
 }
 
-/** Les et spåord/trollord høyt med robotaktig, motvillig stemme. */
+/** Les et spåord høyt med selvsikker stemme. */
 export function spillSpaaord(tekst: string) {
   // fjern stjerner og prikker så stemmen ikke leser dem
   const rent = tekst.replace(/[*…]/g, " ").trim();
@@ -48,11 +47,11 @@ export function spillSpaaord(tekst: string) {
 
 // Morsomme instruksjoner Bjarne gir når skanningen feiler.
 const FEIL_REPLIKKER = [
-  "Sukk. Jeg ser ingenting. Gå og vask hendene, og prøv igjen.",
-  "Nei, dette går ikke. Bytt hånd, er du snill.",
-  "Håndflaten er uklar. Snurr rundt én gang og prøv på nytt.",
-  "Ingenting. Pust på hånden, tørk den på buksa, og prøv igjen.",
-  "Blankt. Klapp tre ganger og legg hånden tilbake.",
+  "Jeg ser ingenting salgbar ennå. Gå og vask hendene, og prøv igjen.",
+  "Dette går ikke. Bytt hånd, så vurderer vi begge risikoprofiler.",
+  "Håndflaten er uklar. Snurr rundt én gang og prøv på nytt. Det gjør underverker for tallene.",
+  "Ingenting. Pust på hånden, tørk den på buksa, og prøv igjen. Dokumentasjonen må være i orden.",
+  "Blankt. Klapp tre ganger og legg hånden tilbake. Jeg har plass til deg i systemet.",
 ];
 
 /** Bjarne gir en morsom instruksjon når skanningen feiler. Returnerer teksten. */
@@ -64,7 +63,7 @@ export function spillFeilReplikk(): string {
 
 /** Les skadesakene høyt, én etter én. */
 export function spillSkader(skader: { skade: string }[]) {
-  si("Sukk. Her er skjebnen din.", { rate: 0.8, pitch: 0.65 });
+  si("Her er skjebnen din. Heldigvis har jeg løsninger.", { rate: 0.85, pitch: 0.75 });
   for (const s of skader) {
     si(s.skade, { rate: 0.9, pitch: 0.75 });
   }
