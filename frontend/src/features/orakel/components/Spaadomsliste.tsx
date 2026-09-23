@@ -53,7 +53,15 @@ export function Spaadomsliste({ svar }: { svar: OrakelSvar }) {
                 </Text>
               </Stack>
             </Group>
-            <Badge size="lg" color={dramaFarge(p.dramascore)} variant="filled">
+            <Badge
+              size="lg"
+              color={dramaFarge(p.dramascore)}
+              variant="filled"
+              // Badgen klipper etiketten sin med ellipse når den blir klemt.
+              // Lange skadetitler gjorde «Drama 4/6» til «DRAM…».
+              style={{ flexShrink: 0 }}
+              styles={{ label: { overflow: "visible" } }}
+            >
               Drama {p.dramascore}/6
             </Badge>
           </Group>
