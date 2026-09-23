@@ -16,6 +16,9 @@ export function OrakelSide() {
   const [feil, setFeil] = useState<string | null>(null);
   const [skanneNr, setSkanneNr] = useState(0);
   const timer = useRef<number | null>(null);
+  // Showet tåler én skannefeil. Nummer to er bare irriterende, så den
+  // kommer aldri. Ref fordi intervallet under leser verdien i en closure.
+  const harFeilet = useRef(false);
 
   const startSkanning = useCallback(() => {
     setSvar(null);
@@ -37,8 +40,10 @@ export function OrakelSide() {
         if (timer.current) window.clearInterval(timer.current);
         stoppSumming();
 
-        // Bjarne gidder ikke helt: skanningen feiler av og til (~1 av 4)
-        if (Math.random() < 0.25) {
+        // Bjarne gidder ikke helt: skanningen feiler av og til (~1 av 4),
+        // men høyst én gang så lenge appen står åpen.
+        if (!harFeilet.current && Math.random() < 0.25) {
+          harFeilet.current = true;
           stoppAllLyd();
           spillFeilReplikk();
           setStatus("feilet");
