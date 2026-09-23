@@ -113,7 +113,16 @@ export function OrakelSide() {
           <Group gap="lg" className="gjensidige-handlinger">
             <Text>⌕&nbsp; Søk</Text>
             <Text>🛒&nbsp; Handlevogn</Text>
-            <Text>⌘&nbsp; Meld skade</Text>
+            <Text className="meny-med-ikon">
+              <svg className="plaster-kryss" viewBox="0 0 24 24" role="img" aria-label="Meld skade">
+                <g fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <rect x="2.2" y="9.2" width="19.6" height="5.6" rx="2.8" transform="rotate(-45 12 12)" fill="#ffd9a0" />
+                  <rect x="2.2" y="9.2" width="19.6" height="5.6" rx="2.8" transform="rotate(45 12 12)" fill="#ffd9a0" />
+                  <circle cx="12" cy="12" r="2.3" fill="#e8935a" stroke="none" />
+                </g>
+              </svg>
+              &nbsp; Meld skade
+            </Text>
             <Text>🔒&nbsp; Logg inn</Text>
           </Group>
         </Container>
@@ -152,6 +161,8 @@ export function OrakelSide() {
         .gjensidige-toppinnhold { height: 74px; display: flex; align-items: center; justify-content: space-between; }
         .gjensidige-logo { font-size: 18px; font-weight: 800; letter-spacing: -.4px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
         .gjensidige-merke { width: 28px; height: 28px; display: inline-block; vertical-align: middle; }
+        .meny-med-ikon { display: inline-flex; align-items: center; }
+        .plaster-kryss { width: 18px; height: 18px; }
         .gjensidige-segmenter, .gjensidige-handlinger { font-size: 15px; white-space: nowrap; }
         .aktiv-segment { color: #f4ffa9; border-bottom: 2px solid #f4ffa9; padding: 26px 0 22px; }
         .gjensidige-undermeny { background: #f5ffd0; color: #090d39; height: 42px; display: flex; align-items: center; font-size: 14px; font-weight: 600; }
