@@ -94,3 +94,18 @@ export async function hentSpaadom(): Promise<OrakelSvar> {
   const raa = await kallGateway(BJARNE_SYSTEMPROMPT, input);
   return normaliser(trekkUtJson(raa), iDag);
 }
+
+export async function inneholderHandflate(bilde: string): Promise<boolean> {
+  const svar = await kallGateway(
+    "Du sjekker kun om bildet viser en åpen menneskelig håndflate. Svar kun med JSON på formen {\"handflate\": true} eller {\"handflate\": false}. Ikke beskriv personen eller bildet.",
+    [{
+      role: "user",
+      content: [
+        { type: "input_text", text: "Er en åpen håndflate tydelig synlig i bildet?" },
+        { type: "input_image", image_url: bilde, detail: "low" },
+      ],
+    }],
+  );
+  const data = trekkUtJson(svar) as { handflate?: unknown };
+  return data.handflate === true;
+}

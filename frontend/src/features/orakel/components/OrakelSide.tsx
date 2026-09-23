@@ -118,7 +118,7 @@ export function OrakelSide() {
         <Box className="bjarne-hero">
           <Box className="bjarne-handflate">
             <Text className="bjarne-merke">BJARNES SKADEORAKEL</Text>
-            <Handflate status={status} nedtelling={nedtelling} onLegg={startSkanning} />
+            <Handflate status={status} nedtelling={nedtelling} onLegg={startSkanning} onHandMatch={startSkanning} />
           </Box>
           <Box className="bjarne-budskap">
             <Text className="bjarne-overtekst">VI ER DER NÅR DET GJELDER</Text>
@@ -126,7 +126,7 @@ export function OrakelSide() {
             <Text className="bjarne-brodtekst">
               Legg hånden på skjermen, så finner Bjarnes skadeorakel risikoene du ikke visste at du kunne sikre. Dette er en lek, ikke forsikringsråd.
             </Text>
-            <Button className="bjarne-knapp" onClick={startSkanning}>La Bjarne lese håndflaten</Button>
+            <Button className="bjarne-knapp" disabled>Startes når hånden matcher</Button>
           </Box>
         </Box>
 
