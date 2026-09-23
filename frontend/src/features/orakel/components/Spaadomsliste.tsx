@@ -13,15 +13,6 @@ function dramaFarge(score: number): string {
   return "teal";
 }
 
-function forsikringsCta(skade: string): string {
-  const tekst = skade.toLowerCase();
-  if (tekst.includes("reise") || tekst.includes("bagasje")) return "Se reiseforsikring";
-  if (tekst.includes("bil") || tekst.includes("sykkel") || tekst.includes("kjør")) return "Se kjøretøyforsikring";
-  if (tekst.includes("vann") || tekst.includes("brann") || tekst.includes("hus")) return "Se husforsikring";
-  if (tekst.includes("hund") || tekst.includes("dyr")) return "Se dyreforsikring";
-  return "Se hva innboforsikring dekker";
-}
-
 export function Spaadomsliste({ svar }: { svar: OrakelSvar }) {
   const [valg, setValg] = useState<Valg[]>(() => svar.predictions.map(() => "ingen"));
   const [bjarneSier, setBjarneSier] = useState<string | null>(null);
