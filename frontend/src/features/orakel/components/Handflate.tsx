@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Text } from "@mantine/core";
+import { spillSpaaord } from "../lyd/bjarneLyd";
 
 type Props = {
   status: "klar" | "skanner" | "feilet";
@@ -24,13 +25,20 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
   const feilet = status === "feilet";
   const [trollordIndex, setTrollordIndex] = useState(0);
 
-  // Veksle trollord mens hånden leses
+  // Veksle trollord mens hånden leses, og les dem høyt
   useEffect(() => {
     if (!skanner) return;
+    // les det første trollordet med en gang
+    spillSpaaord(TROLLORD[trollordIndex]);
     const t = window.setInterval(() => {
-      setTrollordIndex((i) => (i + 1) % TROLLORD.length);
-    }, 700);
+      setTrollordIndex((i) => {
+        const neste = (i + 1) % TROLLORD.length;
+        spillSpaaord(TROLLORD[neste]);
+        return neste;
+      });
+    }, 1600);
     return () => window.clearInterval(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skanner]);
 
   return (
