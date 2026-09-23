@@ -9,12 +9,6 @@ import { PengeRegn } from "./PengeRegn";
 
 type Valg = "ingen" | "sikret" | "avslatt";
 
-function dramaFarge(score: number): string {
-  if (score >= 5) return "red";
-  if (score >= 3) return "orange";
-  return "teal";
-}
-
 type Overproeving = { svar: AnkeSvar; antall: number };
 
 type Props = {
@@ -134,9 +128,6 @@ export function Spaadomsliste({ svar, overproeving, kaffeRabatt, onGiKaffe }: Pr
                     {kaffeRabatt && <Text size="sm" c="#5f6470" td="line-through">Før kaffe: {p.premie}</Text>}
                   </Stack>
                 </Group>
-                <Badge size="lg" color={dramaFarge(p.dramascore)} variant="filled" style={{ flexShrink: 0 }}>
-                  Drama {p.dramascore}/6
-                </Badge>
               </Group>
             </div>
 
