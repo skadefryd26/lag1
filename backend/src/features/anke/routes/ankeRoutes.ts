@@ -17,7 +17,7 @@ const erGyldigSpaadom = (verdi: unknown): verdi is OrakelSvar => {
 ankeRouter.post("/anke", async (req, res) => {
   if (!erGyldigSpaadom(req.body)) {
     res.status(400).json({
-      error: "Du kan ikke anke en spådom som ikke finnes. *sukk*",
+      error: "Du kan ikke anke en spådom som ikke finnes. Det er ikke en produktiv kundereise.",
     });
     return;
   }
@@ -34,7 +34,7 @@ ankeRouter.post("/anke", async (req, res) => {
     }
     console.error("Anke-feil:", kode);
     res.status(500).json({
-      error: "Anken forsvant i et saksbehandlingssystem ingen har tilgang til. *sukk*",
+      error: "Anken forsvant i et saksbehandlingssystem med begrenset kundetilgang.",
     });
   }
 });

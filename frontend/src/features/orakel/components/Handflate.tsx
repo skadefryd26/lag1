@@ -8,15 +8,15 @@ type Props = {
   onLegg: () => void;
 };
 
-// Bjarne sukker og mumler trollord mens han motvillig leser hånden.
+// Bjarne mumler salgsargumenter mens han "vurderer" håndflaten.
 const TROLLORD = [
-  "*sukk* … abrakadabra skadus …",
-  "hocus pocus, egenandel …",
-  "sim sala bim, sukk …",
-  "… trolldom og terningkast fire …",
-  "krystallum maximus … *gjesp*",
-  "… kaffe. Jeg trenger kaffe. Mumle mumle …",
-  "vann, ild, kaos … *dypt sukk*",
+  "… risikoprofil aktivert …",
+  "egenandel, dekningsomfang, signatur …",
+  "Livslinje Pluss, naturligvis …",
+  "… trolldom og tilleggsdekning …",
+  "krystallum maximus, premie justert …",
+  "… en unik salgsmulighet. For deg, altså …",
+  "vann, ild, kaos … og månedlig betaling …",
   "presto skadus, hokus forsikringus …",
 ];
 
@@ -149,7 +149,7 @@ export function Handflate({ status, nedtelling, onLegg }: Props) {
             <span>{nedtelling > 0 ? `Leser håndflaten … ${nedtelling}` : "Tyder skjebnen …"}</span>
           </>
         )}
-        {feilet && "Skanningen glapp. *sukk* Trykk for å prøve igjen."}
+        {feilet && "Skanningen mangler salgbar dokumentasjon. Trykk for å prøve igjen."}
       </Text>
 
       <style>{`

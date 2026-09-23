@@ -5,7 +5,7 @@ import type { OrakelSvar } from "../types/orakel";
 import { AnkePanel } from "../../anke/components/AnkePanel";
 import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
-import { spillSukk, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader } from "../lyd/bjarneLyd";
+import { spillSalgspitch, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader } from "../lyd/bjarneLyd";
 
 type Status = "klar" | "skanner" | "feilet";
 
@@ -26,8 +26,8 @@ export function OrakelSide() {
     setStatus("skanner");
     setSkanneNr((n) => n + 1);
 
-    // Lyd: høyt sukk fra Bjarne, så elektrisk summing mens hånden leses
-    spillSukk();
+    // Lyd: Bjarnes salgspitch, så elektrisk summing mens hånden leses
+    spillSalgspitch();
     startSumming();
 
     let sekunder = 3;
@@ -85,7 +85,7 @@ export function OrakelSide() {
           🔮 Krystallkulen
         </Title>
         <Text ta="center" c="grape.3" mb="xl" fz="lg">
-          Bjarnes skadeorakel – han sukker, men han ser alt
+          Bjarnes skadeorakel – risikoen din, hans salgsmulighet
         </Text>
 
         <Handflate status={status} nedtelling={nedtelling} onLegg={startSkanning} />

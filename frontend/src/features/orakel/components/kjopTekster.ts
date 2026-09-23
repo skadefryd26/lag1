@@ -1,20 +1,20 @@
-// Bjarnes kommentarer i kjøpsflyten – syrlig når du sikrer deg, truende når du takker nei.
+// Bjarnes kommentarer i kjøpsflyten - glatt når du kjøper, mistenkelig rolige når du takker nei.
 
 const KJOP_KVITTERINGER = [
-  "Klokt. Nå er det mitt problem. *sukk*",
-  "Endelig en som hører etter. Signert, og glem det.",
-  "Fornuftig. Jeg noterer det, motvillig.",
-  "Der ja. Nå kan vi begge sove. Jeg helst.",
+  "Klokt. Jeg har allerede registrert deg som et godt eksempel.",
+  "Utmerket. Signert før risikoen fikk et ord med i laget.",
+  "Fornuftig. Den dekningen anbefalte jeg helt objektivt.",
+  "Der ja. En ryddig løsning for deg og kvartalsrapporten min.",
 ];
 
 const NEI_REPLIKKER = [
-  "Interessant valg. Vi ses på datoen. *sukk*",
-  "Som du vil. Jeg pleier å få rett i slike saker.",
-  "Modig. Eller dumt. Tiden viser hvilket.",
-  "Notert som «ville ikke lytte». Lykke til.",
+  "Interessant valg. Jeg noterer at risikoen ønsket å stå alene.",
+  "Som du vil. Premien var bare et forslag. Skjebnen er mindre fleksibel.",
+  "Modig. Eller budsjettbevisst. Vi får se på datoen.",
+  "Notert som «utsatte trygghet». Markedsavdelingen elsker slike kategorier.",
 ];
 
-const KJOP_ALT_KVITTERING = "Endelig. Alt sikret. Nå er hele skjebnen din min hodepine. *dypt sukk*";
+const KJOP_ALT_KVITTERING = "Utmerket. Alt sikret i én ryddig pakke. Du har god dømmekraft når jeg forklarer den.";
 
 export function kjopKvittering(): string {
   return KJOP_KVITTERINGER[Math.floor(Math.random() * KJOP_KVITTERINGER.length)];
