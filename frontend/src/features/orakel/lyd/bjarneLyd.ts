@@ -40,9 +40,14 @@ export function spillSalgspitch() {
 
 /** Les et spåord høyt med selvsikker stemme. */
 export function spillSpaaord(tekst: string) {
+  // Hopp over hvis Bjarne fortsatt snakker, så trollordene ikke hoper seg
+  // opp i køen og forsinker diagnosen når resultatet kommer.
+  if ("speechSynthesis" in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending)) {
+    return;
+  }
   // fjern stjerner og prikker så stemmen ikke leser dem
   const rent = tekst.replace(/[*…]/g, " ").trim();
-  si(rent, { rate: 0.85, pitch: 0.7 });
+  si(rent, { rate: 0.9, pitch: 0.7 });
 }
 
 // Morsomme instruksjoner Bjarne gir når skanningen feiler.
@@ -77,6 +82,27 @@ export function stoppAllLyd() {
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
   }
+}
+
+/**
+ * Stopp summingen, men la Bjarne snakke ferdig setningen han er midt i.
+ * Venter til talekøen er tom (eller til `maksVentMs` er gått) og kaller `saa`.
+ * Brukes når resultatet er klart så trollordet ikke kuttes midt i.
+ */
+export function naarTaleFerdig(saa: () => void, maksVentMs = 1200) {
+  stoppSumming();
+  if (!("speechSynthesis" in window)) {
+    saa();
+    return;
+  }
+  const start = Date.now();
+  const sjekk = window.setInterval(() => {
+    const ferdig = !window.speechSynthesis.speaking && !window.speechSynthesis.pending;
+    if (ferdig || Date.now() - start > maksVentMs) {
+      window.clearInterval(sjekk);
+      saa();
+    }
+  }, 120);
 }
 
 /**
