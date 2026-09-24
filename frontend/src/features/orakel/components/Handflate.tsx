@@ -3,7 +3,7 @@ import { Box, Button, Text } from "@mantine/core";
 import { spillSpaaord } from "../lyd/bjarneLyd";
 
 type Props = {
-  status: "klar" | "skanner" | "feilet";
+  status: "klar" | "skanner" | "feilet" | "ferdig";
   nedtelling: number;
   onLegg: () => void;
   onHandMatch: () => void;
