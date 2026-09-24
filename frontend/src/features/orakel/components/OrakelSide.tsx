@@ -8,7 +8,7 @@ import { Handflate } from "../components/Handflate";
 import { Spaadomsliste } from "../components/Spaadomsliste";
 import { spillSalgspitch, startSumming, stoppSumming, stoppAllLyd, spillFeilReplikk, spillSkader, naarTaleFerdig } from "../lyd/bjarneLyd";
 
-type Status = "klar" | "skanner" | "feilet";
+type Status = "klar" | "skanner" | "feilet" | "ferdig";
 
 export function OrakelSide() {
   const [status, setStatus] = useState<Status>("klar");
@@ -68,7 +68,9 @@ export function OrakelSide() {
         // Vis resultatet med en gang, men la Bjarne snakke ferdig
         // trollordet han er midt i før diagnosen leses opp.
         setSvar(resultat);
-        setStatus("klar");
+        // "ferdig", ikke "klar": resultatet vises, men håndscanneren skal
+        // IKKE begynne å lete på nytt før brukeren ber om det med knappen.
+        setStatus("ferdig");
         naarTaleFerdig(() => spillSkader(resultat));
       } catch (err) {
         stoppAllLyd();
