@@ -84,6 +84,20 @@ export function OrakelSide() {
     if (antall === 0) svarRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  // Nullstill til utgangspunktet: skjul resultatet og vis håndscanneren igjen,
+  // men IKKE start skanningen - vent til brukeren holder opp hånden på nytt.
+  const nullstillTilKlar = useCallback(() => {
+    stoppAllLyd();
+    if (timer.current) window.clearInterval(timer.current);
+    setSvar(null);
+    setAnkeResultat(null);
+    setOverproevdAntall(0);
+    setKaffeRabatt(false);
+    setFeil(null);
+    setNedtelling(3);
+    setStatus("klar");
+  }, []);
+
   return (
     <Box
       style={{
@@ -134,7 +148,7 @@ export function OrakelSide() {
       </Box>
 
       <Container size="lg" className="forside-innhold">
-        <Box className="bjarne-hero">
+        <Box className="bjarne-hero" style={{ display: svar ? "none" : undefined }}>
           <Box className="bjarne-handflate">
             <Text className="bjarne-merke">BJARNES SKADEORAKEL</Text>
             <Handflate status={status} nedtelling={nedtelling} onLegg={startSkanning} onHandMatch={startSkanning} />
@@ -149,6 +163,16 @@ export function OrakelSide() {
           </Box>
         </Box>
 
+        {svar && (
+          <Box className="resultat-topp">
+            <Text className="bjarne-overtekst">BJARNES SKADEORAKEL</Text>
+            <Title order={1}>Ditt skaderesultat</Title>
+            <Text className="resultat-undertekst">
+              Bjarne har lest hånden din. Her er risikoene han mener du bør sikre. Dette er en lek, ikke forsikringsråd.
+            </Text>
+          </Box>
+        )}
+
         {feil && (
           <Alert color="red" mt="xl" title="Bjarne finner ikke en salgbar løsning">
             {feil}
@@ -156,6 +180,20 @@ export function OrakelSide() {
         )}
 
         {svar && <Box className="svar-omrade" ref={svarRef}><Spaadomsliste key={`${skanneNr}-${ankeResultat ? "anke" : "original"}`} svar={svar} overproeving={ankeResultat ? { svar: ankeResultat, antall: overproevdAntall } : undefined} kaffeRabatt={kaffeRabatt} onGiKaffe={() => setKaffeRabatt(true)} /><AnkePanel key={skanneNr} spaadom={svar} onOverproeving={visOverproeving} /></Box>}
+
+        {svar && (
+          <Box className="skann-paa-nytt">
+            <Button
+              className="bjarne-knapp"
+              onClick={() => {
+                nullstillTilKlar();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              Skann hånden på nytt
+            </Button>
+          </Box>
+        )}
       </Container>
 
       <style>{`
@@ -181,6 +219,11 @@ export function OrakelSide() {
         .bjarne-knapp { margin-top: 26px; color: #080c37; background: #f4ffa9; font-weight: 800; border-radius: 0; }
         .bjarne-knapp:hover { background: #e7f88d; }
         .svar-omrade { max-width: 720px; margin: 32px auto 0; }
+        .skann-paa-nytt { display: flex; justify-content: center; margin: 40px auto 8px; }
+        .resultat-topp { background: #070b36; color: #ffffff; padding: clamp(28px, 4vw, 48px); text-align: center; }
+        .resultat-topp h1 { color: #ffffff; font-size: clamp(34px, 3.4vw, 48px); line-height: 1.08; letter-spacing: -.03em; margin: 10px 0 14px; }
+        .resultat-topp .bjarne-overtekst { display: block; }
+        .resultat-undertekst { color: #ffffff; max-width: 520px; margin: 0 auto; font-size: 18px; font-weight: 500; line-height: 1.5; }
         @media (max-width: 760px) { .gjensidige-toppinnhold { height: 60px; }.gjensidige-segmenter, .gjensidige-handlinger, .gjensidige-undermeny { display: none; }.bjarne-hero { grid-template-columns: 1fr; }.bjarne-handflate { min-height: 350px; }.bjarne-budskap { padding: 36px 28px 42px; }.forside-innhold { padding: 0; }.bjarne-hero { margin: 0 -0.75rem; } }
       `}</style>
     </Box>
