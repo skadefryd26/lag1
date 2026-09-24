@@ -55,7 +55,12 @@ export function Handflate({ status, nedtelling, onLegg, onHandMatch }: Props) {
   useEffect(() => { void startKamera(); }, []);
 
   useEffect(() => {
-    if (kameraStatus !== "aktiv" || status !== "klar" || harMatchetRef.current) return;
+    if (kameraStatus !== "aktiv" || status !== "klar") return;
+
+    // Vi er i "klar"-tilstand: nullstill match-sperren her (ikke i en
+    // separat effekt), så det ikke blir en kappløp der deteksjonen bailer
+    // på en gammel sperre før den rekker å bli nullstilt.
+    harMatchetRef.current = false;
 
     const canvas = document.createElement("canvas");
     const sjekkHand = async () => {
@@ -88,8 +93,11 @@ export function Handflate({ status, nedtelling, onLegg, onHandMatch }: Props) {
   }, [kameraStatus, onHandMatch, status]);
 
   useEffect(() => {
+    // Ved feil: nullstill sperren så en ny skanning kan starte.
+    // (I "klar" gjøres dette i deteksjons-effekten over.)
     if (status === "feilet") {
       harMatchetRef.current = false;
+      setHandStatus("leter");
     }
   }, [status]);
 
