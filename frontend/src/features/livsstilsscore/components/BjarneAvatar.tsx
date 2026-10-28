@@ -34,10 +34,13 @@ export function BjarneAvatar({ tilstand }: Props) {
         : "Bjarne, til tjeneste. Motvillig.";
 
   // Velg ett tilfeldig uttrykk som holder seg stabilt mens komponenten lever.
-  const uttrykk = useMemo(
+  const tilfeldigUttrykk = useMemo(
     () => UTTRYKK[Math.floor(Math.random() * UTTRYKK.length)],
     [],
   );
+
+  // Når dommen er klar, ser Bjarne alltid sint ut. Ellers et tilfeldig uttrykk.
+  const uttrykk = tilstand === "svart" ? "sint" : tilfeldigUttrykk;
 
   // Adressen styrer hodet: uttrykk, skjult panel og lys bakgrunn som matcher kortet.
   const src = `/bjarne.html#uttrykk=${uttrykk}&ui=0&bg=f8f9fb`;
