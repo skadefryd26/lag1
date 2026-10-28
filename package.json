@@ -1,0 +1,16 @@
+{
+  "name": "bjarne-livsstilsscore",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Bjarnes livsstils-forsikringsscore – Skadefryd 2026",
+  "scripts": {
+    "postinstall": "npm --prefix backend install && npm --prefix frontend install",
+    "dev": "concurrently -n backend,frontend -c blue,green \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "test": "npm --prefix backend run test",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "playwright-core": "^1.64.1"
+  }
+}
