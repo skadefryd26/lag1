@@ -15,6 +15,7 @@ import {
 import { VANER } from "./vaner.js";
 import { BjarneAvatar } from "./BjarneAvatar.js";
 import { SunnereLivsstil } from "./SunnereLivsstil.js";
+import { FiktivtTilbud } from "./FiktivtTilbud.js";
 import { useVurderMeg } from "../hooks/useVurderMeg.js";
 
 export function LivsstilsscoreSkjerm() {
@@ -159,6 +160,7 @@ export function LivsstilsscoreSkjerm() {
                   </Text>
                 </Stack>
               </Card>
+              <FiktivtTilbud score={score} antallVaner={vurderte.length} />
               <SunnereLivsstil valgte={vurderte} />
             </Stack>
           </Card>
