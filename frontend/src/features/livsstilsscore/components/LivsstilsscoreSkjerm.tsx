@@ -160,7 +160,7 @@ export function LivsstilsscoreSkjerm() {
                   </Text>
                 </Stack>
               </Card>
-              <FiktivtTilbud score={score} antallVaner={vurderte.length} />
+              <FiktivtTilbud antallVaner={vurderte.length} />
               <SunnereLivsstil valgte={vurderte} />
             </Stack>
           </Card>
