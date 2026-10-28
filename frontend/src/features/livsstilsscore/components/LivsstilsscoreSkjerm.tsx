@@ -4,6 +4,7 @@ import {
   Card,
   Checkbox,
   Group,
+  List,
   Progress,
   SimpleGrid,
   Stack,
@@ -48,14 +49,28 @@ export function LivsstilsscoreSkjerm() {
         ? "To kopper. Én for analysen og én for å holde analysen ut."
         : kaffekopper === 1
           ? "Én kaffe, så skal jeg avgi dommen uten å sukke. Kanskje."
-          : "Null kaffe? Denne saken er allerede merkelig. Jeg undersøker."
+          : "Null kaffe? Denne saken er allerede merkelig. Jeg undersøker.";
+
+  const personligeTips = VANER.filter((vane) =>
+    valgte.includes(vane.etikett),
+  )
+    .map((vane) => vane.tips)
+    .slice(0, 3);
+  const tips =
+    personligeTips.length > 0
+      ? personligeTips
+      : [
+          "Velg ett lite grep som passer hverdagen din, for eksempel en kort gåtur eller litt mer vann.",
+          "Små endringer du trives med, er lettere å holde fast ved. Bjarne har forsøkt å gjøre dette til et regneark.",
+        ];
 
   return (
     <Stack gap="lg">
       <Stack gap={4}>
-        <Title order={1}>Bjarnes livsstils-forsikringsscore</Title>
+        <Title order={1}>Små livsstilsgrep, forsikring som passer</Title>
         <Text c="dimmed">
-          Kryss av på vanene dine. Bjarne vurderer risikoen. Alt er på liksom.
+          Få noen vennlige tips til vanene dine, og husk å sjekke at forsikringen
+          passer til livet ditt. Bjarne later som han ikke bryr seg.
         </Text>
       </Stack>
 
@@ -97,6 +112,10 @@ export function LivsstilsscoreSkjerm() {
         {(styles) => (
           <Card withBorder radius="md" padding="lg" style={styles}>
             <Stack gap="sm">
+              <Text size="sm" c="dimmed">
+                Scoren er bare for moro skyld. Den sier ingenting om helsen din
+                eller hva forsikringen din dekker.
+              </Text>
               <Group justify="space-between" align="flex-end">
                 <Title order={3}>Bjarnes dom</Title>
                 <Text fw={900} size="2rem" c={scoreFarge}>
@@ -111,6 +130,44 @@ export function LivsstilsscoreSkjerm() {
               <Text size="lg" style={{ lineHeight: 1.6 }}>
                 {vurder.data?.begrunnelse}
               </Text>
+              <Card withBorder radius="md" padding="md">
+                <Stack gap="xs">
+                  <Title order={4}>Små grep Bjarne faktisk anbefaler</Title>
+                  <List spacing="xs">
+                    {(vurder.data?.tips?.length
+                      ? vurder.data.tips.slice(0, 3)
+                      : tips
+                    ).map((tipslinje) => (
+                      <List.Item key={tipslinje}>{tipslinje}</List.Item>
+                    ))}
+                  </List>
+                  <Text size="xs" c="dimmed">
+                    Velg bare råd som passer for deg. Dette er generelle tips,
+                    ikke medisinsk rådgivning.
+                  </Text>
+                </Stack>
+              </Card>
+              <Card
+                radius="md"
+                padding="md"
+                style={{
+                  background: "var(--mantine-color-blue-0)",
+                  border: "1px solid var(--mantine-color-blue-2)",
+                }}
+              >
+                <Stack gap="xs">
+                  <Title order={4}>Passer forsikringen fortsatt til livet ditt?</Title>
+                  <Text>
+                    {vurder.data?.forsikringspaminnelse ??
+                      "Se gjennom forsikringsvilkårene eller spør forsikringsselskapet om dekningen passer til livet ditt."}{" "}
+                    Bjarne kan lese vilkår, men kan ikke trylle fram dekning.
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Livsstilstipsene endrer ikke forsikringen eller prisen din.
+                    Sjekk alltid vilkårene for din egen avtale.
+                  </Text>
+                </Stack>
+              </Card>
               <Card
                 radius="md"
                 padding="md"

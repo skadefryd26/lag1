@@ -8,11 +8,16 @@ describe("vurderLivsstil (reservemodus uten gateway-token)", () => {
     expect(svar.score).toBeLessThanOrEqual(100);
     expect(typeof svar.begrunnelse).toBe("string");
     expect(svar.begrunnelse.length).toBeGreaterThan(0);
+    expect(svar.tips.length).toBeGreaterThan(0);
+    expect(svar.tips.length).toBeLessThanOrEqual(3);
+    expect(svar.forsikringspaminnelse).toContain("forsikringsvilkårene");
   });
 
   it("takler tom liste uten å feile", async () => {
     const svar = await vurderLivsstil([]);
     expect(typeof svar.score).toBe("number");
     expect(svar.begrunnelse.length).toBeGreaterThan(0);
+    expect(svar.tips.length).toBeGreaterThan(0);
+    expect(svar.forsikringspaminnelse).toContain("forsikringsselskapet");
   });
 });
