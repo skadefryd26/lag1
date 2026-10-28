@@ -41,15 +41,6 @@ export function LivsstilsscoreSkjerm() {
 
   const score = vurder.data?.score ?? 0;
   const scoreFarge = score > 70 ? "red" : score > 40 ? "yellow" : "teal";
-  const kaffekopper = Math.ceil(score / 20);
-  const kaffedom =
-    kaffekopper >= 4
-      ? "Jeg trenger fire kopper før jeg later som dette er en vanlig arbeidsdag."
-      : kaffekopper >= 2
-        ? "To kopper. Én for analysen og én for å holde analysen ut."
-        : kaffekopper === 1
-          ? "Én kaffe, så skal jeg avgi dommen uten å sukke. Kanskje."
-          : "Null kaffe? Denne saken er allerede merkelig. Jeg undersøker.";
 
   const personligeTips = VANER.filter((vane) =>
     valgte.includes(vane.etikett),
@@ -165,44 +156,6 @@ export function LivsstilsscoreSkjerm() {
                   <Text size="xs" c="dimmed">
                     Livsstilstipsene endrer ikke forsikringen eller prisen din.
                     Sjekk alltid vilkårene for din egen avtale.
-                  </Text>
-                </Stack>
-              </Card>
-              <Card
-                radius="md"
-                padding="md"
-                style={{
-                  background: "var(--mantine-color-brand-0)",
-                  border: "1px solid var(--mantine-color-brand-2)",
-                }}
-              >
-                <Stack gap="xs">
-                  <Group justify="space-between" align="center">
-                    <div>
-                      <Text fw={800}>Bjarnes kaffekrav</Text>
-                      <Text size="sm" c="dimmed">
-                        Basert på dommen. Kaffen er dessverre ikke inkludert.
-                      </Text>
-                    </div>
-                    <Text
-                      aria-label={`${kaffekopper} kaffekopper`}
-                      fw={900}
-                      size="xl"
-                      c="brand"
-                    >
-                      {"☕".repeat(kaffekopper) || "☕️?"} {kaffekopper}/5
-                    </Text>
-                  </Group>
-                  <Progress
-                    value={kaffekopper * 20}
-                    color="brand"
-                    size="md"
-                    radius="xl"
-                    aria-label={`Bjarnes kaffebehov: ${kaffekopper} av 5 kopper`}
-                  />
-                  <Text fs="italic">«{kaffedom}»</Text>
-                  <Text size="xs" c="dimmed">
-                    Bare tull: Dette er ingen ekte forsikringsvurdering eller premie.
                   </Text>
                 </Stack>
               </Card>
