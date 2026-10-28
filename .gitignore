@@ -13,6 +13,7 @@
 node_modules/
 dist/
 coverage/
+.vite/
 
 # Skjermbildet scripts/sjekk-appen.mjs legger igjen
 sjekk-appen.png

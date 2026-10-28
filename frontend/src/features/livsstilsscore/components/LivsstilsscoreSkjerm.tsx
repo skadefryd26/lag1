@@ -13,10 +13,12 @@ import {
 } from "@mantine/core";
 import { VANER } from "./vaner.js";
 import { BjarneAvatar } from "./BjarneAvatar.js";
+import { SunnereLivsstil } from "./SunnereLivsstil.js";
 import { useVurderMeg } from "../hooks/useVurderMeg.js";
 
 export function LivsstilsscoreSkjerm() {
   const [valgte, setValgte] = useState<string[]>([]);
+  const [vurderte, setVurderte] = useState<string[]>([]);
   const vurder = useVurderMeg();
 
   const tilstand = vurder.isPending
@@ -32,6 +34,7 @@ export function LivsstilsscoreSkjerm() {
   }
 
   function vurderMeg() {
+    setVurderte(valgte);
     vurder.mutate(valgte);
   }
 
@@ -146,6 +149,7 @@ export function LivsstilsscoreSkjerm() {
                   </Text>
                 </Stack>
               </Card>
+              <SunnereLivsstil valgte={vurderte} />
             </Stack>
           </Card>
         )}
