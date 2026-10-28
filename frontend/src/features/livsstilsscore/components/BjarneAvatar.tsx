@@ -5,13 +5,13 @@ type Props = {
   tilstand: "hvile" | "tenker" | "svart";
 };
 
-// Alle uttrykkene Bjarne-hodet kan vise (fra bjarne.html).
+// Alle uttrykkene Bjarne-hodet kan vise før en vurdering (fra bjarne.html).
+// «sint» er med vilje utelatt her — det vises bare når dommen er klar.
 const UTTRYKK = [
   "skeptisk",
   "mistenksom",
   "tvilende",
   "irritert",
-  "sint",
   "undrende",
   "tenkende",
   "forbauset",
