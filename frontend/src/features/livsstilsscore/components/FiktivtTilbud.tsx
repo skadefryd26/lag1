@@ -2,13 +2,36 @@ import { useState } from "react";
 import { Badge, Button, Card, Group, List, Stack, Text, Title } from "@mantine/core";
 
 type Props = {
-  score: number;
   antallVaner: number;
 };
 
-export function FiktivtTilbud({ score, antallVaner }: Props) {
+export function FiktivtTilbud({ antallVaner }: Props) {
   const [simulertSendt, setSimulertSendt] = useState(false);
-  const eksempelPris = 249 + Math.ceil(score / 10) * 35 + antallVaner * 12;
+  const grunnpris = 299;
+  const pristilleggPerVane = 85;
+  const vaneTillegg = antallVaner * pristilleggPerVane;
+  const eksempelPris = grunnpris + vaneTillegg;
+  const produktnivå =
+    antallVaner >= 7
+      ? {
+          navn: "Bjarne Premium Pluss Pluss",
+          kommentar:
+            "Bjarne har oppgradert deg til Pluss Pluss. Han sier det er på grunn av risikoen. Kaffebudsjettet sier noe annet.",
+          farge: "red",
+        }
+      : antallVaner >= 4
+        ? {
+            navn: "Bjarne Pluss",
+            kommentar:
+              "Du får Pluss. Bjarne kaller det en helhetsvurdering og ber om å få beholde kalkulatoren.",
+            farge: "orange",
+          }
+        : {
+            navn: "Bjarne Basis",
+            kommentar:
+              "Basis holder foreløpig. Bjarne virker nesten skuffet over at regnearket ble så kort.",
+            farge: "teal",
+          };
 
   return (
     <Card
@@ -36,7 +59,7 @@ export function FiktivtTilbud({ score, antallVaner }: Props) {
 
         <Card withBorder radius="md" padding="md" bg="white">
           <Text size="sm" c="dimmed">
-            Oppdiktet eksempelpris
+            Oppdiktet eksempelpris per måned
           </Text>
           <Group align="baseline" gap="xs">
             <Text fw={900} size="2.5rem" c="brand">
@@ -44,8 +67,34 @@ export function FiktivtTilbud({ score, antallVaner }: Props) {
             </Text>
             <Text c="dimmed">/ måned</Text>
           </Group>
+          <Text size="sm" fw={700}>
+            {grunnpris} kr i grunnpris + {vaneTillegg} kr for {antallVaner} valgte {antallVaner === 1 ? "vane" : "vaner"}
+          </Text>
+          <Text size="sm" c="dimmed">
+            Hver ekstra vane legger på {pristilleggPerVane} oppdiktede kroner. Ja, Bjarne tar betalt per bekymring.
+          </Text>
           <Text size="xs" c="dimmed">
-            Beregnet med en tilfeldig demoregel — ikke en ekte pris eller et pristilbud.
+            Bare demomatematikk — dette er ikke en ekte pris eller et pristilbud.
+          </Text>
+        </Card>
+
+        <Card withBorder radius="md" padding="md" bg="white">
+          <Group justify="space-between" align="center">
+            <div>
+              <Text size="sm" c="dimmed">
+                Bjarnes anbefalte demo-produkt
+              </Text>
+              <Text fw={900} size="xl">
+                {produktnivå.navn}
+              </Text>
+            </div>
+            <Badge color={produktnivå.farge} size="lg" variant="light">
+              {antallVaner} {antallVaner === 1 ? "vane" : "vaner"}
+            </Badge>
+          </Group>
+          <Text mt="xs">«{produktnivå.kommentar}»</Text>
+          <Text size="xs" c="dimmed" mt="xs">
+            Produktnivåene er oppdiktet og bestemmes bare av valgene i denne demoen.
           </Text>
         </Card>
 
