@@ -1,10 +1,30 @@
-import { Avatar, Badge, Group, Stack, Text } from "@mantine/core";
+import { useMemo } from "react";
+import { Badge, Group, Stack, Text } from "@mantine/core";
 
 type Props = {
   tilstand: "hvile" | "tenker" | "svart";
 };
 
-// Bjarnes ansikt. En enkel kaffekopp-avatar med humør etter tilstand.
+// Alle uttrykkene Bjarne-hodet kan vise (fra bjarne.html).
+const UTTRYKK = [
+  "skeptisk",
+  "mistenksom",
+  "tvilende",
+  "irritert",
+  "sint",
+  "undrende",
+  "tenkende",
+  "forbauset",
+  "sporrende",
+  "forvirret",
+  "hae",
+  "noytral",
+  "fornoyd",
+  "oppgitt",
+  "grimase",
+];
+
+// Bjarnes ansikt. Det ekte 3D-hodet hans, med et tilfeldig uttrykk.
 export function BjarneAvatar({ tilstand }: Props) {
   const humor =
     tilstand === "tenker"
@@ -13,22 +33,30 @@ export function BjarneAvatar({ tilstand }: Props) {
         ? "Der, ja. Vær så god."
         : "Bjarne, til tjeneste. Motvillig.";
 
+  // Velg ett tilfeldig uttrykk som holder seg stabilt mens komponenten lever.
+  const uttrykk = useMemo(
+    () => UTTRYKK[Math.floor(Math.random() * UTTRYKK.length)],
+    [],
+  );
+
+  // Adressen styrer hodet: uttrykk, skjult panel og lys bakgrunn som matcher kortet.
+  const src = `/bjarne.html#uttrykk=${uttrykk}&ui=0&bg=f8f9fb`;
+
   return (
     <Group gap="sm" wrap="nowrap">
-      <Avatar
-        radius="xl"
-        size={56}
-        styles={{
-          placeholder: {
-            background:
-              "linear-gradient(135deg, var(--mantine-color-brand-6), var(--mantine-color-brand-9))",
-            color: "white",
-            fontSize: 26,
-          },
+      <iframe
+        src={src}
+        title="Bjarnes ansikt"
+        aria-label="Bjarnes ansikt"
+        style={{
+          width: 72,
+          height: 72,
+          border: "2px solid var(--mantine-color-brand-2)",
+          borderRadius: "50%",
+          flex: "none",
+          background: "#f8f9fb",
         }}
-      >
-        ☕
-      </Avatar>
+      />
       <Stack gap={2}>
         <Group gap="xs">
           <Text fw={700}>Bjarne</Text>
