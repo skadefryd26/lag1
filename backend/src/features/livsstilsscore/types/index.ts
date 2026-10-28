@@ -5,8 +5,10 @@ export type ScoreRequest = {
 };
 
 export type ScoreResponse = {
-  score: number; // oppdiktet risiko-score 0-100
+  score: number; // oppdiktet underholdningsscore 0-100, ikke ekte forsikringsrisiko
   begrunnelse: string; // Bjarnes tekst
+  tips: string[]; // generelle, livsstilsbaserte forslag
+  forsikringspaminnelse: string; // sjekk vilkår, ikke dekningsløfte
 };
 
 // AI-gateway-kontrakt (Responses API).

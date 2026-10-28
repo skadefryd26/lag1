@@ -20,6 +20,18 @@ function lokalBjarne(vaner: string[]): ScoreResponse {
   return {
     score,
     begrunnelse: `${innledning} ${avslutning} (Bjarne jobber i reservemodus til AI-gatewayen er koblet på.)`,
+    tips:
+      antall > 0
+        ? [
+            "Velg ett lite grep som passer hverdagen din, og prøv det i ditt eget tempo. Bjarne har godkjent denne planen med et nikk.",
+            "Små endringer du trives med, er lettere å holde fast ved. Jeg har laget et regneark, men du slipper å se det.",
+          ]
+        : [
+            "Start med ett lite grep som passer hverdagen din, for eksempel en kort gåtur eller litt mer vann.",
+            "Velg noe du faktisk har lyst til å fortsette med. Jeg forsøkte en motivasjonstale, men den krevde kaffe.",
+          ],
+    forsikringspaminnelse:
+      "Se gjennom forsikringsvilkårene eller spør forsikringsselskapet om dekningen passer til livet ditt.",
   };
 }
 
