@@ -18,19 +18,6 @@ const REISER: Record<string, Reise> = {
   vaping: { for: "💨", etter: "🫁", tekst: "Vaping → vanlig pust" },
 };
 
-function bjarneReplikk(antall: number): string {
-  if (antall === 0) {
-    return "Ingen valg, ingen reise. Du er visst allerede ferdig forbedret. Imponerende. Eller mistenkelig.";
-  }
-  if (antall >= 5) {
-    return "Så her er veien til et bedre deg. Jeg heier, selvsagt. Mest fordi kurset sa jeg skulle. Men litt ekte også.";
-  }
-  if (antall >= 3) {
-    return "Se på det. Noen små bytter, så er du nesten et forbilde. Nesten. Jeg tar æren uansett.";
-  }
-  return "Et lite steg mot et sunnere liv. Jeg skal prøve å være stolt, så snart kaffen virker.";
-}
-
 export function SunnereLivsstil({ valgte }: { valgte: string[] }) {
   // Finn id-ene til de valgte vanene (valgte inneholder etikettene).
   const valgteIder = VANER.filter((v) => valgte.includes(v.etikett)).map(
@@ -64,39 +51,34 @@ export function SunnereLivsstil({ valgte }: { valgte: string[] }) {
         </div>
 
         {reiser.length === 0 ? (
-          <Group gap="sm" justify="center" py="md">
-            <Text size="2.5rem">🧘</Text>
+          <Group gap="sm" justify="center" py="xl">
+            <Text size="5rem">🧘</Text>
             <Text fs="italic" c="dimmed">
               Ingen vaner valgt – blanke ark.
             </Text>
           </Group>
         ) : (
-          <Stack gap="xs">
+          <Stack gap="lg" py="sm">
             {reiser.map((r) => (
               <Group key={r.tekst} justify="space-between" wrap="nowrap">
-                <Group gap="sm" wrap="nowrap" align="center">
-                  <Text size="1.6rem" aria-hidden>
+                <Group gap="md" wrap="nowrap" align="center">
+                  <Text size="3.5rem" aria-hidden>
                     {r.for}
                   </Text>
-                  <Text c="brand" fw={700} aria-hidden>
+                  <Text size="2.5rem" c="brand" fw={700} aria-hidden>
                     →
                   </Text>
-                  <Text size="1.6rem" aria-hidden>
+                  <Text size="3.5rem" aria-hidden>
                     {r.etter}
                   </Text>
                 </Group>
-                <Text size="sm" fw={600}>
+                <Text size="md" fw={600}>
                   {r.tekst}
                 </Text>
               </Group>
             ))}
           </Stack>
         )}
-
-        <Text fs="italic">«{bjarneReplikk(reiser.length)}»</Text>
-        <Text size="xs" c="dimmed">
-          Bare tull: Dette er ingen ekte helse- eller forsikringsvurdering.
-        </Text>
       </Stack>
     </Card>
   );
