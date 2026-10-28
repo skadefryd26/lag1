@@ -1,15 +1,17 @@
 import type { Vane } from "../types/index.js";
 
 // Absurde, fiktive livsstilsvaner. Minst 6, jf. akseptansekriteriene.
+// Inspirert (på liksom) av kjente usunne livsstilstrender: dårlig kosthold,
+// overvekt, alkohol og binge-drikking, røyking/nikotin og stillesitting.
 export const VANER: Vane[] = [
-  { id: "kaffe", etikett: "5+ kaffekopper om dagen" },
-  { id: "katter", etikett: "Flere enn 3 katter hjemme" },
-  { id: "elsparkesykkel", etikett: "Elsparkesykkel i regnvær" },
-  { id: "trampoline", etikett: "Trampoline i hagen uten nett" },
-  { id: "grill", etikett: "Griller på balkongen hele året" },
-  { id: "stige", etikett: "Står øverst på stigen med telefonen i hånda" },
-  { id: "nattmat", etikett: "Lager middag klokka tre om natta" },
-  { id: "ski", etikett: "Står utfor uten å ha stått på ski før" },
-  { id: "diy", etikett: "Fikser egen elektrisitet med YouTube som guide" },
-  { id: "fjell", etikett: "Går på fjellet i joggesko i februar" },
+  { id: "brus", etikett: "Brus eller energidrikk til hvert måltid" },
+  { id: "fastfood", etikett: "Fastfood oftere enn du tør å innrømme" },
+  { id: "gronnsaker", etikett: "Ser på grønnsaker som pynt, ikke mat" },
+  { id: "nattmat", etikett: "Nattmat rett før du skal sove" },
+  { id: "sofa", etikett: "Nærmeste du kommer trening er å reise deg fra sofaen" },
+  { id: "heis", etikett: "Tar heisen opp én etasje – hver gang" },
+  { id: "fredagspils", etikett: "«Én øl» som alltid blir til mange" },
+  { id: "bingedrikking", etikett: "Sparer hele ukas alkohol til lørdag" },
+  { id: "royk", etikett: "Røyker bare når du er ute blant folk (altså ofte)" },
+  { id: "vaping", etikett: "Vaper mer enn du puster vanlig luft" },
 ];
