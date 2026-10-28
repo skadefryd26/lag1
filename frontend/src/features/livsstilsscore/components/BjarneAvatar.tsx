@@ -34,13 +34,16 @@ export function BjarneAvatar({ tilstand }: Props) {
         : "Bjarne, til tjeneste. Motvillig.";
 
   // Velg ett tilfeldig uttrykk som holder seg stabilt mens komponenten lever.
-  const uttrykk = useMemo(
+  const tilfeldigUttrykk = useMemo(
     () => UTTRYKK[Math.floor(Math.random() * UTTRYKK.length)],
     [],
   );
 
-  // Adressen styrer hodet: uttrykk, skjult panel og lys bakgrunn som matcher kortet.
-  const src = `/bjarne.html#uttrykk=${uttrykk}&ui=0&bg=f8f9fb`;
+  // Når dommen er klar, ser Bjarne alltid sint ut. Ellers et tilfeldig uttrykk.
+  const uttrykk = tilstand === "svart" ? "sint" : tilfeldigUttrykk;
+
+  // Adressen styrer hodet: uttrykk, skjult panel og hvit bakgrunn.
+  const src = `/bjarne.html#uttrykk=${uttrykk}&ui=0&bg=ffffff`;
 
   return (
     <Group gap="sm" wrap="nowrap">
@@ -49,12 +52,12 @@ export function BjarneAvatar({ tilstand }: Props) {
         title="Bjarnes ansikt"
         aria-label="Bjarnes ansikt"
         style={{
-          width: 72,
-          height: 72,
-          border: "2px solid var(--mantine-color-brand-2)",
+          width: 108,
+          height: 108,
+          border: "none",
           borderRadius: "50%",
           flex: "none",
-          background: "#f8f9fb",
+          background: "#ffffff",
         }}
       />
       <Stack gap={2}>
